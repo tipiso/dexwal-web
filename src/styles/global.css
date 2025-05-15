@@ -1,22 +1,72 @@
-html {
-    background-color: #f1f5f9;
-    font-family: sans-serif;
-  }
+:root {
+  --primary-color: #C92200;
+  --text-color: #1F1F24;
+  --other-color: #EEEEEE;
+  --white-color: #FFF;
+  --gray-color: #535353;
+  --bg-color: #F6F6F6;
+  --max-width: 1440px;
+  --font-family: 'Roboto', 'Montserrat', sans-serif;
+}
 
-  html.dark {
-    background-color: #0d0950;
-    color: #fff;
+/** Reset - start */
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
   }
-  
-  .dark .nav-links a {
-    color: #fff;
+}
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+/** Reset - end */
+
+html {
+    font-family: var(--font-family);
   }
   
   body {
+    background-color: var(--bg-color);
+    max-width: var(--max-width);
     margin: 0 auto;
-    width: 100%;
-    max-width: 80ch;
-    padding: 1rem;
+    /* width: 100%; */
     line-height: 1.5;
   }
   
@@ -24,69 +74,59 @@ html {
     box-sizing: border-box;
   }
   
-  h1 {
-    margin: 1rem 0;
-    font-size: 2.5rem;
-  }
-  
-  /* nav styles */
-  
-  .hamburger {
-    padding-right: 20px;
-    cursor: pointer;
-  }
-  
-  .hamburger .line {
-    display: block;
-    width: 40px;
-    height: 5px;
-    margin-bottom: 10px;
-    background-color: #ff9776;
+  /** Typography Start */
+  /** Montserrat */
+  .mainTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: auto;
   }
 
-  .nav-links {
-    width: 100%;
-    top: 5rem;
-    left: 48px;
-    background-color: #ff9776;
-    display: none;
-    margin: 0;
-  }
-  
-  .nav-links a {
-    display: block;
-    text-align: center;
-    padding: 10px 0;
-    text-decoration: none;
-    font-size: 1.2rem;
+  .secondaryTitle {
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    text-transform: uppercase;
+    font-size: 36px;
+    line-height: auto;
   }
-  
-  .nav-links a:hover,
-  .nav-links a:focus {
-    background-color: #ff9776;
+
+  .smallTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: auto;
   }
-  
-  .expanded {
-    display: unset;
+
+  /** Roboto */
+  .bigText {
+    font-family: 'Roboto', sans-serif;
+    line-height: 130%;
+    font-size: 22px;
+    font-weight: 400;
   }
-  
-  @media screen and (min-width: 636px) {
-    .nav-links {
-      margin-left: 5em;
-      display: block;
-      position: static;
-      width: auto;
-      background: none;
-    }
-  
-    .nav-links a {
-      display: inline-block;
-      padding: 15px 20px;
-    }
-  
-    .hamburger {
-        display: none;
-      }
+
+  .primaryText {
+    font-family: 'Roboto', sans-serif;
+    line-height: 140%;
+    font-size: 18px;
+    font-weight: 400;
   }
+
+  .buttonText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    line-height: 130%;
+  }
+
+  .menuText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+  }
+
+  .otherText {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 130%;
+  }
+    /** Typography End */

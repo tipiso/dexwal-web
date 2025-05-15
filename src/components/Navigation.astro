@@ -1,6 +1,27 @@
+---
+import Link from './Link.astro';
+
+const navLinks = [
+  { label: 'Strona główna', href: '/' },
+  { label: 'Oferta', href: '/offer' },
+  { label: 'O Firmie', href: '/about' },
+];
+---
+
 <div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about/">About</a>
-  <a href="/blog/">Blog</a>
-  <a href="/tags/">Tags</a>
+  {navLinks.map((link) => <Link href={link.href} label={link.label} />)}
+  <select class="otherText">
+    <option>PL</option>
+    <option>EN</option>
+  </select>
+  <button>Kontakt</button>
 </div>
+
+<style>
+  .nav-links {
+    --nav-links-spacing: 35px;
+    *:not(:last-child) {
+      margin-right: var(--nav-links-spacing);
+    }
+  }
+</style>
