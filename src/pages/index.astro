@@ -1,13 +1,87 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
+import HeroImg from '@assets/hero-img.avif';
+import ArrowIcon from '@assets/arrow-icon.svg';
 const pageTitle = 'Strona Główna';
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Button from '@components/Button.astro';
 ---
 
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    justify-content: end;
+  }
+
+  @keyframes bounce {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-20px);
+    }
+    60% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .scrollIndicator {
+    position: absolute;
+    bottom: 54px;
+    padding-right: 80px;
+    animation: bounce 2s infinite;
+  }
+
+  .mainTitle,
+  .bigText {
+    text-wrap: auto;
+    color: var(--white-color);
+  }
+
+  .bigText {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .heroContentWrapper {
+    --content-max-width: 940px;
+    --content-min-height: 440px;
+    left: 0;
+    bottom: 172px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--text-color);
+    width: 100%;
+    max-width: var(--content-max-width);
+    min-height: var(--content-min-height);
+  }
+
+  .heroContent {
+    --max-content-width: 570px;
+    width: 100%;
+    max-width: var(--max-content-width);
+  }
+</style>
+
 <Layout pageTitle={pageTitle} language="pl">
-  <ul>
-    <li><a href="/posts/post-1/">Post 1</a></li>
-  </ul>
+  <section class="hero">
+    <div class="heroContentWrapper">
+      <div class="heroContent">
+        <h1 class="mainTitle">Profesjonalny sprzęt strażacki od Dexwal</h1>
+        <p class="bigText">Innowacyjne i bezpieczne rozwiązania dla straży pożarnej.</p>
+        <Button label="Sprawdź pełną ofertę firmy" type="primary" />
+      </div>
+    </div>
+    <img src={HeroImg.src} alt="Firefighter" />
+    <div class="scrollIndicator">
+      <img src={ArrowIcon.src} alt="Arrow Scroll Indicator" />
+    </div>
+  </section>
 </Layout>
