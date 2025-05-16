@@ -1,5 +1,7 @@
 ---
 import Link from './Link.astro';
+import Button from './Button.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 
 const navLinks = [
   { label: 'Strona główna', href: '/' },
@@ -10,11 +12,8 @@ const navLinks = [
 
 <div class="nav-links">
   {navLinks.map((link) => <Link href={link.href} label={link.label} />)}
-  <select class="otherText">
-    <option>PL</option>
-    <option>EN</option>
-  </select>
-  <button>Kontakt</button>
+  <LanguageSwitcher />
+  <Button label="Kontakt" type="primary" />
 </div>
 
 <style>

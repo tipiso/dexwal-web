@@ -1,0 +1,29 @@
+---
+const { label, type } = Astro.props;
+---
+
+<style>
+  .button {
+    color: var(--white-color);
+    padding: 6px 32px;
+    border-radius: 5px;
+    transition: opacity 0.2s ease;
+    border: 1px solid var(--primary-color);
+  }
+
+  .button:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+
+  .primary {
+    background-color: var(--primary-color);
+  }
+
+  .secondary {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+  }
+</style>
+
+<button class:list={[`button buttonText ${type}`]}>{label}</button>

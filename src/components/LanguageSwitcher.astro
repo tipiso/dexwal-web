@@ -1,0 +1,16 @@
+---
+const supportedLocales = ['PL', 'EN'];
+---
+
+<style>
+  .languageSwitcher {
+    border: none;
+    font-weight: 700;
+    background-color: transparent;
+    cursor: pointer;
+  }
+</style>
+
+<select class="languageSwitcher otherText">
+  {supportedLocales.map((l) => <option>{l}</option>)}
+</select>
