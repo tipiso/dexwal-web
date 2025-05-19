@@ -5,6 +5,7 @@ import HeroImg from '@assets/hero-img.avif';
 import ArrowIcon from '@assets/arrow-icon.svg';
 const pageTitle = 'Strona Główna';
 import Button from '@components/Button.astro';
+import ProductSection from '@components/ProductSection.astro';
 ---
 
 <style>
@@ -71,7 +72,7 @@ import Button from '@components/Button.astro';
 </style>
 
 <Layout pageTitle={pageTitle} language="pl">
-  <section class="hero">
+  <section class="hero sectionBreak">
     <div class="heroContentWrapper">
       <div class="heroContent">
         <h1 class="mainTitle">Profesjonalny sprzęt strażacki od Dexwal</h1>
@@ -83,5 +84,15 @@ import Button from '@components/Button.astro';
     <div class="scrollIndicator">
       <img src={ArrowIcon.src} alt="Arrow Scroll Indicator" />
     </div>
+  </section>
+
+  <section class="sectionBreak">
+    <h2 class="secondaryTitle">Sprzęt strażacki w naszej ofercie</h2>
+    <p class="primaryText">
+      W Dexwal tworzymy nie tylko sprzęt, ale bezpieczne i efektywne rozwiązania, które wspierają zarówno Ochotnicze,
+      jak i Państwowe Straże Pożarne w ich codziennych działaniach.
+    </p>
+
+    <ProductSection />
   </section>
 </Layout>

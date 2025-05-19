@@ -7,6 +7,7 @@
   --bg-color: #F6F6F6;
   --max-width: 1440px;
   --font-family: 'Roboto', 'Montserrat', sans-serif;
+  --section-break: 100px;
 }
 
 /** Reset - start */
@@ -130,3 +131,6 @@ html {
     line-height: 130%;
   }
     /** Typography End */
+  .sectionBreak {
+    margin-bottom: var(--section-break);
+  }

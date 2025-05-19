@@ -1,0 +1,26 @@
+---
+const { image, title } = Astro.props;
+---
+
+<style>
+  .product {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    width: 370px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      min-height: 250px;
+      margin-bottom: 1rem;
+    }
+  }
+</style>
+
+<div class="product">
+  <img src={image} alt={title} />
+  <p class="smallTitle">{title}</p>
+</div>

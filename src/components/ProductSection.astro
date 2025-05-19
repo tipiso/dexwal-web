@@ -1,0 +1,30 @@
+---
+import Product from './Product.astro';
+
+const products = [
+  {
+    image: '/images/zwijacz.png',
+    title: 'Akumulatorowy zwijacz do węży',
+  },
+  {
+    image: '/images/tragarz.png',
+    title: 'Platforma bagażowa TRAGARZ 300',
+  },
+  {
+    image: '/images/platforma.png',
+    title: 'Platforma gaśniczo/ chłodnicza do samochodów elektrycznych',
+  },
+];
+---
+
+<style>
+  .productSection {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 32px 80px;
+    flex-wrap: wrap;
+  }
+</style>
+
+<div class="productSection">{products.map((p) => <Product image={p.image} title={p.title} />)}</div>
