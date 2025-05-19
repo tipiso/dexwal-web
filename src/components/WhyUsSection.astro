@@ -1,0 +1,141 @@
+---
+
+---
+
+<style>
+  .why-us-section {
+    display: flex;
+    gap: 48px;
+  }
+
+  .image-container {
+    position: relative;
+    min-width: 300px;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 40px;
+    object-fit: cover;
+  }
+
+  .overlay-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--bg-color);
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 70px;
+  }
+
+  .overlay-box .highlight {
+    --highlight-font-size: 110px;
+    color: var(--primary-color);
+    font-size: var(--highlight-font-size);
+  }
+
+  .experienceText {
+    max-width: 106px;
+    margin-left: 16px;
+  }
+
+  .content {
+    flex: 1 1 55%;
+    min-width: 300px;
+  }
+
+  .content h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .content li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content .number {
+    color: #d52100;
+    font-size: 2rem;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+
+  .content h3 {
+    margin: 0;
+  }
+
+  .content p {
+    margin: 0.5rem 0 0 0;
+    color: #444;
+  }
+</style>
+
+<section class="why-us-section">
+  <div class="image-container">
+    <img src="/images/hose.avif" alt="hose image" />
+    <div class="overlay-box">
+      <span class="highlight">+30</span>
+      <span class="experienceText secondaryTitle">Lat na rynku</span>
+    </div>
+  </div>
+  <div class="content">
+    <h2 class="mainTitle">Dlaczego Nas Wybierają<br />Wiodące Instytucje i Firmy?</h2>
+
+    <ul>
+      <li>
+        <span class="number">1.</span>
+        <div>
+          <h3>Doświadczenie i Kompetencje</h3>
+          <p>
+            Posiadamy doświadczenie w branży, które pozwala nam zrozumieć doskonale potrzeby i wymagania naszych
+            klientów...
+          </p>
+        </div>
+      </li>
+
+      <li>
+        <span class="number">2.</span>
+        <div>
+          <h3>Indywidualne Podejście</h3>
+          <p>Każdy projekt, zlecenie czy współpraca jest dla nas unikalne...</p>
+        </div>
+      </li>
+
+      <li>
+        <span class="number">3.</span>
+        <div>
+          <h3>Jakość Usług</h3>
+          <p>Jakość to dla nas priorytet. Dążymy do tego, aby nasze usługi...</p>
+        </div>
+      </li>
+
+      <li>
+        <span class="number">4.</span>
+        <div>
+          <h3>Profesjonalizm</h3>
+          <p>Nasza praca opiera się na etyce, zaufaniu i rzetelności...</p>
+        </div>
+      </li>
+
+      <li>
+        <span class="number">5.</span>
+        <div>
+          <h3>Ponadczasowe Wartości</h3>
+          <p>Nasza firma kieruje się ważnymi wartościami, takimi jak...</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
