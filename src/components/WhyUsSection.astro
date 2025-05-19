@@ -1,5 +1,36 @@
 ---
-
+const reasons = [
+  {
+    number: '1.',
+    title: 'Doświadczenie i Kompetencje',
+    description:
+      'Posiadamy doświadczenie w branży, które pozwala nam zrozumieć doskonale potrzeby i wymagania naszych klientów. Nasz zespół składa się z wykwalifikowanych specjalistów, którzy stale rozwijają swoje umiejętności, by być na bieżąco z najnowszymi rozwiązaniami.',
+  },
+  {
+    number: '2.',
+    title: 'Indywidualne Podejście',
+    description:
+      'Każdy projekt, zlecenie czy współpraca jest dla nas unikalne. Nasza elastyczność pozwala na dostosowanie usług do konkretnych oczekiwań i celów naszych klientów.',
+  },
+  {
+    number: '3.',
+    title: 'Jakość Usług',
+    description:
+      'Jakość to dla nas priorytet. Dążymy do tego, aby nasze usługi były najwyższej jakości, zgodne z najnowszymi standardami branżowymi.',
+  },
+  {
+    number: '4.',
+    title: 'Profesjonalizm',
+    description:
+      'Nasza praca opiera się na etyce, zaufaniu i rzetelności. Stawiamy na transparentność działań, aby nasi klienci mieli pełny wgląd w procesy i wyniki naszej pracy.',
+  },
+  {
+    number: '5.',
+    title: 'Ponadczasowe Wartości',
+    description:
+      'Nasza firma kieruje się ważnymi wartościami, takimi jak bezpieczeństwo, dbałość o środowisko, odpowiedzialność społeczna oraz partnerstwo z klientem.',
+  },
+];
 ---
 
 <style>
@@ -44,13 +75,17 @@
     margin-left: 16px;
   }
 
+  .mainTitle {
+    margin-bottom: 40px;
+  }
+
+  .secondaryTitle {
+    margin-bottom: 16px;
+  }
+
   .content {
     flex: 1 1 55%;
     min-width: 300px;
-  }
-
-  .content h2 {
-    margin-bottom: 1.5rem;
   }
 
   .content ul {
@@ -61,15 +96,17 @@
 
   .content li {
     display: flex;
-    gap: 1rem;
+    gap: 24px;
     margin-bottom: 1.5rem;
   }
 
   .content .number {
+    --number-font-size: 90px;
     color: #d52100;
-    font-size: 2rem;
+    font-size: var(--number-font-size);
     font-weight: bold;
     flex-shrink: 0;
+    margin: auto 0;
   }
 
   .content h3 {
@@ -82,7 +119,7 @@
   }
 </style>
 
-<section class="why-us-section">
+<section class="why-us-section sectionBreak">
   <div class="image-container">
     <img src="/images/hose.avif" alt="hose image" />
     <div class="overlay-box">
@@ -94,48 +131,17 @@
     <h2 class="mainTitle">Dlaczego Nas Wybierają<br />Wiodące Instytucje i Firmy?</h2>
 
     <ul>
-      <li>
-        <span class="number">1.</span>
-        <div>
-          <h3>Doświadczenie i Kompetencje</h3>
-          <p>
-            Posiadamy doświadczenie w branży, które pozwala nam zrozumieć doskonale potrzeby i wymagania naszych
-            klientów...
-          </p>
-        </div>
-      </li>
-
-      <li>
-        <span class="number">2.</span>
-        <div>
-          <h3>Indywidualne Podejście</h3>
-          <p>Każdy projekt, zlecenie czy współpraca jest dla nas unikalne...</p>
-        </div>
-      </li>
-
-      <li>
-        <span class="number">3.</span>
-        <div>
-          <h3>Jakość Usług</h3>
-          <p>Jakość to dla nas priorytet. Dążymy do tego, aby nasze usługi...</p>
-        </div>
-      </li>
-
-      <li>
-        <span class="number">4.</span>
-        <div>
-          <h3>Profesjonalizm</h3>
-          <p>Nasza praca opiera się na etyce, zaufaniu i rzetelności...</p>
-        </div>
-      </li>
-
-      <li>
-        <span class="number">5.</span>
-        <div>
-          <h3>Ponadczasowe Wartości</h3>
-          <p>Nasza firma kieruje się ważnymi wartościami, takimi jak...</p>
-        </div>
-      </li>
+      {
+        reasons.map((r) => (
+          <li>
+            <span class="number">{r.number}</span>
+            <div>
+              <h3 class="secondaryTitle">{r.title}</h3>
+              <p class="primaryText">{r.description}</p>
+            </div>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </section>

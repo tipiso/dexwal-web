@@ -45,6 +45,10 @@ import WhyUsSection from '@components/WhyUsSection.astro';
     color: var(--white-color);
   }
 
+  .heroImg {
+    height: 995px;
+  }
+
   .bigText {
     padding-top: 32px;
     padding-bottom: 32px;
@@ -81,7 +85,7 @@ import WhyUsSection from '@components/WhyUsSection.astro';
         <Button label="Sprawdź pełną ofertę firmy" type="primary" />
       </div>
     </div>
-    <img src={HeroImg.src} alt="Firefighter" />
+    <img src={HeroImg.src} alt="Firefighter" class="heroImg" />
     <div class="scrollIndicator">
       <img src={ArrowIcon.src} alt="Arrow Scroll Indicator" />
     </div>
