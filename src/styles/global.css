@@ -1,18 +1,21 @@
 :root {
-  --primary-color: #C92200;
-  --text-color: #1F1F24;
-  --other-color: #EEEEEE;
-  --white-color: #FFF;
+  --primary-color: #c92200;
+  --black-color: #000;
+  --text-color: #1f1f24;
+  --other-color: #eeeeee;
+  --white-color: #fff;
   --gray-color: #535353;
-  --bg-color: #F6F6F6;
+  --bg-color: #f6f6f6;
   --max-width: 1440px;
-  --font-family: 'Roboto', 'Montserrat', sans-serif;
+  --font-family: "Roboto", "Montserrat", sans-serif;
   --section-break: 100px;
 }
 
 /** Reset - start */
 /* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 /* 2. Remove default margin */
@@ -32,105 +35,124 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 /* 7. Inherit fonts for form controls */
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 /* 9. Improve line wrapping */
 p {
   text-wrap: pretty;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 /*
   10. Create a root stacking context
 */
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 /** Reset - end */
 
 html {
-    font-family: var(--font-family);
-  }
-  
-  body {
-    background-color: var(--bg-color);
-    max-width: var(--max-width);
-    margin: 0 auto;
-    /* width: 100%; */
-    line-height: 1.5;
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  /** Typography Start */
-  /** Montserrat */
-  .mainTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: auto;
-  }
+  font-family: var(--font-family);
+}
 
-  .secondaryTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 36px;
-    line-height: auto;
-  }
+body {
+  background-color: var(--bg-color);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  /* width: 100%; */
+  line-height: 1.5;
+}
 
-  .smallTitle {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: auto;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  /** Roboto */
-  .bigText {
-    font-family: 'Roboto', sans-serif;
-    line-height: 130%;
-    font-size: 22px;
-    font-weight: 400;
-  }
+/** Typography Start */
+/** Montserrat */
+.mainTitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: auto;
+}
 
-  .primaryText {
-    font-family: 'Roboto', sans-serif;
-    line-height: 140%;
-    font-size: 18px;
-    font-weight: 400;
-  }
+.secondaryTitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: auto;
+}
 
-  .buttonText {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    line-height: 130%;
-  }
+.smallTitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: auto;
+}
 
-  .menuText {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    line-height: 130%;
-  }
+/** Roboto */
+.bigText {
+  font-family: "Roboto", sans-serif;
+  line-height: 130%;
+  font-size: 22px;
+  font-weight: 400;
+}
 
-  .smallerText {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    line-height: 130%;
-  }
-    /** Typography End */
-  .sectionBreak {
-    margin-bottom: var(--section-break);
-  }
+.primaryText {
+  font-family: "Roboto", sans-serif;
+  line-height: 140%;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.buttonText {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 130%;
+}
+
+.menuText {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 130%;
+}
+
+.smallerText {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 130%;
+}
+/** Typography End */
+.sectionBreak {
+  margin-bottom: var(--section-break);
+}

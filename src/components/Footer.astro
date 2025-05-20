@@ -1,13 +1,132 @@
 ---
+import WhiteLogo from "@assets/white-logo.svg";
 
+const navLinks = [
+  { label: "Strona główna", href: "#" },
+  { label: "Usługi", href: "#" },
+  { label: "O Firmie", href: "#" },
+  { label: "Kontakt", href: "#" },
+];
+
+const contactInfo = {
+  companyName: "DEXWAL",
+  addressLine1: "ul. Dobrowoda 12",
+  addressLine2: "28-100 Busko-Zdrój",
+  email: "ppoz@dexwal.com",
+  phone: "+48 41 378 70 11",
+  hours: "Poniedziałek–Piątek: 8:00–16:00",
+  copyright:
+    "© Dexwal PPOŻ 2025 Wszelkie prawa zastrzeżone",
+};
 ---
 
 <style>
-  footer {
+  .footer {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    min-height: 272px;
+    background-color: var(--text-color);
+    color: var(--white-color);
+    padding: 56px 80px 32px;
+  }
+
+  .footerLeft {
+    justify-self: flex-start;
+
+    a {
+      color: var(--color-white);
+      text-decoration: none;
+    }
+  }
+
+  .address {
+    padding-bottom: 24px;
+  }
+
+  .footerNav {
+    display: flex;
+  }
+
+  .footerNav a {
+    color: var(--color-white);
+    text-decoration: none;
+
+    &:not(:last-of-type) {
+      margin-right: 80px;
+    }
+  }
+
+  .footerNav a:hover {
+    text-decoration: underline;
+  }
+
+  .footerBottom {
+    text-align: center;
+
+    .smallerText {
+      padding-bottom: 8px;
+    }
+
+    a {
+      text-decoration: underline;
+      color: var(--color-white);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .footerMiddle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .footerList {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+  }
+
+  .logo {
+    margin-bottom: 12px;
+  }
+
+  .contact {
+    li {
+      padding-bottom: 6px;
+    }
   }
 </style>
 
-<footer></footer>
+<footer class="footer">
+  <div class="footerLeft">
+    <img class="logo" src={WhiteLogo.src} alt="White Company Logo Dexwal" />
+    <ul class="footerList address">
+      <li class="smallerText">{contactInfo.addressLine1}</li>
+      <li class="smallerText">{contactInfo.addressLine2}</li>
+    </ul>
+
+    <ul class="footerList contact">
+      <li class="smallerText"><a href=`mailto:${contactInfo.email}`>{contactInfo.email}</a></li>
+      <li class="smallerText"><a href=`tel:${contactInfo.phone}`>{contactInfo.phone}</a></li>
+      <li class="smallerText">{contactInfo.hours}</li>
+    </ul>
+  </div>
+
+  <div class="footerMiddle">
+    <nav class="footerNav">
+      {navLinks.map(link => (
+        <a href={link.href} class="menuText">{link.label}</a>
+      ))}
+    </nav>
+
+    <div class="footerBottom">
+      <p class="smallerText">{contactInfo.copyright}</p>
+      <a href="#" class="smallerText">Polityka prywatności</a>
+    </div>
+  </div>
+</footer>
+
+
