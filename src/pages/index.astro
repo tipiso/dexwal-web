@@ -5,8 +5,9 @@ import HeroImg from '@assets/hero-img.avif';
 import ArrowIcon from '@assets/arrow-icon.svg';
 const pageTitle = 'Strona Główna';
 import Button from '@components/Button.astro';
-import ProductSection from '@components/ProductSection.astro';
-import WhyUsSection from '@components/WhyUsSection.astro';
+import ProductSection from '@components/HomePage/ProductSection.astro';
+import WhyUsSection from '@components/HomePage/WhyUsSection.astro';
+import ContactUsSection from '@components/HomePage/ContactUsSection.astro';
 ---
 
 <style>
@@ -102,4 +103,5 @@ import WhyUsSection from '@components/WhyUsSection.astro';
   </section>
 
   <WhyUsSection />
+  <ContactUsSection />
 </Layout>
