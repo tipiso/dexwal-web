@@ -10,12 +10,6 @@ const navLinks = [
 ];
 ---
 
-<div class="nav-links">
-  {navLinks.map((link) => <Link href={link.href} label={link.label} />)}
-  <LanguageSwitcher />
-  <Button label="Kontakt" type="primary" />
-</div>
-
 <style>
   .nav-links {
     --nav-links-spacing: 35px;
@@ -24,3 +18,9 @@ const navLinks = [
     }
   }
 </style>
+
+<div class="nav-links">
+  {navLinks.map((link) => <Link href={link.href} label={link.label} />)}
+  <LanguageSwitcher />
+  <Button label="Kontakt" type="primary" />
+</div>

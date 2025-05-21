@@ -1,5 +1,6 @@
 ---
 import Button from '@components/Button.astro';
+const { classes } = Astro.props;
 ---
 
 <style>
@@ -23,7 +24,7 @@ import Button from '@components/Button.astro';
   }
 </style>
 
-<section class="contactSection">
+<section class:list={["contactSection", classes]}>
   <h2 class="heading mainTitle">Skontaktuj się z nami</h2>
   <p class="content bigText">Przekonaj się jak sprzęt strażacki od Dexwal zwiększy możliwości ratownicze!</p>
   <Button type="secondary" label="Kontakt" />

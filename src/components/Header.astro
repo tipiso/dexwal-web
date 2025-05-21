@@ -4,14 +4,6 @@ import Navigation from './Navigation.astro';
 import Logo from '@assets/dexwal-logo.svg';
 ---
 
-<header class="app-header">
-  <a href="/"><img src={Logo.src} alt="Dexwal Logo" /></a>
-  <nav>
-    <Hamburger />
-    <Navigation />
-  </nav>
-</header>
-
 <style>
   .app-header {
     --header-x-padding: 80px;
@@ -23,3 +15,11 @@ import Logo from '@assets/dexwal-logo.svg';
     padding: var(--header-y-padding) var(--header-x-padding);
   }
 </style>
+
+<header class="app-header">
+  <a href="/"><img src={Logo.src} alt="Dexwal Logo" /></a>
+  <nav>
+    <Hamburger />
+    <Navigation />
+  </nav>
+</header>

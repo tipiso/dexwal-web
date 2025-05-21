@@ -1,6 +1,7 @@
 ---
 import Product from '../Product.astro';
 
+const { sectionLabel } = Astro.props;
 const products = [
   {
     image: '/images/zwijacz.png',
@@ -19,12 +20,22 @@ const products = [
 
 <style>
   .productSection {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
     padding: 32px 80px;
+
+    h2 {
+      padding-bottom: 24px;
+    }
+  }
+
+  .productsWrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
     flex-wrap: wrap;
   }
 </style>
 
-<div class="productSection">{products.map((p) => <Product image={p.image} title={p.title} />)}</div>
+<div class="productSection">
+  {sectionLabel && <h2 class="secondaryTitle">{sectionLabel}</h2>}
+  <div class="productsWrapper">{products.map((p) => <Product image={p.image} title={p.title} />)}</div>
+</div>
