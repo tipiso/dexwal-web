@@ -1,5 +1,5 @@
 ---
-import Button from '@components/Button.astro';
+import Button from "@components/Button.astro";
 const { classes } = Astro.props;
 ---
 
@@ -26,6 +26,8 @@ const { classes } = Astro.props;
 
 <section class:list={["contactSection", classes]}>
   <h2 class="heading mainTitle">Skontaktuj się z nami</h2>
-  <p class="content bigText">Przekonaj się jak sprzęt strażacki od Dexwal zwiększy możliwości ratownicze!</p>
+  <p class="content bigText">
+    Przekonaj się jak sprzęt strażacki od Dexwal zwiększy możliwości ratownicze!
+  </p>
   <Button type="secondary" label="Kontakt" />
 </section>

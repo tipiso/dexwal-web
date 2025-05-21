@@ -1,21 +1,21 @@
 ---
-import WhiteLogo from '@assets/white-logo.svg';
+import WhiteLogo from "@assets/white-logo.svg";
 
 const navLinks = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Usługi', href: '/offer' },
-  { label: 'O Firmie', href: '/about' },
-  { label: 'Kontakt', href: '/contact' },
+  { label: "Strona główna", href: "/" },
+  { label: "Usługi", href: "/offer" },
+  { label: "O Firmie", href: "/about" },
+  { label: "Kontakt", href: "/contact" },
 ];
 
 const contactInfo = {
-  companyName: 'DEXWAL',
-  addressLine1: 'ul. Dobrowoda 12',
-  addressLine2: '28-100 Busko-Zdrój',
-  email: 'ppoz@dexwal.com',
-  phone: '+48 41 378 70 11',
-  hours: 'Poniedziałek–Piątek: 8:00–16:00',
-  copyright: '© Dexwal PPOŻ 2025 Wszelkie prawa zastrzeżone',
+  companyName: "DEXWAL",
+  addressLine1: "ul. Dobrowoda 12",
+  addressLine2: "28-100 Busko-Zdrój",
+  email: "ppoz@dexwal.com",
+  phone: "+48 41 378 70 11",
+  hours: "Poniedziałek–Piątek: 8:00–16:00",
+  copyright: "© Dexwal PPOŻ 2025 Wszelkie prawa zastrzeżone",
 };
 ---
 
@@ -108,8 +108,12 @@ const contactInfo = {
     </ul>
 
     <ul class="footerList contact">
-      <li class="smallerText"><a href=`mailto:${contactInfo.email}`>{contactInfo.email}</a></li>
-      <li class="smallerText"><a href=`tel:${contactInfo.phone}`>{contactInfo.phone}</a></li>
+      <li class="smallerText">
+        <a href=`mailto:${contactInfo.email}`>{contactInfo.email}</a>
+      </li>
+      <li class="smallerText">
+        <a href=`tel:${contactInfo.phone}`>{contactInfo.phone}</a>
+      </li>
       <li class="smallerText">{contactInfo.hours}</li>
     </ul>
   </div>

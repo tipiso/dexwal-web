@@ -1,0 +1,61 @@
+---
+// Contact details array
+const contactDetails = [
+  {
+    label: "Adres",
+    lines: ["ul. Dąbrowska 12", "28-100 Busko-Zdrój"],
+  },
+  {
+    label: "Email",
+    lines: ["poczta@dexwal.com"],
+  },
+  {
+    label: "Telefon",
+    lines: ["+48 41 378 70 11"],
+  },
+  {
+    label: "Godziny pracy",
+    lines: ["Poniedziałek-Piątek: 8:00-16:00"],
+  },
+];
+---
+
+<style>
+  .contactDataSection {
+    padding: 40px 80px;
+  }
+
+  .detailsContainer {
+    display: flex;
+    justify-content: space-between;
+    grid-column: 1 / -1;
+  }
+
+  .detailsInfo {
+    flex: 1;
+  }
+
+  .detailItem {
+    display: flex;
+    margin-bottom: 8px;
+  }
+</style>
+
+<section class="contactDataSection">
+  <h2 class="secondaryTitle">Dane kontaktowe</h2>
+  <div class="detailsContainer">
+    <div class="detailsInfo">
+      {
+        contactDetails.map((detail) => (
+          <div class="detailItem">
+            <div>
+              {detail.lines.map((line) => (
+                <p class="primaryText">{line}</p>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

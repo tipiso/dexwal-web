@@ -1,47 +1,12 @@
 ---
-import ContactForm from '@components/ContactForm.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Contact details array
-const contactDetails = [
-  {
-    label: 'Adres',
-    lines: ['ul. Dąbrowska 12', '28-100 Busko-Zdrój'],
-  },
-  {
-    label: 'Email',
-    lines: ['poczta@dexwal.com'],
-  },
-  {
-    label: 'Telefon',
-    lines: ['+48 41 378 70 11'],
-  },
-  {
-    label: 'Godziny pracy',
-    lines: ['Poniedziałek-Piątek: 8:00-16:00'],
-  },
-];
+import Layout from "../layouts/Layout.astro";
+import ContactDetails from "@components/ContactPage/ContactDetails.astro";
+import ContactSection from "@components/ContactPage/ContactSection.astro";
 ---
 
 <style>
-  /* Contact Section */
-  .contactSection {
-    padding: 24px 80px;
-    background-color: var(--white-color);
-  }
-
-  .contactDataSection {
-    padding: 40px 80px;
-  }
-
   .contentWrapper {
     position: relative;
-  }
-
-  .contactContent {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
   }
 
   .contactHeader {
@@ -59,47 +24,6 @@ const contactDetails = [
 
   .contactHeader p {
     color: var(--white-color);
-  }
-
-  /* Contact Details */
-  .contactDetails {
-    margin-top: 40px;
-  }
-
-  .contactDetails h2 {
-    margin-bottom: 16px;
-  }
-
-  .detailsContainer {
-    display: flex;
-    justify-content: space-between;
-    grid-column: 1 / -1;
-  }
-
-  .detailsInfo {
-    flex: 1;
-  }
-
-  .detailItem {
-    display: flex;
-    margin-bottom: 8px;
-  }
-
-  /* Contact Image */
-  .contactImage {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    max-width: 622px;
-    max-height: 1000px;
-  }
-
-  .contactImage img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-top-left-radius: 40px;
   }
 
   /* Map Section */
@@ -138,44 +62,17 @@ const contactDetails = [
     <header class="contactHeader">
       <div>
         <h1 class="mainTitle">Skontaktuj się z nami</h1>
-        <p class="primaryText">Odezwij się do nas, postaramy się odezwać w ciągu najbliższych 24 godzin.</p>
+        <p class="primaryText">
+          Odezwij się do nas, postaramy się odezwać w ciągu najbliższych 24
+          godzin.
+        </p>
       </div>
-      <div class="imgPlaceholder"></div>
+      <div></div>
     </header>
-    <section class="contactSection">
-      <div class="container">
-        <div class="contactContent">
-          <div class="contactFormContainer">
-            <div class="contactDetails">
-              <ContactForm />
-            </div>
 
-            <div class="contactImage">
-              <img src="/images/contact-hero.avif" alt="Strażak z wężem strażackim" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ContactSection />
 
-    <section class="contactDataSection">
-      <h2 class="secondaryTitle">Dane kontaktowe</h2>
-      <div class="detailsContainer">
-        <div class="detailsInfo">
-          {
-            contactDetails.map((detail) => (
-              <div class="detailItem">
-                <div class="detailContent">
-                  {detail.lines.map((line) => (
-                    <p class="primaryText">{line}</p>
-                  ))}
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <ContactDetails />
 
     <!-- Google Maps Section -->
     <section class="mapSection">

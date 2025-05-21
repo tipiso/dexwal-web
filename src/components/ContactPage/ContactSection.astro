@@ -1,0 +1,62 @@
+---
+import ContactForm from "@components/ContactPage/ContactForm.astro";
+---
+
+<style>
+  /* Contact Section */
+  .contactSection {
+    padding: 24px 80px;
+    background-color: var(--white-color);
+  }
+
+  .contactContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* Contact Details */
+  .contactDetails {
+    margin-top: 40px;
+  }
+
+  .contactDetails h2 {
+    margin-bottom: 16px;
+  }
+
+  /* Contact Image */
+  .contactImage {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    max-width: 622px;
+    max-height: 1000px;
+  }
+
+  .contactImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 40px;
+  }
+</style>
+
+<section class="contactSection">
+  <div class="container">
+    <div class="contactContent">
+      <div class="contactFormContainer">
+        <div class="contactDetails">
+          <ContactForm />
+        </div>
+
+        <div class="contactImage">
+          <img
+            src="/images/contact-hero.avif"
+            alt="Strażak z wężem strażackim"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
