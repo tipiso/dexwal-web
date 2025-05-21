@@ -1,0 +1,119 @@
+---
+// This is a reusable component for the contact form
+// You can extract this from the kontakt.astro page if you want to reuse it elsewhere
+
+const { formFields } = Astro.props;
+---
+
+<form id="contactForm" class="contactForm">
+  {formFields.map((field) => (
+    <div class="formGroup">
+      <label for={field.id}>{field.label} {field.required && <span class="required">*</span>}</label>
+      {field.type === 'textarea' ? (
+        <textarea 
+          id={field.id} 
+          name={field.id} 
+          placeholder={field.placeholder}
+          required={field.required}
+          maxlength={field.maxLength}
+          data-max-length={field.maxLength}
+        ></textarea>
+      ) : (
+        <input 
+          type={field.type} 
+          id={field.id} 
+          name={field.id} 
+          placeholder={field.placeholder}
+          required={field.required}
+        />
+      )}
+      {field.type === 'textarea' && (
+        <div class="charCounter">
+          <span id="charCount">0</span>/{field.maxLength}
+        </div>
+      )}
+    </div>
+  ))}
+  
+  <div class="formGroup checkboxGroup">
+    <input type="checkbox" id="privacy" name="privacy" required />
+    <label for="privacy">
+      Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania moich danych osobowych i zgadzam z Polityką prywatności.
+    </label>
+  </div>
+  
+  <button type="submit" class="submitBtn">Wyślij wiadomość</button>
+</form>
+
+<style>
+  .contactForm {
+    margin-bottom: 40px;
+  }
+  
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .required {
+    color: #e63946;
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    background-color: #333;
+    color: #fff;
+    border-radius: 4px;
+    font-family: inherit;
+  }
+  
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .charCounter {
+    text-align: right;
+    margin-top: 5px;
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+  
+  .checkboxGroup {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .checkboxGroup input {
+    width: auto;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  
+  .checkboxGroup label {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .submitBtn {
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submitBtn:hover {
+    background-color: #c1121f;
+  }
+</style>

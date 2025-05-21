@@ -16,11 +16,15 @@ const navLinks = [
     *:not(:last-child) {
       margin-right: var(--nav-links-spacing);
     }
+
+    a:last-of-type {
+      font-weight: 700;
+    }
   }
 </style>
 
 <div class="nav-links">
   {navLinks.map((link) => <Link href={link.href} label={link.label} />)}
   <LanguageSwitcher />
-  <Button label="Kontakt" type="primary" />
+  <Link href="/contact" label="Kontakt" />
 </div>
