@@ -24,6 +24,12 @@ const { label, type } = Astro.props;
     background-color: var(--white-color);
     color: var(--primary-color);
   }
+
+  .outline {
+    color: var(--black-color);
+    border: 1px solid var(--black-color);
+    background-color: transparent;
+  }
 </style>
 
 <button class:list={[`button buttonText ${type}`]}>{label}</button>

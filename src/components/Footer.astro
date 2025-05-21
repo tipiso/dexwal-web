@@ -1,22 +1,21 @@
 ---
-import WhiteLogo from "@assets/white-logo.svg";
+import WhiteLogo from '@assets/white-logo.svg';
 
 const navLinks = [
-  { label: "Strona główna", href: "#" },
-  { label: "Usługi", href: "#" },
-  { label: "O Firmie", href: "#" },
-  { label: "Kontakt", href: "#" },
+  { label: 'Strona główna', href: '/' },
+  { label: 'Usługi', href: '/offer' },
+  { label: 'O Firmie', href: '/about' },
+  { label: 'Kontakt', href: '#' },
 ];
 
 const contactInfo = {
-  companyName: "DEXWAL",
-  addressLine1: "ul. Dobrowoda 12",
-  addressLine2: "28-100 Busko-Zdrój",
-  email: "ppoz@dexwal.com",
-  phone: "+48 41 378 70 11",
-  hours: "Poniedziałek–Piątek: 8:00–16:00",
-  copyright:
-    "© Dexwal PPOŻ 2025 Wszelkie prawa zastrzeżone",
+  companyName: 'DEXWAL',
+  addressLine1: 'ul. Dobrowoda 12',
+  addressLine2: '28-100 Busko-Zdrój',
+  email: 'ppoz@dexwal.com',
+  phone: '+48 41 378 70 11',
+  hours: 'Poniedziałek–Piątek: 8:00–16:00',
+  copyright: '© Dexwal PPOŻ 2025 Wszelkie prawa zastrzeżone',
 };
 ---
 
@@ -117,9 +116,13 @@ const contactInfo = {
 
   <div class="footerMiddle">
     <nav class="footerNav">
-      {navLinks.map(link => (
-        <a href={link.href} class="menuText">{link.label}</a>
-      ))}
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="menuText">
+            {link.label}
+          </a>
+        ))
+      }
     </nav>
 
     <div class="footerBottom">
@@ -128,5 +131,3 @@ const contactInfo = {
     </div>
   </div>
 </footer>
-
-
