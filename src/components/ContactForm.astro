@@ -1,119 +1,166 @@
 ---
-// This is a reusable component for the contact form
-// You can extract this from the kontakt.astro page if you want to reuse it elsewhere
+import Button from './Button.astro';
 
-const { formFields } = Astro.props;
+// Form fields array
+const formFields = [
+  {
+    id: 'name',
+    label: 'Imię i Nazwisko',
+    type: 'text',
+    placeholder: '',
+    required: false,
+  },
+  {
+    id: 'phone',
+    label: 'Telefon',
+    type: 'tel',
+    placeholder: '',
+    required: false,
+  },
+  {
+    id: 'email',
+    label: 'E-mail',
+    type: 'email',
+    placeholder: '',
+    required: true,
+  },
+  {
+    id: 'message',
+    label: 'Wiadomość',
+    type: 'textarea',
+    placeholder: '',
+    required: true,
+    maxLength: 400,
+  },
+];
 ---
 
-<form id="contactForm" class="contactForm">
-  {formFields.map((field) => (
-    <div class="formGroup">
-      <label for={field.id}>{field.label} {field.required && <span class="required">*</span>}</label>
-      {field.type === 'textarea' ? (
-        <textarea 
-          id={field.id} 
-          name={field.id} 
-          placeholder={field.placeholder}
-          required={field.required}
-          maxlength={field.maxLength}
-          data-max-length={field.maxLength}
-        ></textarea>
-      ) : (
-        <input 
-          type={field.type} 
-          id={field.id} 
-          name={field.id} 
-          placeholder={field.placeholder}
-          required={field.required}
-        />
-      )}
-      {field.type === 'textarea' && (
-        <div class="charCounter">
-          <span id="charCount">0</span>/{field.maxLength}
-        </div>
-      )}
-    </div>
-  ))}
-  
-  <div class="formGroup checkboxGroup">
-    <input type="checkbox" id="privacy" name="privacy" required />
-    <label for="privacy">
-      Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania moich danych osobowych i zgadzam z Polityką prywatności.
-    </label>
-  </div>
-  
-  <button type="submit" class="submitBtn">Wyślij wiadomość</button>
-</form>
-
 <style>
+  /* Form Styles */
   .contactForm {
-    margin-bottom: 40px;
+    margin-bottom: 32px;
   }
-  
+
   .formGroup {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
-  
+
   label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: 500;
+    margin-bottom: 4px;
   }
-  
+
   .required {
     color: #e63946;
   }
-  
-  input, textarea {
+
+  input,
+  textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #444;
-    background-color: #333;
-    color: #fff;
-    border-radius: 4px;
+    border: 1px solid var(--light-gray-color);
+    background-color: var(--white-color);
+    color: var(--black-color);
+    border-radius: 5px;
     font-family: inherit;
   }
-  
+
   textarea {
     min-height: 120px;
     resize: vertical;
   }
-  
+
   .charCounter {
-    text-align: right;
-    margin-top: 5px;
-    font-size: 0.8rem;
-    color: #ccc;
+    text-align: left;
+    color: var(--gray-color);
   }
-  
+
   .checkboxGroup {
     display: flex;
     align-items: flex-start;
   }
-  
+
   .checkboxGroup input {
-    width: auto;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--light-gray-color);
     margin-right: 10px;
-    margin-top: 5px;
-  }
-  
-  .checkboxGroup label {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-  
-  .submitBtn {
-    background-color: #e63946;
-    color: #fff;
-    border: none;
-    padding: 12px 24px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .submitBtn:hover {
-    background-color: #c1121f;
   }
 </style>
+
+<form id="contactForm" class="contactForm">
+  {
+    formFields.map((field) => (
+      <div class="formGroup">
+        <label for={field.id} class="smallerText">
+          {field.label} {field.required && <span class="required">*</span>}
+        </label>
+        {field.type === 'textarea' ? (
+          <textarea
+            id={field.id}
+            name={field.id}
+            placeholder={field.placeholder}
+            required={field.required}
+            maxlength={field.maxLength}
+            data-max-length={field.maxLength}
+          />
+        ) : (
+          <input
+            type={field.type}
+            id={field.id}
+            name={field.id}
+            placeholder={field.placeholder}
+            required={field.required}
+          />
+        )}
+        {field.type === 'textarea' && (
+          <div class="charCounter smallerText">
+            <span id="charCount">0</span>/{field.maxLength}
+          </div>
+        )}
+      </div>
+    ))
+  }
+
+  <div class="formGroup checkboxGroup">
+    <input type="checkbox" id="privacy" name="privacy" required />
+    <label for="privacy" class="smallerText">
+      Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania moich danych osobowych i zgadzam z Polityką
+      prywatności.
+    </label>
+  </div>
+
+  <Button label="Wyślij wiadomość" type="primary" />
+</form>
+
+<script>
+  // Initialize Lucide icons
+  document.addEventListener('DOMContentLoaded', () => {
+    // Character counter for textarea
+    const messageTextarea = document.querySelector('textarea[data-max-length]');
+    const charCountElement = document.getElementById('charCount');
+
+    if (messageTextarea && charCountElement) {
+      messageTextarea.addEventListener('input', function () {
+        const currentLength = this.value.length;
+        charCountElement.textContent = currentLength;
+      });
+    }
+
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Here you would normally send the form data to a server
+        // For demonstration, we'll just show an alert
+        alert('Formularz został wysłany! W normalnych warunkach, dane zostałyby przesłane do serwera.');
+
+        // Reset form
+        this.reset();
+        if (charCountElement) charCountElement.textContent = '0';
+      });
+    }
+  });
+</script>

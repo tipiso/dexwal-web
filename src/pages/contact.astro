@@ -1,59 +1,22 @@
 ---
-import Button from '@components/Button.astro';
+import ContactForm from '@components/ContactForm.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Form fields array
-const formFields = [
-  {
-    id: 'name',
-    label: 'Imię i Nazwisko',
-    type: 'text',
-    placeholder: '',
-    required: false,
-  },
-  {
-    id: 'phone',
-    label: 'Telefon',
-    type: 'tel',
-    placeholder: '',
-    required: false,
-  },
-  {
-    id: 'email',
-    label: 'E-mail',
-    type: 'email',
-    placeholder: '',
-    required: true,
-  },
-  {
-    id: 'message',
-    label: 'Wiadomość',
-    type: 'textarea',
-    placeholder: '',
-    required: true,
-    maxLength: 400,
-  },
-];
 
 // Contact details array
 const contactDetails = [
   {
-    icon: 'map-pin',
     label: 'Adres',
     lines: ['ul. Dąbrowska 12', '28-100 Busko-Zdrój'],
   },
   {
-    icon: 'mail',
     label: 'Email',
     lines: ['poczta@dexwal.com'],
   },
   {
-    icon: 'phone',
     label: 'Telefon',
     lines: ['+48 41 378 70 11'],
   },
   {
-    icon: 'clock',
     label: 'Godziny pracy',
     lines: ['Poniedziałek-Piątek: 8:00-16:00'],
   },
@@ -67,6 +30,10 @@ const contactDetails = [
     background-color: var(--white-color);
   }
 
+  .contactDataSection {
+    padding: 40px 80px;
+  }
+
   .contentWrapper {
     position: relative;
   }
@@ -78,6 +45,9 @@ const contactDetails = [
   }
 
   .contactHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     padding: 80px;
     background-color: var(--text-color);
   }
@@ -91,89 +61,19 @@ const contactDetails = [
     color: var(--white-color);
   }
 
-  /* Form Styles */
-  .contactForm {
-    margin-bottom: 32px;
-  }
-
-  .formGroup {
-    margin-bottom: 16px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .required {
-    color: #e63946;
-  }
-
-  input,
-  textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--light-gray-color);
-    background-color: var(--white-color);
-    color: var(--black-color);
-    border-radius: 5px;
-    font-family: inherit;
-  }
-
-  textarea {
-    min-height: 120px;
-    resize: vertical;
-  }
-
-  .charCounter {
-    text-align: left;
-    color: var(--gray-color);
-  }
-
-  .checkboxGroup {
-    display: flex;
-    align-items: flex-start;
-  }
-
-  .checkboxGroup input {
-    width: auto;
-    margin-right: 10px;
-    margin-top: 5px;
-  }
-
-  .checkboxGroup label {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .submitBtn {
-    background-color: #e63946;
-    color: #fff;
-    border: none;
-    padding: 12px 24px;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-
-  .submitBtn:hover {
-    background-color: #c1121f;
-  }
-
   /* Contact Details */
   .contactDetails {
     margin-top: 40px;
   }
 
   .contactDetails h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .detailsContainer {
     display: flex;
     justify-content: space-between;
+    grid-column: 1 / -1;
   }
 
   .detailsInfo {
@@ -182,30 +82,7 @@ const contactDetails = [
 
   .detailItem {
     display: flex;
-    margin-bottom: 15px;
-  }
-
-  .icon {
-    margin-right: 15px;
-    color: #e63946;
-  }
-
-  .detailContent p {
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  .contactPerson {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-
-  .contactPerson img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    margin-bottom: 8px;
   }
 
   /* Contact Image */
@@ -259,85 +136,43 @@ const contactDetails = [
 <Layout title="Dexwal - Kontakt">
   <main class="contentWrapper">
     <header class="contactHeader">
-      <h1 class="mainTitle">Skontaktuj się z nami</h1>
-      <p class="primaryText">Odezwij się do nas, postaramy się odezwać w ciągu najbliższych 24 godzin.</p>
+      <div>
+        <h1 class="mainTitle">Skontaktuj się z nami</h1>
+        <p class="primaryText">Odezwij się do nas, postaramy się odezwać w ciągu najbliższych 24 godzin.</p>
+      </div>
+      <div class="imgPlaceholder"></div>
     </header>
     <section class="contactSection">
       <div class="container">
         <div class="contactContent">
           <div class="contactFormContainer">
-            <form id="contactForm" class="contactForm">
-              {
-                formFields.map((field) => (
-                  <div class="formGroup">
-                    <label for={field.id} class="smallerText">
-                      {field.label} {field.required && <span class="required">*</span>}
-                    </label>
-                    {field.type === 'textarea' ? (
-                      <textarea
-                        id={field.id}
-                        name={field.id}
-                        placeholder={field.placeholder}
-                        required={field.required}
-                        maxlength={field.maxLength}
-                        data-max-length={field.maxLength}
-                      />
-                    ) : (
-                      <input
-                        type={field.type}
-                        id={field.id}
-                        name={field.id}
-                        placeholder={field.placeholder}
-                        required={field.required}
-                      />
-                    )}
-                    {field.type === 'textarea' && (
-                      <div class="charCounter smallerText">
-                        <span id="charCount">0</span>/{field.maxLength}
-                      </div>
-                    )}
-                  </div>
-                ))
-              }
-
-              <div class="formGroup checkboxGroup">
-                <input type="checkbox" id="privacy" name="privacy" required />
-                <label for="privacy">
-                  Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania moich danych osobowych i zgadzam
-                  z Polityką prywatności.
-                </label>
-              </div>
-
-              <Button label="Wyślij wiadomość" type="primary" />
-            </form>
-
             <div class="contactDetails">
-              <h2 class="secondaryTitle">Dane kontaktowe</h2>
+              <ContactForm />
+            </div>
 
-              <div class="detailsContainer">
-                <div class="detailsInfo">
-                  {
-                    contactDetails.map((detail) => (
-                      <div class="detailItem">
-                        <div class="icon">
-                          <i data-lucide={detail.icon} />
-                        </div>
-                        <div class="detailContent">
-                          {detail.lines.map((line) => (
-                            <p>{line}</p>
-                          ))}
-                        </div>
-                      </div>
-                    ))
-                  }
-                </div>
-              </div>
+            <div class="contactImage">
+              <img src="/images/contact-hero.avif" alt="Strażak z wężem strażackim" />
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="contactImage">
-            <img src="/images/contact-hero.avif" alt="Strażak z wężem strażackim" />
-          </div>
+    <section class="contactDataSection">
+      <h2 class="secondaryTitle">Dane kontaktowe</h2>
+      <div class="detailsContainer">
+        <div class="detailsInfo">
+          {
+            contactDetails.map((detail) => (
+              <div class="detailItem">
+                <div class="detailContent">
+                  {detail.lines.map((line) => (
+                    <p class="primaryText">{line}</p>
+                  ))}
+                </div>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -346,47 +181,16 @@ const contactDetails = [
     <section class="mapSection">
       <div class="mapContainer">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.232035682929!2d20.7183!3d50.4673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDI4JzAyLjMiTiAyMMKwNDMnMDUuOSJF!5e0!3m2!1spl!2spl!4v1621436289123!5m2!1spl!2spl"
           width="100%"
           height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=28-100,%20Dobrowoda%2012%20%20+(Dexwal)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
         >
         </iframe>
       </div>
     </section>
   </main>
 </Layout>
-
-<script>
-  // Initialize Lucide icons
-  document.addEventListener('DOMContentLoaded', () => {
-    // Character counter for textarea
-    const messageTextarea = document.querySelector('textarea[data-max-length]');
-    const charCountElement = document.getElementById('charCount');
-
-    if (messageTextarea && charCountElement) {
-      messageTextarea.addEventListener('input', function () {
-        const currentLength = this.value.length;
-        charCountElement.textContent = currentLength;
-      });
-    }
-
-    // Form submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Here you would normally send the form data to a server
-        // For demonstration, we'll just show an alert
-        alert('Formularz został wysłany! W normalnych warunkach, dane zostałyby przesłane do serwera.');
-
-        // Reset form
-        this.reset();
-        if (charCountElement) charCountElement.textContent = '0';
-      });
-    }
-  });
-</script>
