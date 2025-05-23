@@ -1,8 +1,7 @@
 ---
 import ContactUsSection from '@components/HomePage/ContactUsSection.astro';
-import Layout from '../layouts/Layout.astro';
 import ProductSection from '@components/HomePage/ProductSection.astro';
-import Button from '@components/Button.astro';
+import Layout from '../layouts/Layout.astro';
 const pageTitle = 'About Us';
 
 const keyAspects = [
@@ -130,20 +129,6 @@ const keyAspects = [
     color: var(--white-color);
   }
 
-  /* Animation classes */
-  section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.8s ease,
-      transform 0.8s ease;
-  }
-
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* Responsive */
   @media (max-width: 992px) {
     .heroContent,
@@ -234,31 +219,3 @@ const keyAspects = [
     </section>
   </main>
 </Layout>
-
-<script>
-  // Vanilla JavaScript for animations
-  document.addEventListener('DOMContentLoaded', () => {
-    // Animate elements when they come into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    // Observe all sections
-    document.querySelectorAll('section').forEach((section) => {
-      observer.observe(section);
-    });
-
-    // Observe aspect items for staggered animation
-    document.querySelectorAll('.aspectItem').forEach((item, index) => {
-      item.style.transitionDelay = `${index * 0.2}s`;
-      observer.observe(item);
-    });
-  });
-</script>
