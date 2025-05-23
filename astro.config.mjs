@@ -1,13 +1,17 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-import react from "@astrojs/react";
+import { defineConfig, envField } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
-  integrations: [react()],
+  site: "https://dexwalppoz.com",
+  base: "/",
+  integrations: [],
   i18n: {
     locales: ['en', 'pl'],
     defaultLocale: 'pl'
+  },
+  env: {
+    schema: {
+      API_URL: envField.string({ context: "client", access: "public" }),
+    }
   }
 });

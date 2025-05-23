@@ -4,6 +4,8 @@ const { image, title } = Astro.props;
 
 <style>
   .product {
+    display: flex;
+    flex-direction: column;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -14,9 +16,14 @@ const { image, title } = Astro.props;
     img {
       max-width: 100%;
       height: auto;
-      min-height: 250px;
-      margin-bottom: 1rem;
+      margin: auto 0;
     }
+  }
+
+  .smallTitle {
+    /* margin-top: auto; */
+    justify-self: flex-end;
+    padding-top: 16px;
   }
 </style>
 
