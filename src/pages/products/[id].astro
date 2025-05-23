@@ -1,2 +1,34 @@
 ---
+import { getSingleProduct } from "src/lib/products";
+
+const { id } = Astro.params;
+const { data } = await getSingleProduct(id ?? "");
+const { product } = data;
 ---
+
+<style>
+  .productSectionsWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productSection {
+    display: grid;
+    grid-template-columns: 1fr / 1fr;
+  }
+</style>
+
+<main class="productSectionWrapper">
+  <section class="productSection">
+    <h2>{product.introductionHeader}</h2>
+    <div>
+      <img
+        srcset={product.introductionPhoto.node.srcSet}
+        alt={product.introductionPhoto.node.altText}
+      />
+    </div>
+    <div set:html={product.introductionText} />
+  </section>
+  <section class="productSection"></section>
+  <section class="productSection"></section>
+</main>

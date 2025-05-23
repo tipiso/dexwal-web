@@ -5,7 +5,7 @@
   --other-color: #eeeeee;
   --white-color: #fff;
   --gray-color: #535353;
-  --light-gray-color: #F3F3F3;
+  --light-gray-color: #f3f3f3;
   --bg-color: #f6f6f6;
   --max-width: 1440px;
   --font-family: "Roboto", "Montserrat", sans-serif;
@@ -158,15 +158,15 @@ body {
 }
 
 /* Animation classes */
-  section {
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.8s ease,
-      transform 0.8s ease;
-  }
+section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
 
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
