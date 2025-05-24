@@ -1,34 +1,33 @@
 ---
+import { getTranslations } from "../../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).homepage.whyUs;
+
 const reasons = [
   {
-    number: '1.',
-    title: 'Doświadczenie i Kompetencje',
-    description:
-      'Posiadamy doświadczenie w branży, które pozwala nam zrozumieć doskonale potrzeby i wymagania naszych klientów. Nasz zespół składa się z wykwalifikowanych specjalistów, którzy stale rozwijają swoje umiejętności, by być na bieżąco z najnowszymi rozwiązaniami.',
+    number: "1.",
+    title: t.reasons.reason1.title,
+    description: t.reasons.reason1.text,
   },
   {
-    number: '2.',
-    title: 'Indywidualne Podejście',
-    description:
-      'Każdy projekt, zlecenie czy współpraca jest dla nas unikalne. Nasza elastyczność pozwala na dostosowanie usług do konkretnych oczekiwań i celów naszych klientów.',
+    number: "2.",
+    title: t.reasons.reason2.title,
+    description: t.reasons.reason2.text,
   },
   {
-    number: '3.',
-    title: 'Jakość Usług',
-    description:
-      'Jakość to dla nas priorytet. Dążymy do tego, aby nasze usługi były najwyższej jakości, zgodne z najnowszymi standardami branżowymi.',
+    number: "3.",
+    title: t.reasons.reason3.title,
+    description: t.reasons.reason3.text,
   },
   {
-    number: '4.',
-    title: 'Profesjonalizm',
-    description:
-      'Nasza praca opiera się na etyce, zaufaniu i rzetelności. Stawiamy na transparentność działań, aby nasi klienci mieli pełny wgląd w procesy i wyniki naszej pracy.',
+    number: "4.",
+    title: t.reasons.reason4.title,
+    description: t.reasons.reason4.text,
   },
   {
-    number: '5.',
-    title: 'Ponadczasowe Wartości',
-    description:
-      'Nasza firma kieruje się ważnymi wartościami, takimi jak bezpieczeństwo, dbałość o środowisko, odpowiedzialność społeczna oraz partnerstwo z klientem.',
+    number: "5.",
+    title: t.reasons.reason5.title,
+    description: t.reasons.reason5.text,
   },
 ];
 ---
@@ -115,11 +114,13 @@ const reasons = [
     <img src="/images/hose.avif" alt="hose image" />
     <div class="overlayBox">
       <span class="highlight">+30</span>
-      <span class="experienceText secondaryTitle">Lat na rynku</span>
+      <span class="experienceText secondaryTitle">{t.experience}</span>
     </div>
   </div>
   <div class="content">
-    <h2 class="mainTitle">Dlaczego Nas Wybierają<br />Wiodące Instytucje i Firmy?</h2>
+    <h2 class="mainTitle">
+      {t.heading}<br />{t.subheading}
+    </h2>
 
     <ul>
       {

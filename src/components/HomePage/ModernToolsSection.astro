@@ -1,49 +1,52 @@
 ---
-
+import { getTranslations } from "../../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).homepage.modernToolsSection;
 ---
 
 <style>
-    .modernToolsSection {
-        display: flex;
-        gap: 48px;
-    }
+  .modernToolsSection {
+    display: flex;
+    gap: 48px;
+  }
 
-    .whiteSpace {
-        height: 190px;
-        background-color: var(--white-color);
-        width: 100%;
-    }
+  .whiteSpace {
+    height: 190px;
+    background-color: var(--white-color);
+    width: 100%;
+  }
 
-    .secondaryTitle {
-        padding-bottom: 16px;
-    }
+  .secondaryTitle {
+    padding-bottom: 16px;
+  }
 
-    .imageContainer img {
-        width: 100%;
-        height: auto;
-        border-bottom-right-radius: 40px;
-        object-fit: cover;
-    }
+  .imageContainer img {
+    width: 100%;
+    height: auto;
+    border-bottom-right-radius: 40px;
+    object-fit: cover;
+  }
 
-    .content {
-        flex: 1 1 55%;
-        min-width: 300px;
-    }
+  .content {
+    flex: 1 1 55%;
+    min-width: 300px;
+  }
 
-    .imgWrapper {
-        position: relative;
-        bottom: 60px;
-    }
+  .imgWrapper {
+    position: relative;
+    bottom: 60px;
+  }
 </style>
 
 <div class="whiteSpace"></div>
 <section class="modernToolsSection sectionBreak">
-    <div class="imgWrapper">
-      <img src="/images/modern-tools.avif" alt="Modern Firefighter Tools" />
-    </div>
-    <article class="content">
-        <h2 class="secondaryTitle">Nowoczesne sprzęty strażackie</h2>
-        <p class="primaryText">W Dexwal zajmujemy się produkcją specjalistycznego sprzętu dla jednostek strażackich. Oferujemy innowacyjne wyposażenie wozów  strażackich, które odpowiada na współczesne wyzwania ratownicze. Nasze  sztandarowe produkty to akumulatorowy zwijacz do węży, zwiększający  skuteczność działań ratowniczych. Specjalistyczne platformy  gaśniczo/chłodzące są kluczowe przy pożarach pojazdów elektrycznych,  umożliwiając szybkie i skuteczne interwencje. Dodatkowo, nasze  dogaszarki ognia to niezawodne narzędzia pomocnicze, które szybko  zahamują rozprzestrzenianie się ognia.
-Stawiając na sprzęt od Dexwal, zwiększasz bezpieczeństwo i efektywność swojej jednostki strażackiej.</p>
-    </article>
+  <div class="imgWrapper">
+    <img src="/images/modern-tools.avif" alt={t.altPhoto} />
+  </div>
+  <article class="content">
+    <h2 class="secondaryTitle">{t.heading}</h2>
+    <p class="primaryText">
+      {t.text}
+    </p>
+  </article>
 </section>

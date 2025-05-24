@@ -1,7 +1,10 @@
 ---
-import HeroImg from '@assets/hero-img.avif';
-import ArrowIcon from '@assets/arrow-icon.svg';
-import Button from '@components/Button.astro';
+import HeroImg from "@assets/hero-img.avif";
+import ArrowIcon from "@assets/arrow-icon.svg";
+import Button from "@components/Button.astro";
+import { getTranslations } from "../../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).homepage.hero;
 ---
 
 <style>
@@ -74,13 +77,15 @@ import Button from '@components/Button.astro';
 <section class="hero sectionBreak">
   <div class="heroContentWrapper">
     <div class="heroContent">
-      <h1 class="mainTitle">Profesjonalny sprzęt strażacki od Dexwal</h1>
-      <p class="bigText">Innowacyjne i bezpieczne rozwiązania dla straży pożarnej.</p>
-      <Button label="Sprawdź pełną ofertę firmy" type="primary" />
+      <h1 class="mainTitle">{t.heading}</h1>
+      <p class="bigText">
+        {t.text}
+      </p>
+      <Button label={t.button} type="primary" />
     </div>
   </div>
-  <img src={HeroImg.src} alt="Firefighter" class="heroImg" />
+  <img src={HeroImg.src} alt={t.altPhoto} class="heroImg" />
   <div class="scrollIndicator">
-    <img src={ArrowIcon.src} alt="Arrow Scroll Indicator" />
+    <img src={ArrowIcon.src} alt={t.altArrow} />
   </div>
 </section>

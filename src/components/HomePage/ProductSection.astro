@@ -3,6 +3,9 @@ import Button from "@components/Button.astro";
 import Product from "../Product.astro";
 import { getProducts } from "src/lib/products";
 import { API_URL } from "astro:env/client";
+import { getTranslations } from "src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).components.productsSection;
 
 const { sectionLabel, linkProducts, classes } = Astro.props;
 const data = await getProducts();
@@ -52,7 +55,7 @@ const products = data.products.nodes.map((n) => ({
   {
     linkProducts && (
       <div class="linkWrapper">
-        <Button label="Zobacz inne produkty z naszej oferty" type="outline" />
+        <Button label={t.button} type="outline" />
       </div>
     )
   }

@@ -1,33 +1,35 @@
 ---
 import Button from "@components/Button.astro";
-import type { HTMLInputTypeAttribute } from "react";
+import { getTranslations } from "src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).contactPage.contactForm;
 
 // Form fields array
 const formFields = [
   {
     id: "name",
-    label: "Imię i Nazwisko",
+    label: t.name,
     type: "text",
     placeholder: "",
     required: false,
   },
   {
     id: "phone",
-    label: "Telefon",
+    label: t.phone,
     type: "tel",
     placeholder: "",
     required: false,
   },
   {
     id: "email",
-    label: "E-mail",
+    label: t.email,
     type: "email",
     placeholder: "",
     required: true,
   },
   {
     id: "message",
-    label: "Wiadomość",
+    label: t.message,
     type: "textarea",
     placeholder: "",
     required: true,
@@ -126,8 +128,7 @@ const formFields = [
   <div class="formGroup checkboxGroup">
     <input type="checkbox" id="privacy" name="privacy" required />
     <label for="privacy" class="smallerText">
-      Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania
-      moich danych osobowych i zgadzam z Polityką prywatności.
+      {t.privacy}
     </label>
   </div>
 
@@ -142,7 +143,7 @@ const formFields = [
     const charCountElement = document.getElementById("charCount");
 
     if (messageTextarea && charCountElement) {
-      messageTextarea.addEventListener("input", function () {
+      messageTextarea.addEventListener("input", function (e) {
         const currentLength = this.value.length;
         charCountElement.textContent = currentLength;
       });

@@ -1,5 +1,44 @@
 {
   "homepage": {
+    "whyUs": {
+      "experience": "Lat na rynku",
+      "heading": "Dlaczego Nas Wybierają",
+      "subheading": "Wiodące Instytucje i Firmy?",
+      "reasons": {
+        "reason1": {
+          "title": "Doświadczenie i Kompetencje",
+          "text": "Posiadamy doświadczenie w branży, które pozwala nam zrozumieć doskonale potrzeby i wymagania naszych klientów. Nasz zespół składa się z wykwalifikowanych specjalistów, którzy stale rozwijają swoje umiejętności, by być na bieżąco z najnowszymi rozwiązaniami."
+        },
+        "reason2": {
+          "title": "Indywidualne Podejście",
+          "text": "Każdy projekt, zlecenie czy współpraca jest dla nas unikalne. Nasza elastyczność pozwala na dostosowanie usług do konkretnych oczekiwań i celów naszych klientów."
+        },
+        "reason3": {
+          "title": "Jakość Usług",
+          "text": "Jakość to dla nas priorytet. Dążymy do tego, aby nasze usługi były najwyższej jakości, zgodne z najnowszymi standardami branżowymi."
+        },
+        "reason4": {
+          "title": "Profesjonalizm",
+          "text": "Nasza praca opiera się na etyce, zaufaniu i rzetelności. Stawiamy na transparentność działań, aby nasi klienci mieli pełny wgląd w procesy i wyniki naszej pracy."
+        },
+        "reason5": {
+          "title": "Ponadczasowe Wartości",
+          "text": "Nasza firma kieruje się ważnymi wartościami, takimi jak bezpieczeństwo, dbałość o środowisko, odpowiedzialność społeczna oraz partnerstwo z klientem."
+        }
+      }
+    },
+    "hero": {
+      "heading": "Profesjonalny sprzęt strażacki od Dexwal",
+      "text": "Innowacyjne i bezpieczne rozwiązania dla straży pożarnej.",
+      "button": "Sprawdź pełną ofertę firmy",
+      "altPhoto": "Strażak",
+      "altArrow": "Arrow Icon Pointing Down"
+    },
+    "modernToolsSection": {
+      "heading": "Nowoczesne sprzęty strażackie",
+      "altPhoto": "Nowoczesne Sprzęty Strażackie",
+      "text": "W Dexwal zajmujemy się produkcją specjalistycznego sprzętu dla jednostek strażackich. Oferujemy innowacyjne wyposażenie wozów strażackich, które odpowiada na współczesne wyzwania ratownicze. Nasze sztandarowe produkty to akumulatorowy zwijacz do węży, zwiększający skuteczność działań ratowniczych. Specjalistyczne platformy gaśniczo/chłodzące są kluczowe przy pożarach pojazdów elektrycznych, umożliwiając szybkie i skuteczne interwencje. Dodatkowo, nasze dogaszarki ognia to niezawodne narzędzia pomocnicze, które szybko zahamują rozprzestrzenianie się ognia. Stawiając na sprzęt od Dexwal, zwiększasz bezpieczeństwo i efektywność swojej jednostki strażackiej."
+    },
     "pageTitle": "Strona Główna",
     "heroHeading": "Sprzęt strażacki w naszej ofercie",
     "heroContent": "W Dexwal tworzymy nie tylko sprzęt, ale bezpieczne i efektywne rozwiązania, które wspierają zarówno Ochotnicze, jak i Państwowe Straże Pożarne w ich codziennych działaniach."
@@ -13,6 +52,7 @@
     "pageTitle": "Kontakt Dexwal",
     "headerHeading": "Skontaktuj się z nami",
     "headerText": "Odezwij się do nas, postaramy się odezwać w ciągu najbliższych 24 godzin.",
+    "photoAltText": "Strażak z wężem strażackim",
     "contactDetailsSection": {
       "contactData": "Dane kontaktowe",
       "address": "Adres",
@@ -20,6 +60,13 @@
       "telephone": "Telefon",
       "workHours": "Godziny pracy",
       "workHoursValue": "Poniedziałek-Piątek: 8:00-16:00"
+    },
+    "contactForm": {
+      "name": "Imię i Nazwisko",
+      "phone": "Telefon",
+      "email": "E-mail",
+      "message": "Wiadomość",
+      "privacy": "Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania moich danych osobowych i zgadzam z Polityką prywatności."
     }
   },
   "aboutUsPage": {
@@ -56,6 +103,14 @@
     "productsSubsectionHeader": "Zobacz jakie produkty mamy w ofercie"
   },
   "components": {
+    "productsSection": {
+      "button": "Zobacz inne produkty z naszej oferty"
+    },
+    "contactUsSection": {
+      "heading": "Skontaktuj się z nami",
+      "text": "Przekonaj się jak sprzęt strażacki od Dexwal zwiększy możliwości ratownicze!",
+      "button": "Kontakt"
+    },
     "navigation": {
       "homepage": "Strona Główna",
       "offer": "Oferta",

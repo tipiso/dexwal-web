@@ -1,5 +1,8 @@
 ---
 import ContactForm from "@components/ContactPage/ContactForm.astro";
+import { getTranslations } from "src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).contactPage;
 ---
 
 <style>
@@ -42,21 +45,16 @@ import ContactForm from "@components/ContactPage/ContactForm.astro";
   }
 </style>
 
-<section class="contactSection">
-  <div class="container">
-    <div class="contactContent">
-      <div class="contactFormContainer">
-        <div class="contactDetails">
-          <ContactForm />
-        </div>
+<div class="contactSection">
+  <div class="contactContent">
+    <div class="contactFormContainer">
+      <div class="contactDetails">
+        <ContactForm />
+      </div>
 
-        <div class="contactImage">
-          <img
-            src="/images/contact-hero.avif"
-            alt="Strażak z wężem strażackim"
-          />
-        </div>
+      <div class="contactImage">
+        <img src="/images/contact-hero.avif" alt={t.photoAltText} />
       </div>
     </div>
   </div>
-</section>
+</div>
