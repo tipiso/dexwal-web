@@ -1,13 +1,36 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import '../../styles/global.css';
-const pageTitle = 'Home';
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import ContactUsSection from "@components/ContactUsSection.astro";
+import HeroSection from "@components/HomePage/HeroSection.astro";
+import ModernToolsSection from "@components/HomePage/ModernToolsSection.astro";
+import ProductSection from "@components/HomePage/ProductSection.astro";
+import WhyUsSection from "@components/HomePage/WhyUsSection.astro";
+import Layout from "@layouts/Layout.astro";
+
+import { getTranslations } from "@src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale);
+const pageTitle = t.homepage.pageTitle;
 ---
 
-<Layout pageTitle={pageTitle} language="en">
-  <ul>
-    <li><a href="/posts/post-1/">Post 1</a></li>
-  </ul>
+<style>
+  .secondaryTitle {
+    padding-bottom: 16px;
+  }
+</style>
+
+<Layout pageTitle={pageTitle} language="pl">
+  <HeroSection />
+
+  <section class="sectionBreak">
+    <h2 class="secondaryTitle">{t.homepage.heroHeading}</h2>
+    <p class="primaryText">
+      {t.homepage.heroContent}
+    </p>
+
+    <ProductSection />
+  </section>
+
+  <WhyUsSection />
+  <ContactUsSection />
+  <ModernToolsSection />
 </Layout>

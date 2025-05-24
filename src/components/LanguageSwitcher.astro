@@ -13,7 +13,7 @@ const supportedLocales = Object.values(AppLangEnum).map((l) => l);
   }
 </style>
 
-<select class="languageSwitcher otherText">
+<select id="langSelect" class="languageSwitcher otherText">
   {
     supportedLocales.map((l) => (
       <option selected={l === AppLangEnum.PL ? "selected" : undefined}>
@@ -22,3 +22,27 @@ const supportedLocales = Object.values(AppLangEnum).map((l) => l);
     ))
   }
 </select>
+
+<script>
+  import { AppLangEnum } from "@src/lib/types";
+
+  const select = document.getElementById("langSelect");
+  if (select && "value" in select) {
+    select.value = window.location.pathname.split("/")[1] || "pl"; // set current language
+
+    select.addEventListener("change", (e) => {
+      const newLang = e.target.value;
+      const pathParts = window.location.pathname.split("/");
+
+      if (newLang === AppLangEnum.PL) {
+        // redirect to default locale without prefix
+        pathParts.splice(1, 1); // remove the current prefix
+      } else {
+        pathParts[1] = newLang;
+      }
+
+      const newPath = pathParts.join("/") || "/";
+      window.location.pathname = newPath;
+    });
+  }
+</script>

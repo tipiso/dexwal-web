@@ -1,0 +1,65 @@
+---
+import { getProductsForPaths } from "src/lib/products";
+import SingleProductSection from "@components/ProductPage/SingleProductSection.astro";
+import Layout from "@layouts/Layout.astro";
+import ContactUsSection from "@components/ContactUsSection.astro";
+import ProductSection from "@components/HomePage/ProductSection.astro";
+import { getTranslations } from "src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).singleProductPage;
+
+export async function getStaticPaths() {
+  const response = await getProductsForPaths();
+  return response.products.nodes.map(({ id, ...product }) => {
+    return {
+      params: { id },
+      props: { product },
+    };
+  });
+}
+const { product } = Astro.props;
+const pageTitle = product.heroHeader;
+---
+
+<style>
+  .productSectionWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<Layout pageTitle={pageTitle}>
+  <main class="productSectionWrapper">
+    <SingleProductSection
+      idx={1}
+      header={product.heroHeader}
+      text={product.heroText}
+      photoSrcSet={product.heroPhoto.node.srcSet}
+      photoAlt={product.heroPhoto.node.altText}
+    />
+    <SingleProductSection
+      idx={2}
+      header={product.introductionHeader}
+      text={product.introductionText}
+      photoSrcSet={product.introductionPhoto.node.srcSet}
+      photoAlt={product.introductionPhoto.node.altText}
+    />
+    {
+      product.moreDetailsPhoto && (
+        <SingleProductSection
+          idx={3}
+          header={product.moreDetailsHeader}
+          text={product.moreDetailsText}
+          photoSrcSet={product.moreDetailsPhoto.node.srcSet}
+          photoAlt={product.moreDetailsPhoto.node.altText}
+        />
+      )
+    }
+    <ContactUsSection classes="sectionBreak" />
+    <ProductSection
+      classes="sectionBreak"
+      linkProducts={true}
+      sectionLabel={t.productsSubsectionHeader}
+    />
+  </main>
+</Layout>
