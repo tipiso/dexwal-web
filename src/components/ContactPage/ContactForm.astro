@@ -1,5 +1,6 @@
 ---
 import Button from "@components/Button.astro";
+import type { HTMLInputTypeAttribute } from "react";
 
 // Form fields array
 const formFields = [
@@ -106,7 +107,7 @@ const formFields = [
           />
         ) : (
           <input
-            type={field.type}
+            type={field.type as astroHTML.JSX.HTMLInputTypeAttribute}
             id={field.id}
             name={field.id}
             placeholder={field.placeholder}
