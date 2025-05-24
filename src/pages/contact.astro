@@ -2,6 +2,11 @@
 import Layout from "../layouts/Layout.astro";
 import ContactDetails from "@components/ContactPage/ContactDetails.astro";
 import ContactSection from "@components/ContactPage/ContactSection.astro";
+
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale);
+const pageTitle = t.homepage.pageTitle;
 ---
 
 <style>
@@ -57,14 +62,13 @@ import ContactSection from "@components/ContactPage/ContactSection.astro";
   }
 </style>
 
-<Layout title="Dexwal - Kontakt">
+<Layout title={pageTitle}>
   <main class="contentWrapper">
     <header class="contactHeader">
       <div>
-        <h1 class="mainTitle">Skontaktuj się z nami</h1>
+        <h1 class="mainTitle">{t.contactPage.headerHeading}</h1>
         <p class="primaryText">
-          Odezwij się do nas, postaramy się odezwać w ciągu najbliższych 24
-          godzin.
+          {t.contactPage.headerText}
         </p>
       </div>
       <div></div>

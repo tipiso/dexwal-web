@@ -1,21 +1,24 @@
 ---
-import ContactUsSection from '@components/HomePage/ContactUsSection.astro';
-import HeroSection from '@components/HomePage/HeroSection.astro';
-import ModernToolsSection from '@components/HomePage/ModernToolsSection.astro';
-import ProductSection from '@components/HomePage/ProductSection.astro';
-import WhyUsSection from '@components/HomePage/WhyUsSection.astro';
-import Layout from '../layouts/Layout.astro';
-const pageTitle = 'Strona Główna';
+import ContactUsSection from "@components/HomePage/ContactUsSection.astro";
+import HeroSection from "@components/HomePage/HeroSection.astro";
+import ModernToolsSection from "@components/HomePage/ModernToolsSection.astro";
+import ProductSection from "@components/HomePage/ProductSection.astro";
+import WhyUsSection from "@components/HomePage/WhyUsSection.astro";
+import Layout from "../layouts/Layout.astro";
+
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale);
+const pageTitle = t.homepage.pageTitle;
 ---
 
 <Layout pageTitle={pageTitle} language="pl">
   <HeroSection />
 
   <section class="sectionBreak">
-    <h2 class="secondaryTitle">Sprzęt strażacki w naszej ofercie</h2>
+    <h2 class="secondaryTitle">{t.homepage.heroHeading}</h2>
     <p class="primaryText">
-      W Dexwal tworzymy nie tylko sprzęt, ale bezpieczne i efektywne rozwiązania, które wspierają zarówno Ochotnicze,
-      jak i Państwowe Straże Pożarne w ich codziennych działaniach.
+      {t.homepage.heroContent}
     </p>
 
     <ProductSection />

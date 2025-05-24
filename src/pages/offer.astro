@@ -1,7 +1,12 @@
 ---
-import ContactUsSection from '@components/HomePage/ContactUsSection.astro';
-import ProductSection from '@components/HomePage/ProductSection.astro';
-import Layout from '@layouts/Layout.astro';
+import ContactUsSection from "@components/HomePage/ContactUsSection.astro";
+import ProductSection from "@components/HomePage/ProductSection.astro";
+import Layout from "@layouts/Layout.astro";
+
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale);
+const pageTitle = t.offerPage.pageTitle;
 ---
 
 <style>
@@ -29,10 +34,14 @@ import Layout from '@layouts/Layout.astro';
   }
 </style>
 
-<Layout pageTitle="Offer" language="pl">
+<Layout pageTitle={pageTitle}>
   <header class="headerWrapper sectionBreak">
-    <h1 class="mainTitle">Sprawdź naszą ofertę sprzętu</h1>
-    <img src="/images/offers-hero.avif" alt="Firefighter" class="heroImg" />
+    <h1 class="mainTitle">{t.offerPage.pageHeading}</h1>
+    <img
+      src="/images/offers-hero.avif"
+      alt={t.offerPage.headerAltImgText}
+      class="heroImg"
+    />
   </header>
 
   <section class="sectionBreak">

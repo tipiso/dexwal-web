@@ -4,6 +4,9 @@ import SingleProductSection from "@components/ProductPage/SingleProductSection.a
 import Layout from "@layouts/Layout.astro";
 import ContactUsSection from "@components/HomePage/ContactUsSection.astro";
 import ProductSection from "@components/HomePage/ProductSection.astro";
+import { getTranslations } from "src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).singleProductPage;
 
 export async function getStaticPaths() {
   const response = await getProductsForPaths();
@@ -14,8 +17,8 @@ export async function getStaticPaths() {
     };
   });
 }
-const { id } = Astro.params;
 const { product } = Astro.props;
+const pageTitle = product.heroHeader;
 ---
 
 <style>
@@ -25,7 +28,7 @@ const { product } = Astro.props;
   }
 </style>
 
-<Layout>
+<Layout pageTitle={pageTitle}>
   <main class="productSectionWrapper">
     <SingleProductSection
       idx={1}
@@ -56,7 +59,7 @@ const { product } = Astro.props;
     <ProductSection
       classes="sectionBreak"
       linkProducts={true}
-      sectionLabel="Zobacz jakie produkty mamy w ofercie"
+      sectionLabel={t.productsSubsectionHeader}
     />
   </main>
 </Layout>

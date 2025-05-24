@@ -1,11 +1,15 @@
 ---
-import Link from './Link.astro';
-import LanguageSwitcher from './LanguageSwitcher.astro';
+import Link from "./Link.astro";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
+
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).components.navigation;
 
 const navLinks = [
-  { label: 'Strona główna', href: '/' },
-  { label: 'Oferta', href: '/offer' },
-  { label: 'O Firmie', href: '/about' },
+  { label: t.homepage, href: "/" },
+  { label: t.offer, href: "/offer" },
+  { label: t.aboutUs, href: "/about" },
 ];
 ---
 
@@ -25,5 +29,5 @@ const navLinks = [
 <div class="nav-links">
   {navLinks.map((link) => <Link href={link.href} label={link.label} />)}
   <LanguageSwitcher />
-  <Link href="/contact" label="Kontakt" />
+  <Link href="/contact" label={t.contact} />
 </div>

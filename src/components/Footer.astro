@@ -1,11 +1,15 @@
 ---
 import WhiteLogo from "@assets/white-logo.svg";
 
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).components.footer;
+
 const navLinks = [
-  { label: "Strona główna", href: "/" },
-  { label: "Usługi", href: "/offer" },
-  { label: "O Firmie", href: "/about" },
-  { label: "Kontakt", href: "/contact" },
+  { label: t.homepage, href: "/" },
+  { label: t.offer, href: "/offer" },
+  { label: t.aboutUs, href: "/about" },
+  { label: t.contact, href: "/contact" },
 ];
 
 const contactInfo = {
@@ -14,8 +18,8 @@ const contactInfo = {
   addressLine2: "28-100 Busko-Zdrój",
   email: "ppoz@dexwal.com",
   phone: "+48 41 378 70 11",
-  hours: "Poniedziałek–Piątek: 8:00–16:00",
-  copyright: "© Dexwal PPOŻ 2025 Wszelkie prawa zastrzeżone",
+  hours: t.hoursAvailable,
+  copyright: t.copyright,
 };
 ---
 
@@ -101,7 +105,7 @@ const contactInfo = {
 
 <footer class="footer">
   <div class="footerLeft">
-    <img class="logo" src={WhiteLogo.src} alt="White Company Logo Dexwal" />
+    <img class="logo" src={WhiteLogo.src} alt="Dexwal Logo" />
     <ul class="footerList address">
       <li class="smallerText">{contactInfo.addressLine1}</li>
       <li class="smallerText">{contactInfo.addressLine2}</li>
@@ -131,7 +135,7 @@ const contactInfo = {
 
     <div class="footerBottom">
       <p class="smallerText">{contactInfo.copyright}</p>
-      <a href="#" class="smallerText">Polityka prywatności</a>
+      <a href="#" class="smallerText">{t.privacyPolicy}</a>
     </div>
   </div>
 </footer>

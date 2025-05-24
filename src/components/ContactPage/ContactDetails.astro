@@ -1,21 +1,24 @@
 ---
-// Contact details array
+import { getTranslations } from "src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).contactPage.contactDetailsSection;
+
 const contactDetails = [
   {
-    label: "Adres",
+    label: t.address,
     lines: ["ul. Dąbrowska 12", "28-100 Busko-Zdrój"],
   },
   {
-    label: "Email",
+    label: t.email,
     lines: ["poczta@dexwal.com"],
   },
   {
-    label: "Telefon",
+    label: t.telephone,
     lines: ["+48 41 378 70 11"],
   },
   {
-    label: "Godziny pracy",
-    lines: ["Poniedziałek-Piątek: 8:00-16:00"],
+    label: t.workHours,
+    lines: [t.workHoursValue],
   },
 ];
 ---
@@ -42,7 +45,7 @@ const contactDetails = [
 </style>
 
 <section class="contactDataSection">
-  <h2 class="secondaryTitle">Dane kontaktowe</h2>
+  <h2 class="secondaryTitle">{t.contactData}</h2>
   <div class="detailsContainer">
     <div class="detailsInfo">
       {

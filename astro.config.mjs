@@ -1,4 +1,4 @@
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig, envField } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
@@ -6,12 +6,15 @@ export default defineConfig({
   base: "/",
   integrations: [],
   i18n: {
-    locales: ['en', 'pl'],
-    defaultLocale: 'pl'
+    locales: ["en", "pl"],
+    defaultLocale: "pl",
+  },
+  routing: {
+    prefixDefaultLocale: false,
   },
   env: {
     schema: {
       API_URL: envField.string({ context: "client", access: "public" }),
-    }
-  }
+    },
+  },
 });

@@ -1,27 +1,27 @@
 ---
-import ContactUsSection from '@components/HomePage/ContactUsSection.astro';
-import ProductSection from '@components/HomePage/ProductSection.astro';
-import Layout from '../layouts/Layout.astro';
-const pageTitle = 'About Us';
+import ContactUsSection from "@components/HomePage/ContactUsSection.astro";
+import ProductSection from "@components/HomePage/ProductSection.astro";
+import Layout from "../layouts/Layout.astro";
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).aboutUsPage;
+const pageTitle = t.pageTitle;
 
 const keyAspects = [
   {
-    number: '1.',
-    title: 'Innowacyjne rozwiązania',
-    description:
-      'Skupiamy się na technologiach strażackich, które zwiększają skuteczność i bezpieczeństwo działań ratowniczo-gaśniczych.',
+    number: "1.",
+    title: t.keyAspect1.title,
+    description: t.keyAspect1.text,
   },
   {
-    number: '2.',
-    title: 'Efektywność i bezpieczeństwo',
-    description:
-      'Nasz sprzęt jest projektowany z myślą o zapewnieniu efektywnych rozwiązań i o maksymalnym bezpieczeństwie użytkowników.',
+    number: "2.",
+    title: t.keyAspect2.title,
+    description: t.keyAspect2.text,
   },
   {
-    number: '3.',
-    title: 'Certyfikowane produkty',
-    description:
-      'Wszystkie produkty zostały wysłane do Centrum Naukowo-Badawczego Ochrony Przeciwpożarowej celem uzyskania opinii technicznej i rekomendacji.',
+    number: "3.",
+    title: t.keyAspect3.title,
+    description: t.keyAspect3.text,
   },
 ];
 ---
@@ -36,6 +36,7 @@ const keyAspects = [
 
   .heroText {
     padding-right: 68px;
+    padding-left: 68px;
 
     .mainTitle {
       padding-bottom: 32px;
@@ -158,14 +159,18 @@ const keyAspects = [
       <div class="container">
         <div class="heroContent">
           <div class="heroText">
-            <h1 class="mainTitle">Dexwal - Nasza historia</h1>
+            <h1 class="mainTitle">{t.firstSection.sectionHeading}</h1>
             <p class="bigText">
-              <b>Jesteśmy firmą działającą na rynku już od ponad 30 lat.</b> Istniejemy już od 1990 roku. Intensywnie się
-              rozwijamy rozprzestrzeniając nasze produkty na skalę europejską.
+              <b> {t.firstSection.sectionTextHighlight}</b>
+              {t.firstSection.sectionText}
             </p>
           </div>
           <div>
-            <img src="/images/about-company.avif" alt="Siedziba firmy Dexwal" class="building-image" />
+            <img
+              src="/images/about-company.avif"
+              alt={t.firstSection.sectionPhotoAlt}
+              class="building-image"
+            />
           </div>
         </div>
       </div>
@@ -178,17 +183,10 @@ const keyAspects = [
       </div>
       <div class="middleText">
         <p class="primaryText">
-          Początkowo skoncentrowani na produkcji maszyn rolniczych oraz gumowych i plastikowych komponentów, z czasem
-          rozszerzyliśmy naszą działalność o sektor motoryzacyjny, wprowadzając do ofery produkty takie jak maszyny i
-          narzędzia rolne. W 2010 roku połączyliśmy się z czeską firmą NL MOTO s. r. o. i rozpoczęliśmy współpracę z NSK
-          Bearings.
+          {t.secondSection.sectionFirstText}
         </p>
         <p class="primaryText">
-          Kolejnym ważnym krokiem w naszej działalności jest rozpoczęcie produkcji węży strażackich. W tym są
-          innowacyjnych zwijaczy do węży, platform gaśniczo-chłodzących dla pojazdów elektrycznych oraz dostarczak
-          opinia, które są niezbędne do skutecznego prowadzenia działań ratowniczo-gaśniczych. Nasze produkty
-          charakteryzuje innowacyjność, ale również najwyższa jakość wykonania i niezawodność. Dzięki czemu nasze
-          produkty zdobywają zaufanie strażaków i producentów wozów strażackich.
+          {t.secondSection.sectionSecondText}
         </p>
       </div>
     </section>
@@ -196,7 +194,7 @@ const keyAspects = [
     <!-- Key Aspects Section -->
     <section class="keyAspectsSection">
       <div class="container">
-        <h2 class="mainTitle">Kluczowe aspekty naszej działalności</h2>
+        <h2 class="mainTitle">{t.thirdSection.heading}</h2>
 
         <div class="aspects-grid">
           {
@@ -215,7 +213,10 @@ const keyAspects = [
     <ContactUsSection />
 
     <section class="products sectionBreak">
-      <ProductSection sectionLabel="Zobacz jakie produkty mamy w ofercie" linkProducts={true} />
+      <ProductSection
+        sectionLabel={t.productSectionHeading}
+        linkProducts={true}
+      />
     </section>
   </main>
 </Layout>
