@@ -53,6 +53,10 @@ type SingleProductResponse = {
   };
 };
 
+type ProductsPathsPrefetchResponse = {
+  products: { nodes: SingleProductType[] };
+};
+
 export const getProducts = async (limit: number = 3) =>
   api.post<ProductsResponse>(`
   query Fetch3FirstProducts {
@@ -101,6 +105,46 @@ export const getSingleProduct = async (productId: string) =>
         altText
         srcSet
         title
+      }
+    }
+  }
+}`);
+
+export const getProductsForPaths = async () =>
+  api.post<ProductsPathsPrefetchResponse>(`
+  query PrefetchProductsForPaths {
+  products {
+    nodes {
+      id
+      heroAltText
+      heroText
+      heroHeader
+      heroPhoto {
+        node {
+          altText
+          srcSet
+          title
+        }
+      }
+      introductionAltText
+      introductionHeader
+      introductionText
+      introductionPhoto {
+        node {
+          altText
+          srcSet
+          title
+        }
+      }
+      moreDetailsHeader
+      moreDetailsAltText
+      moreDetailsText
+      moreDetailsPhoto {
+        node {
+          altText
+          srcSet
+          title
+        }
       }
     }
   }

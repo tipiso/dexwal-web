@@ -1,34 +1,62 @@
 ---
-import { getSingleProduct } from "src/lib/products";
+import { getProductsForPaths } from "src/lib/products";
+import SingleProductSection from "@components/ProductPage/SingleProductSection.astro";
+import Layout from "@layouts/Layout.astro";
+import ContactUsSection from "@components/HomePage/ContactUsSection.astro";
+import ProductSection from "@components/HomePage/ProductSection.astro";
 
+export async function getStaticPaths() {
+  const response = await getProductsForPaths();
+  return response.products.nodes.map(({ id, ...product }) => {
+    return {
+      params: { id },
+      props: { product },
+    };
+  });
+}
 const { id } = Astro.params;
-const { data } = await getSingleProduct(id ?? "");
-const { product } = data;
+const { product } = Astro.props;
 ---
 
 <style>
-  .productSectionsWrapper {
+  .productSectionWrapper {
     display: flex;
     flex-direction: column;
   }
-
-  .productSection {
-    display: grid;
-    grid-template-columns: 1fr / 1fr;
-  }
 </style>
 
-<main class="productSectionWrapper">
-  <section class="productSection">
-    <h2>{product.introductionHeader}</h2>
-    <div>
-      <img
-        srcset={product.introductionPhoto.node.srcSet}
-        alt={product.introductionPhoto.node.altText}
-      />
-    </div>
-    <div set:html={product.introductionText} />
-  </section>
-  <section class="productSection"></section>
-  <section class="productSection"></section>
-</main>
+<Layout>
+  <main class="productSectionWrapper">
+    <SingleProductSection
+      idx={1}
+      header={product.heroHeader}
+      text={product.heroText}
+      photoSrcSet={product.heroPhoto.node.srcSet}
+      photoAlt={product.heroPhoto.node.altText}
+    />
+    <SingleProductSection
+      idx={2}
+      header={product.introductionHeader}
+      text={product.introductionText}
+      photoSrcSet={product.introductionPhoto.node.srcSet}
+      photoAlt={product.introductionPhoto.node.altText}
+    />
+    {
+      product.moreDetailsPhoto && (
+        <SingleProductSection
+          idx={3}
+          header={product.moreDetailsHeader}
+          text={product.moreDetailsText}
+          photoSrcSet={product.moreDetailsPhoto.node.srcSet}
+          photoAlt={product.moreDetailsPhoto.node.altText}
+        />
+      )
+    }
+    <ContactUsSection classes="sectionBreak" />
+    <ProductSection
+      classes="sectionBreak"
+      linkProducts={true}
+      sectionLabel="Zobacz jakie produkty mamy w ofercie"
+    />
+  </main>
+</Layout>

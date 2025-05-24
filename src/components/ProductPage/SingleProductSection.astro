@@ -1,0 +1,89 @@
+---
+const { idx, header, text, photoSrcSet, photoAlt } = Astro.props;
+---
+
+<style>
+  .blankSpace {
+    --blanks-section-height: 300px;
+    grid-column-start: 1;
+    grid-column-end: -1;
+    height: var(--blanks-section-height);
+
+    &.white {
+      background-color: var(--white-color);
+    }
+
+    &.black {
+      background-color: var(--black-color);
+    }
+  }
+
+  .productSection {
+    --img-border-radius: 100px;
+    --blanks-section-height: 300px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &:nth-of-type(odd) {
+      background-color: var(--text-color);
+      color: var(--white-color);
+
+      .firstGridChild {
+        order: 1;
+        border-bottom-left-radius: var(--img-border-radius);
+      }
+
+      &::before {
+        content: "";
+        grid-column-start: 1;
+        grid-column-end: -1;
+        height: var(--blanks-section-height);
+        background-color: var(--white-color);
+      }
+    }
+
+    &:nth-of-type(even) {
+      background-color: var(--white-color);
+
+      .firstGridChild {
+        border-top-right-radius: var(--img-border-radius);
+      }
+
+      &::before {
+        content: "";
+        grid-column-start: 1;
+        grid-column-end: -1;
+        height: var(--blanks-section-height);
+        background-color: var(--text-color);
+      }
+    }
+  }
+
+  .mainTitle {
+    padding-bottom: 32px;
+  }
+
+  .firstGridChild {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--white-color);
+    bottom: 200px;
+  }
+
+  .secondGridChild {
+    padding: 100px 80px;
+  }
+</style>
+
+<section class:list={["productSection"]}>
+  <div class="firstGridChild">
+    <img srcset={photoSrcSet} alt={photoAlt} />
+  </div>
+  <div class="secondGridChild">
+    <h2 class="mainTitle">{header}</h2>
+    <div set:html={text} class="bigText" />
+  </div>
+</section>

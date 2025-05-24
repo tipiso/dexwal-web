@@ -1,8 +1,8 @@
 ---
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
 const { language, pageTitle } = Astro.props;
-import '../styles/global.css';
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -23,26 +23,26 @@ import '../styles/global.css';
 
 <script>
   // Vanilla JavaScript for animations
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Animate elements when they come into view
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     // Observe all sections
-    document.querySelectorAll('section').forEach((section) => {
+    document.querySelectorAll("section").forEach((section) => {
       observer.observe(section);
     });
 
     // Observe aspect items for staggered animation
-    document.querySelectorAll('.aspectItem').forEach((item, index) => {
+    document.querySelectorAll(".aspectItem").forEach((item, index) => {
       (item as HTMLElement).style.transitionDelay = `${index * 0.2}s`;
 
       observer.observe(item);
