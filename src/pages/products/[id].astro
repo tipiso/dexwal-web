@@ -10,14 +10,18 @@ const t = getTranslations(locale).singleProductPage;
 
 export async function getStaticPaths() {
   const response = await getProductsForPaths();
-  return response.products.nodes.map(({ id, ...product }) => {
-    return {
-      params: { id },
-      props: { product },
-    };
-  });
+  const preparedResponse = response.languages.nodes.flatMap(
+    (languageProducts) =>
+      languageProducts.products.nodes.map((p) => {
+        return {
+          params: { lang: languageProducts.slug, id: p.id },
+          props: { product: p, productsList: response },
+        };
+      })
+  );
+  return preparedResponse;
 }
-const { product } = Astro.props;
+const { product, productsList } = Astro.props;
 const pageTitle = product.heroHeader;
 ---
 
@@ -29,6 +33,15 @@ const pageTitle = product.heroHeader;
 </style>
 
 <Layout pageTitle={pageTitle}>
+  {
+    productsList.languages.nodes.map((n) => (
+      <div id={n.slug} class="invisible">
+        {n.products.nodes.map((p) => (
+          <li data-heroId={p.heroPhoto.node.id} data-productId={p.id} />
+        ))}
+      </div>
+    ))
+  }
   <main class="productSectionWrapper">
     <SingleProductSection
       idx={1}

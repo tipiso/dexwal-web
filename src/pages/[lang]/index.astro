@@ -5,6 +5,14 @@ import ModernToolsSection from "@components/HomePage/ModernToolsSection.astro";
 import ProductSection from "@components/HomePage/ProductSection.astro";
 import WhyUsSection from "@components/HomePage/WhyUsSection.astro";
 import Layout from "@layouts/Layout.astro";
+import { AppLangEnum } from "@src/lib/types";
+
+export async function getStaticPaths() {
+  const supportedLocales = Object.values(AppLangEnum).map((l) => l);
+  return supportedLocales.map((lang) => ({
+    params: { lang },
+  }));
+}
 
 import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;

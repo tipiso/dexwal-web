@@ -2,6 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import ContactDetails from "@components/ContactPage/ContactDetails.astro";
 import ContactSection from "@components/ContactPage/ContactSection.astro";
+import { AppLangEnum } from "@src/lib/types";
+
+export async function getStaticPaths() {
+  const supportedLocales = Object.values(AppLangEnum).map((l) => l);
+  return supportedLocales.map((lang) => ({
+    params: { lang },
+  }));
+}
 
 import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;

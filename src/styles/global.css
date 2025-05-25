@@ -170,3 +170,9 @@ section.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
+.invisible {
+  display: none;
+  width: 0;
+  height: 0;
+}

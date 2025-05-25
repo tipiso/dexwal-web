@@ -2,6 +2,7 @@
 import { AppLangEnum } from "src/lib/types";
 
 const supportedLocales = Object.values(AppLangEnum).map((l) => l);
+const locale = Astro.currentLocale;
 ---
 
 <style>
@@ -16,8 +17,8 @@ const supportedLocales = Object.values(AppLangEnum).map((l) => l);
 <select id="langSelect" class="languageSwitcher otherText">
   {
     supportedLocales.map((l) => (
-      <option selected={l === AppLangEnum.PL ? "selected" : undefined}>
-        {l}
+      <option value={l} selected={locale === l}>
+        {l.toUpperCase()}
       </option>
     ))
   }
@@ -26,23 +27,78 @@ const supportedLocales = Object.values(AppLangEnum).map((l) => l);
 <script>
   import { AppLangEnum } from "@src/lib/types";
 
-  const select = document.getElementById("langSelect");
-  if (select && "value" in select) {
-    select.value = window.location.pathname.split("/")[1] || AppLangEnum.PL; // set current language
-
-    select.addEventListener("change", (e) => {
-      const newLang = e.target.value;
+  window.addEventListener("DOMContentLoaded", () => {
+    const getCurrentLanguage = () => {
       const pathParts = window.location.pathname.split("/");
+      const currLang = supportedLocales.includes(pathParts[1])
+        ? pathParts[1]
+        : AppLangEnum.PL;
+      return currLang;
+    };
 
-      if (newLang === AppLangEnum.PL) {
-        // redirect to default locale without prefix
-        pathParts.splice(1, 1); // remove the current prefix
-      } else {
-        pathParts[1] = newLang;
+    const getNewProductsPath = (newLang: string) => {
+      const pathParts = window.location.pathname.split("/");
+      const productsIdx = pathParts.indexOf("products");
+      const currLang = getCurrentLanguage();
+
+      const currProductsList = document.getElementById(currLang);
+      const newProductsList = document.getElementById(newLang);
+      const currProductId = pathParts[productsIdx + 1];
+
+      let productImgToFind: string = "";
+      if (currProductsList) {
+        Array.from(currProductsList.children).forEach((node) => {
+          const { productid, heroid } = node.dataset;
+          if (currProductId === productid) productImgToFind = heroid;
+        });
       }
 
-      const newPath = pathParts.join("/") || "/";
-      window.location.href = newPath;
-    });
-  }
+      let nextProduct: string = "";
+      if (newProductsList) {
+        Array.from(newProductsList.children).forEach((node) => {
+          const { productid, heroid } = node.dataset;
+          if (productImgToFind === heroid) nextProduct = productid;
+        });
+      }
+
+      return `/products/${nextProduct}`;
+    };
+
+    const supportedLocales: string[] = Object.values(AppLangEnum).map((l) => l);
+    const currLang = getCurrentLanguage();
+    const select = document.getElementById("langSelect");
+
+    if (select && "value" in select) {
+      select.value = currLang;
+
+      select.addEventListener("change", function (e) {
+        const newLang = e.target.value;
+        // 1st is always a home slash
+        const pathParts = window.location.pathname.split("/");
+
+        const hasProductsContext =
+          window.location.pathname.includes("products");
+        let newProductsPath;
+        if (hasProductsContext) {
+          newProductsPath = getNewProductsPath(newLang);
+          window.location.href =
+            newLang === AppLangEnum.PL
+              ? `${newProductsPath}`
+              : `/${newLang}${newProductsPath}`;
+          return;
+        }
+
+        if (newLang === AppLangEnum.PL) {
+          // redirect to default locale without prefix
+          pathParts.splice(1, 1); // remove the current prefix
+        } else {
+          pathParts[1] = newLang;
+        }
+
+        const newPath = pathParts.join("/") || "/";
+        console.log(newPath);
+        window.location.href = newPath;
+      });
+    }
+  });
 </script>

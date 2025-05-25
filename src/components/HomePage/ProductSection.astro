@@ -1,20 +1,23 @@
 ---
 import Button from "@components/Button.astro";
 import Product from "../Product.astro";
-import { getProducts } from "src/lib/products";
+import { getProductsByLanguage } from "src/lib/products";
 import { API_URL } from "astro:env/client";
 import { getTranslations } from "src/locale/getTranslations";
+import { AppLangEnum } from "@src/lib/types";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.productsSection;
 
 const { sectionLabel, linkProducts, classes } = Astro.props;
-const data = await getProducts();
+const data = await getProductsByLanguage(3, locale ?? AppLangEnum.PL);
 
-const products = data.products.nodes.map((n) => ({
-  id: n.id,
-  image: `${API_URL}${n.heroPhoto.node.filePath}`,
-  title: n.heroAltText,
-}));
+const products = data.languages.nodes.flatMap((n) =>
+  n.products.nodes.map((n) => ({
+    id: n.id,
+    image: `${API_URL}${n.heroPhoto.node.srcSet}`,
+    title: n.heroAltText,
+  }))
+);
 ---
 
 <style>

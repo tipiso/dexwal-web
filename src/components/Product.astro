@@ -1,5 +1,7 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 const { productId, image, title } = Astro.props;
+const locale = Astro.currentLocale ?? "";
 ---
 
 <style>
@@ -29,7 +31,10 @@ const { productId, image, title } = Astro.props;
   }
 </style>
 
-<a class="product" href={`/products/${productId}`}>
-  <img src={image} alt={title} />
+<a
+  class="product"
+  href={getRelativeLocaleUrl(locale, `/products/${productId}`)}
+>
+  <img srcset={image} alt={title} />
   <p class="smallTitle">{title}</p>
 </a>

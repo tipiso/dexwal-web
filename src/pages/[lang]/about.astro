@@ -1,11 +1,19 @@
 ---
 import ContactUsSection from "@components/ContactUsSection.astro";
 import ProductSection from "@components/HomePage/ProductSection.astro";
+import { AppLangEnum } from "@src/lib/types";
 import Layout from "@layouts/Layout.astro";
 import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
 const pageTitle = t.pageTitle;
+
+export async function getStaticPaths() {
+  const supportedLocales = Object.values(AppLangEnum).map((l) => l);
+  return supportedLocales.map((lang) => ({
+    params: { lang },
+  }));
+}
 
 const keyAspects = [
   {

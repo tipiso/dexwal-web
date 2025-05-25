@@ -1,28 +1,30 @@
 import api from "./api";
+import { AppLangEnum } from "./types";
 
 /** Products List Response */
 type Photo = {
-  filePath: string;
+  srcSet: string;
 };
 
-type Product = {
+type ProductListItem = {
   id: string;
   heroPhoto: { node: Photo };
   heroAltText: string;
 };
 
+type Language = { node: { slug: string } };
+
 type ProductsResponse = {
-  products: {
-    nodes: Product[];
+  languages: {
+    nodes: {
+      products: {
+        nodes: ProductListItem[];
+      };
+    }[];
   };
 };
 
 /** Single Product Response */
-
-export interface Data {
-  product: Product;
-}
-
 export interface SingleProductType {
   id: string;
   heroHeader: string;
@@ -37,83 +39,60 @@ export interface SingleProductType {
   moreDetailsText: string;
   moreDetailsPhoto: SingleProductPhoto | null;
   heroPhoto: SingleProductPhoto;
+  language: Language;
 }
 
 export interface SingleProductPhoto {
   node: {
+    id: string;
     altText: string;
     srcSet: string;
     title: string;
   };
 }
 
-type SingleProductResponse = {
-  data: {
-    product: SingleProductType;
-  };
-};
-
-type ProductsPathsPrefetchResponse = {
+export type LanguageByProducts = {
+  slug: AppLangEnum;
   products: { nodes: SingleProductType[] };
 };
 
-export const getProducts = async (limit: number = 3) =>
+type ProductsPathsPrefetchResponse = {
+  languages: {
+    nodes: LanguageByProducts[];
+  };
+};
+
+export const getProductsByLanguage = async (
+  limit: number = 3,
+  language: string = AppLangEnum.PL,
+  excludeItemId?: string
+) =>
   api.post<ProductsResponse>(`
-  query Fetch3FirstProducts {
-    products(first: ${limit}) {
-      nodes {
-        id
-        heroPhoto {
-          node {
-            filePath
+    query FetchProductsBtyLanguage {
+  languages(where: {slug: "${language}"}) {
+    nodes {
+      products (first: ${limit}) {
+        nodes {
+          heroAltText
+          id
+          heroPhoto {
+            node {
+              srcSet
+            }
           }
         }
-        heroAltText
-      }
-    }
-}`);
-
-export const getSingleProduct = async (productId: string) =>
-  api.post<SingleProductResponse>(`query GetSingleProduct {
-  product(id: ${productId}) {
-    id
-    heroHeader
-    heroAltText
-    heroText
-    introductionAltText
-    introductionHeader
-    introductionText
-    introductionPhoto {
-      node {
-        altText
-        srcSet
-        title
-      }
-    }
-    moreDetailsAltText
-    moreDetailsHeader
-    moreDetailsText
-    moreDetailsPhoto {
-      node {
-        altText
-        srcSet
-        title
-      }
-    }
-    heroPhoto {
-      node {
-        altText
-        srcSet
-        title
       }
     }
   }
 }`);
 
-export const getProductsForPaths = async () =>
-  api.post<ProductsPathsPrefetchResponse>(`
-  query PrefetchProductsForPaths {
-  products {
+export const getProductsForPaths = async () => {
+  return api.post<ProductsPathsPrefetchResponse>(`
+    query PrefetchProductsForPaths {
+  languages {
+    nodes {
+      slug
+		products (first: 20) {
     nodes {
       id
       heroAltText
@@ -121,6 +100,7 @@ export const getProductsForPaths = async () =>
       heroHeader
       heroPhoto {
         node {
+          id
           altText
           srcSet
           title
@@ -147,5 +127,8 @@ export const getProductsForPaths = async () =>
         }
       }
     }
+    }
   }
+}
 }`);
+};
