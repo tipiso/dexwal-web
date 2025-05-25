@@ -28,7 +28,7 @@ const supportedLocales = Object.values(AppLangEnum).map((l) => l);
 
   const select = document.getElementById("langSelect");
   if (select && "value" in select) {
-    select.value = window.location.pathname.split("/")[1] || "pl"; // set current language
+    select.value = window.location.pathname.split("/")[1] || AppLangEnum.PL; // set current language
 
     select.addEventListener("change", (e) => {
       const newLang = e.target.value;
@@ -42,7 +42,7 @@ const supportedLocales = Object.values(AppLangEnum).map((l) => l);
       }
 
       const newPath = pathParts.join("/") || "/";
-      window.location.pathname = newPath;
+      window.location.href = newPath;
     });
   }
 </script>

@@ -1,0 +1,130 @@
+{
+  "homepage": {
+    "whyUs": {
+      "experience": "Years on the market",
+      "heading": "Why we are chosen",
+      "subheading": "By Leading Institutions and Companies?",
+      "reasons": {
+        "reason1": {
+          "title": "Experience and Competence",
+          "text": "We have industry experience that allows us to perfectly understand our clients' needs and requirements. Our team consists of qualified specialists who continuously develop their skills to stay up-to-date with the latest solutions."
+        },
+        "reason2": {
+          "title": "Individual Approach",
+          "text": "Every project, order, or collaboration is unique to us. Our flexibility allows us to adapt our services to the specific expectations and goals of our clients."
+        },
+        "reason3": {
+          "title": "Quality of Services",
+          "text": "Quality is our priority. We strive for our services to be of the highest quality, in line with the latest industry standards."
+        },
+        "reason4": {
+          "title": "Professionalism",
+          "text": "Our work is based on ethics, trust, and reliability. We focus on transparency of actions so that our clients have full insight into the processes and results of our work."
+        },
+        "reason5": {
+          "title": "Timeless Values",
+          "text": "Our company is guided by important values such as safety, environmental care, social responsibility, and partnership with the client."
+        }
+      }
+    },
+    "hero": {
+      "heading": "Professional firefighting equipment from Dexwal",
+      "text": "Innovative and safe solutions for the fire brigade.",
+      "button": "Check the full company offer",
+      "altPhoto": "Firefighter",
+      "altArrow": "Arrow Icon Pointing Down"
+    },
+    "modernToolsSection": {
+      "heading": "Modern firefighting equipment",
+      "altPhoto": "Modern Firefighting Equipment",
+      "text": "At Dexwal, we specialize in producing specialized equipment for fire brigades. We offer innovative equipment for fire trucks that meets contemporary rescue challenges. Our flagship products include a battery-powered hose reel, increasing the effectiveness of rescue operations. Specialized extinguishing/cooling platforms are crucial for electric vehicle fires, enabling quick and effective interventions. Additionally, our fire extinguishers are reliable auxiliary tools that will quickly stop the spread of fire. By choosing equipment from Dexwal, you increase the safety and efficiency of your fire unit."
+    },
+    "pageTitle": "Homepage",
+    "heroHeading": "Firefighting equipment in our offer",
+    "heroContent": "At Dexwal, we create not only equipment but also safe and effective solutions that support both Volunteer and State Fire Brigades in their daily operations."
+  },
+  "offerPage": {
+    "pageTitle": "Dexwal Offer",
+    "pageHeading": "Check out our equipment offer",
+    "headerAltImgText": "Firefighter in a suit"
+  },
+  "contactPage": {
+    "pageTitle": "Dexwal Contact",
+    "headerHeading": "Contact us",
+    "headerText": "Reach out to us, we will try to get back to you within the next 24 hours.",
+    "photoAltText": "Firefighter with a fire hose",
+    "contactDetailsSection": {
+      "contactData": "Contact details",
+      "address": "Address",
+      "email": "Email",
+      "telephone": "Phone",
+      "workHours": "Working hours",
+      "workHoursValue": "Monday-Friday: 8:00 AM - 4:00 PM"
+    },
+    "contactForm": {
+      "name": "First and Last Name",
+      "phone": "Phone",
+      "email": "E-mail",
+      "message": "Message",
+      "privacy": "I declare that I have read the information regarding the processing of my personal data and agree to the Privacy Policy."
+    }
+  },
+  "aboutUsPage": {
+    "pageTitle": "About Us",
+    "productSectionHeading": "See what products we offer",
+    "firstSection": {
+      "sectionHeading": "Dexwal - Our history",
+      "sectionTextHighlight": "We are a company operating on the market for over 30 years.",
+      "sectionText": "We have existed since 1990. We are intensively developing, spreading our products on a European scale.",
+      "sectionPhotoAlt": "Dexwal company headquarters"
+    },
+    "secondSection": {
+      "sectionFirstText": "Initially focused on the production of agricultural machinery and rubber and plastic components, over time we expanded our operations to include the automotive sector, introducing products such as agricultural machinery and tools. In 2010, we merged with the Czech company NL MOTO s. r. o. and started cooperation with NSK Bearings.",
+      "sectionSecondText": "Another important step in our business is the start of production of fire hoses. This includes innovative hose reels, extinguishing and cooling platforms for electric vehicles, and positive pressure ventilation fans, which are essential for effective rescue and firefighting operations. Our products are characterized by innovation, as well as the highest quality of workmanship and reliability. Thanks to this, our products gain the trust of firefighters and manufacturers of fire trucks.",
+      "sectionPhotoAlt": "Employee with equipment"
+    },
+    "thirdSection": {
+      "heading": "Key aspects of our business"
+    },
+    "keyAspect1": {
+      "title": "Innovative solutions",
+      "text": "We focus on firefighting technologies that increase the effectiveness and safety of rescue and firefighting operations."
+    },
+    "keyAspect2": {
+      "title": "Efficiency and safety",
+      "text": "Our equipment is designed to provide effective solutions and maximum user safety."
+    },
+    "keyAspect3": {
+      "title": "Certified products",
+      "text": "All products have been sent to the Scientific and Research Centre for Fire Protection to obtain a technical opinion and recommendations."
+    }
+  },
+  "singleProductPage": {
+    "productsSubsectionHeader": "See what products we offer"
+  },
+  "components": {
+    "productsSection": {
+      "button": "See other products from our offer"
+    },
+    "contactUsSection": {
+      "heading": "Contact us",
+      "text": "Find out how Dexwal firefighting equipment will increase rescue capabilities!",
+      "button": "Contact"
+    },
+    "navigation": {
+      "homepage": "Homepage",
+      "offer": "Offer",
+      "aboutUs": "About Us",
+      "contact": "Contact"
+    },
+    "footer": {
+      "homepage": "Homepage",
+      "offer": "Offer",
+      "aboutUs": "About Us",
+      "contact": "Contact",
+      "hoursAvailable": "Monday–Friday: 8:00 AM–4:00 PM",
+      "copyright": "© Dexwal Firefighting 2025 All rights reserved",
+      "privacyPolicy": "Privacy Policy"
+    }
+  }
+}

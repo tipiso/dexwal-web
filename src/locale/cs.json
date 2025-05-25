@@ -1,0 +1,130 @@
+{
+  "homepage": {
+    "whyUs": {
+      "experience": "Let na trhu",
+      "heading": "Proč si nás vybírají",
+      "subheading": "Přední instituce a firmy?",
+      "reasons": {
+        "reason1": {
+          "title": "Zkušenosti a kompetence",
+          "text": "Máme zkušenosti v oboru, které nám umožňují dokonale porozumět potřebám a požadavkům našich klientů. Náš tým se skládá z kvalifikovaných odborníků, kteří neustále rozvíjejí své dovednosti, aby byli v obraze s nejnovějšími řešeními."
+        },
+        "reason2": {
+          "title": "Individuální přístup",
+          "text": "Každý projekt, zakázka nebo spolupráce je pro nás jedinečná. Naše flexibilita nám umožňuje přizpůsobit služby konkrétním očekáváním a cílům našich klientů."
+        },
+        "reason3": {
+          "title": "Kvalita služeb",
+          "text": "Kvalita je pro nás prioritou. Snažíme se, aby naše služby byly nejvyšší kvality, v souladu s nejnovějšími oborovými standardy."
+        },
+        "reason4": {
+          "title": "Profesionalita",
+          "text": "Naše práce je založena na etice, důvěře a spolehlivosti. Zaměřujeme se na transparentnost činností, aby naši klienti měli plný přehled o procesech a výsledcích naší práce."
+        },
+        "reason5": {
+          "title": "Nadčasové hodnoty",
+          "text": "Naše společnost se řídí důležitými hodnotami, jako je bezpečnost, péče o životní prostředí, společenská odpovědnost a partnerství s klientem."
+        }
+      }
+    },
+    "hero": {
+      "heading": "Profesionální hasičská technika od Dexwal",
+      "text": "Inovativní a bezpečná řešení pro hasičské sbory.",
+      "button": "Prohlédněte si kompletní nabídku společnosti",
+      "altPhoto": "Hasič",
+      "altArrow": "Ikona šipky směřující dolů"
+    },
+    "modernToolsSection": {
+      "heading": "Moderní hasičská technika",
+      "altPhoto": "Moderní hasičská technika",
+      "text": "Ve společnosti Dexwal se zabýváme výrobou specializovaného vybavení pro hasičské jednotky. Nabízíme inovativní vybavení hasičských vozidel, které reaguje na současné záchranné výzvy. Mezi naše stěžejní produkty patří akumulátorový naviják na hadice, který zvyšuje účinnost záchranných operací. Specializované hasicí/chladicí plošiny jsou klíčové při požárech elektrických vozidel, umožňující rychlé a účinné zásahy. Navíc naše hasicí zařízení jsou spolehlivé pomocné nástroje, které rychle zastaví šíření ohně. S vybavením od Dexwal zvýšíte bezpečnost a efektivitu vaší hasičské jednotky."
+    },
+    "pageTitle": "Hlavní stránka",
+    "heroHeading": "Hasičská technika v naší nabídce",
+    "heroContent": "V Dexwal netvoříme jen vybavení, ale bezpečná a efektivní řešení, která podporují jak dobrovolné, tak státní hasičské sbory v jejich každodenní činnosti."
+  },
+  "offerPage": {
+    "pageTitle": "Nabídka Dexwal",
+    "pageHeading": "Prohlédněte si naši nabídku vybavení",
+    "headerAltImgText": "Hasič v kombinéze"
+  },
+  "contactPage": {
+    "pageTitle": "Kontakt Dexwal",
+    "headerHeading": "Kontaktujte nás",
+    "headerText": "Ozvi se nám, pokusíme se ti odpovědět do 24 hodin.",
+    "photoAltText": "Hasič s hasičskou hadicí",
+    "contactDetailsSection": {
+      "contactData": "Kontaktní údaje",
+      "address": "Adresa",
+      "email": "E-mail",
+      "telephone": "Telefon",
+      "workHours": "Pracovní doba",
+      "workHoursValue": "Pondělí-Pátek: 8:00-16:00"
+    },
+    "contactForm": {
+      "name": "Jméno a příjmení",
+      "phone": "Telefon",
+      "email": "E-mail",
+      "message": "Zpráva",
+      "privacy": "Prohlašuji, že jsem se seznámil/a s informacemi o zpracování mých osobních údajů a souhlasím s Zásadami ochrany osobních údajů."
+    }
+  },
+  "aboutUsPage": {
+    "pageTitle": "O nás",
+    "productSectionHeading": "Podívejte se, jaké produkty máme v nabídce",
+    "firstSection": {
+      "sectionHeading": "Dexwal - Naše historie",
+      "sectionTextHighlight": "Jsme firma působící na trhu již přes 30 let.",
+      "sectionText": "Existujeme již od roku 1990. Intenzivně se rozvíjíme a rozšiřujeme naše produkty po celé Evropě.",
+      "sectionPhotoAlt": "Sídlo společnosti Dexwal"
+    },
+    "secondSection": {
+      "sectionFirstText": "Zpočátku jsme se zaměřovali na výrobu zemědělských strojů a gumových a plastových komponentů, postupem času jsme rozšířili naši činnost o automobilový sektor a do nabídky jsme zavedli produkty jako zemědělské stroje a nářadí. V roce 2010 jsme se spojili s českou firmou NL MOTO s. r. o. a navázali spolupráci s NSK Bearings.",
+      "sectionSecondText": "Dalším důležitým krokem v naší činnosti je zahájení výroby hasičských hadic. Mezi ně patří inovativní navijáky na hadice, hasicí a chladicí plošiny pro elektrická vozidla a zařízení na přetlakové větrání, které jsou nezbytné pro efektivní záchranné a hasičské operace. Naše produkty se vyznačují inovativností, ale také nejvyšší kvalitou zpracování a spolehlivostí. Díky tomu si naše produkty získávají důvěru hasičů a výrobců hasičských vozidel.",
+      "sectionPhotoAlt": "Zaměstnanec s vybavením"
+    },
+    "thirdSection": {
+      "heading": "Klíčové aspekty naší činnosti"
+    },
+    "keyAspect1": {
+      "title": "Inovativní řešení",
+      "text": "Zaměřujeme se na hasičské technologie, které zvyšují účinnost a bezpečnost záchranných a hasičských operací."
+    },
+    "keyAspect2": {
+      "title": "Efektivita a bezpečnost",
+      "text": "Naše vybavení je navrženo tak, aby poskytovalo efektivní řešení a maximální bezpečnost uživatelů."
+    },
+    "keyAspect3": {
+      "title": "Certifikované produkty",
+      "text": "Všechny produkty byly zaslány do Vědecko-výzkumného centra požární ochrany za účelem získání technického posudku a doporučení."
+    }
+  },
+  "singleProductPage": {
+    "productsSubsectionHeader": "Podívejte se, jaké produkty máme v nabídce"
+  },
+  "components": {
+    "productsSection": {
+      "button": "Prohlédněte si další produkty z naší nabídky"
+    },
+    "contactUsSection": {
+      "heading": "Kontaktujte nás",
+      "text": "Zjistěte, jak hasičské vybavení od Dexwal zvýší vaše záchranné možnosti!",
+      "button": "Kontakt"
+    },
+    "navigation": {
+      "homepage": "Hlavní stránka",
+      "offer": "Nabídka",
+      "aboutUs": "O firmě",
+      "contact": "Kontakt"
+    },
+    "footer": {
+      "homepage": "Hlavní stránka",
+      "offer": "Nabídka",
+      "aboutUs": "O firmě",
+      "contact": "Kontakt",
+      "hoursAvailable": "Pondělí–Pátek: 8:00–16:00",
+      "copyright": "© Dexwal PPOŽ 2025 Všechna práva vyhrazena",
+      "privacyPolicy": "Zásady ochrany osobních údajů"
+    }
+  }
+}
