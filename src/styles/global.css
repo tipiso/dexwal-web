@@ -105,18 +105,21 @@ body {
 .mainTitle {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  line-height: 120%;
   font-size: 36px;
 }
 
 .secondaryTitle {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  line-height: 120%;
   font-size: 26px;
 }
 
 .smallTitle {
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  line-height: 120%;
   font-size: 20px;
 }
 
@@ -155,6 +158,10 @@ body {
 /** Typography End */
 .sectionBreak {
   margin-bottom: var(--section-break);
+}
+
+.justifyBetweenFlex {
+  justify-content: space-between !important;
 }
 
 /* Animation classes */

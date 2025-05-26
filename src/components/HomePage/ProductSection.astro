@@ -1,15 +1,21 @@
 ---
-import Button from '@components/Button.astro';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { getProductsByCategory, getProductsByLanguage } from 'src/lib/products';
-import { getTranslations } from 'src/locale/getTranslations';
-import Product from '../Product.astro';
+import Button from "@components/Button.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getProductsByCategory, getProductsByLanguage } from "src/lib/products";
+import { getTranslations } from "src/locale/getTranslations";
+import Product from "../Product.astro";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.productsSection;
 
-const { sectionLabel, linkProducts, classes, productCategory } = Astro.props;
+const {
+  sectionLabel,
+  linkProducts,
+  classes,
+  productsWrapperClasses,
+  productCategory,
+  maxListLength = undefined,
+} = Astro.props;
 
-const maxListLength = 3;
 let data, products;
 if (!productCategory) {
   data = await getProductsByLanguage(3, locale);
@@ -18,7 +24,7 @@ if (!productCategory) {
       id: p.id,
       image: p.heroPhoto.node.srcSet,
       title: p.heroHeader,
-    })),
+    }))
   );
 } else {
   data = await getProductsByCategory(productCategory);
@@ -64,14 +70,21 @@ if (!productCategory) {
   }
 </style>
 
-<div class:list={[classes, 'productSection']}>
+<div class:list={[classes, "productSection"]}>
   {sectionLabel && <h2 class="secondaryTitle">{sectionLabel}</h2>}
-  <div class="productsWrapper">
-    {products.map((p) => <Product productId={p.id} image={p.image} title={p.title} />)}
+  <div class:list={[productsWrapperClasses, "productsWrapper"]}>
+    {
+      products.map((p) => (
+        <Product productId={p.id} image={p.image} title={p.title} />
+      ))
+    }
   </div>
   {
     linkProducts && (
-      <a href={getRelativeLocaleUrl(locale ?? '', `/offer`)} class="linkWrapper">
+      <a
+        href={getRelativeLocaleUrl(locale ?? "", `/offer`)}
+        class="linkWrapper"
+      >
         <Button label={t.button} type="outline" />
       </a>
     )
