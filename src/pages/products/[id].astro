@@ -5,6 +5,7 @@ import Layout from "@layouts/Layout.astro";
 import ContactUsSection from "@components/ContactUsSection.astro";
 import ProductSection from "@components/HomePage/ProductSection.astro";
 import { getTranslations } from "src/locale/getTranslations";
+import CertificationSection from "@src/components/CertificationSection.astro";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).singleProductPage;
 
@@ -66,6 +67,11 @@ const pageTitle = product.heroHeader;
           photoSrcSet={product.moreDetailsPhoto.node.srcSet}
           photoAlt={product.moreDetailsPhoto.node.altText}
         />
+      )
+    }
+    {
+      product.cerification && (
+        <CertificationSection certificateUrl={product.cerification} />
       )
     }
     <ContactUsSection classes="sectionBreak" />

@@ -2,6 +2,7 @@
 import { getProductsForPaths } from "src/lib/products";
 import SingleProductSection from "@components/ProductPage/SingleProductSection.astro";
 import Layout from "@layouts/Layout.astro";
+import CertificationSection from "@components/CertificationSection.astro";
 import ContactUsSection from "@components/ContactUsSection.astro";
 import ProductSection from "@components/HomePage/ProductSection.astro";
 import { getTranslations } from "src/locale/getTranslations";
@@ -66,6 +67,11 @@ const pageTitle = product.heroHeader;
           photoSrcSet={product.moreDetailsPhoto.node.srcSet}
           photoAlt={product.moreDetailsPhoto.node.altText}
         />
+      )
+    }
+    {
+      product.cerification && (
+        <CertificationSection certificateUrl={product.cerification} />
       )
     }
     <ContactUsSection classes="sectionBreak" />

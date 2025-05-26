@@ -2,6 +2,8 @@
 import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
 import Logo from "@assets/dexwal-logo.svg";
+const locale = Astro.currentLocale;
+import { getRelativeLocaleUrl } from "astro:i18n";
 ---
 
 <style>
@@ -17,7 +19,9 @@ import Logo from "@assets/dexwal-logo.svg";
 </style>
 
 <header class="app-header">
-  <a href="/"><img src={Logo.src} alt="Dexwal Logo" /></a>
+  <a href={getRelativeLocaleUrl(locale ?? "", "/")}
+    ><img src={Logo.src} alt="Dexwal Logo" /></a
+  >
   <nav>
     <Hamburger />
     <Navigation />

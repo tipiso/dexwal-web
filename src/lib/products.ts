@@ -1,6 +1,10 @@
 import api from "./api";
 import { AppLangEnum, ProductCategoriesEnum } from "./types";
-import type {ProductsByCategoryResponse, ProductsPathsPrefetchResponse, ProductsResponse} from "./dtos";
+import type {
+  ProductsByCategoryResponse,
+  ProductsPathsPrefetchResponse,
+  ProductsResponse,
+} from "./dtos";
 
 export const getProductsByLanguage = async (
   limit: number = 3,
@@ -67,6 +71,7 @@ export const getProductsForPaths = async () => {
           title
         }
       }
+      cerification
     }
     }
   }
@@ -74,7 +79,8 @@ export const getProductsForPaths = async () => {
 }`);
 };
 
-export const getProductsByCategory = async (category:ProductCategoriesEnum) => api.post<ProductsByCategoryResponse>(`
+export const getProductsByCategory = async (category: ProductCategoriesEnum) =>
+  api.post<ProductsByCategoryResponse>(`
   query QueryProductsByCategory {
   productcategories(where: {slug: "${category}"}, first: 80) {
     nodes {
@@ -99,4 +105,4 @@ export const getProductsByCategory = async (category:ProductCategoriesEnum) => a
     }
   }
 }
-  `)
+  `);

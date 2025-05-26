@@ -1,0 +1,62 @@
+---
+import Button from "./Button.astro";
+
+const { certificateUrl } = Astro.props;
+---
+
+<style>
+  .certificationSection {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding-bottom: 30px;
+    padding-top: 100px;
+  }
+
+  .imgWrapper {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+
+    .bgPicture {
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 100px;
+    padding-left: 100px;
+
+    .titleSecondary {
+      padding-bottom: 16px;
+    }
+  }
+</style>
+
+<section class="certificationSection">
+  <div class="imgWrapper">
+    <img
+      src="/images/bg-certificate-img.avif"
+      alt="Przykładowe zdjęcie certyfikatu"
+      class="bgPicture"
+    />
+    <img
+      src="/images/front-certificate-img.avif"
+      alt="Przykładowe zdjęcie certyfikatu"
+      class="frontPicture"
+    />
+  </div>
+  <div class="content">
+    <h2 class="titleSecondary">Posiadamy rekomendacje CNBOP</h2>
+    <a href={certificateUrl} target="_blank"
+      ><Button type="primary" label="Zobacz pełną dokumentację" /></a
+    >
+  </div>
+</section>

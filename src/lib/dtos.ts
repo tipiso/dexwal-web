@@ -40,6 +40,7 @@ export interface SingleProductType {
   moreDetailsPhoto: SingleProductPhoto | null;
   heroPhoto: SingleProductPhoto;
   language: Language;
+  cerification?: string;
 }
 
 export interface SingleProductPhoto {
@@ -64,24 +65,24 @@ export type ProductsPathsPrefetchResponse = {
 
 /** Product Categories fetch */
 export type ProductsByCategoryResponse = {
-    productcategories: {
-        nodes: ProductCategoryNode[];
-    };
-}
+  productcategories: {
+    nodes: ProductCategoryNode[];
+  };
+};
 
 export type ProductCategoryNode = {
-    slug:  string;
-    products: {
-        nodes: { 
-            languages: { nodes: { slug: AppLangEnum}[] },
-            heroPhoto: {
-                node: {
-                    srcSet:string
-                }
-            },
-            id: string;
-            heroHeader: string;
-            heroAltText: string;
-        }[]
-    };
-}
+  slug: string;
+  products: {
+    nodes: {
+      languages: { nodes: { slug: AppLangEnum }[] };
+      heroPhoto: {
+        node: {
+          srcSet: string;
+        };
+      };
+      id: string;
+      heroHeader: string;
+      heroAltText: string;
+    }[];
+  };
+};

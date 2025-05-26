@@ -1,6 +1,6 @@
 ---
 import WhiteLogo from "@assets/white-logo.svg";
-
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { getTranslations } from "../locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.footer;
@@ -126,7 +126,10 @@ const contactInfo = {
     <nav class="footerNav">
       {
         navLinks.map((link) => (
-          <a href={link.href} class="menuText">
+          <a
+            href={getRelativeLocaleUrl(locale ?? "", link.href)}
+            class="menuText"
+          >
             {link.label}
           </a>
         ))
