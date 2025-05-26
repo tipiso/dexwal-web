@@ -3,3 +3,9 @@ export enum AppLangEnum {
   CS = "cs",
   PL = "pl",
 }
+
+export enum ProductCategoriesEnum {
+  Brackets = 'brackets',
+  Other = 'other',
+  Platform = 'platform'
+}

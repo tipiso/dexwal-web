@@ -46,7 +46,10 @@
   "offerPage": {
     "pageTitle": "Nabídka Dexwal",
     "pageHeading": "Prohlédněte si naši nabídku vybavení",
-    "headerAltImgText": "Hasič v kombinéze"
+    "headerAltImgText": "Hasič v kombinéze",
+    "platforms": "Platformy",
+    "other": "Ostatní produkty",
+    "brackets": "Držáky"
   },
   "contactPage": {
     "pageTitle": "Kontakt Dexwal",

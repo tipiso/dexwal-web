@@ -1,23 +1,40 @@
 ---
-import Button from "@components/Button.astro";
-import Product from "../Product.astro";
-import { getProductsByLanguage } from "src/lib/products";
-import { API_URL } from "astro:env/client";
-import { getTranslations } from "src/locale/getTranslations";
-import { AppLangEnum } from "@src/lib/types";
+import Button from '@components/Button.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getProductsByCategory, getProductsByLanguage } from 'src/lib/products';
+import { getTranslations } from 'src/locale/getTranslations';
+import Product from '../Product.astro';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.productsSection;
 
-const { sectionLabel, linkProducts, classes } = Astro.props;
-const data = await getProductsByLanguage(3, locale ?? AppLangEnum.PL);
+const { sectionLabel, linkProducts, classes, productCategory } = Astro.props;
 
-const products = data.languages.nodes.flatMap((n) =>
-  n.products.nodes.map((n) => ({
-    id: n.id,
-    image: `${API_URL}${n.heroPhoto.node.srcSet}`,
-    title: n.heroAltText,
-  }))
-);
+const maxListLength = 3;
+let data, products;
+if (!productCategory) {
+  data = await getProductsByLanguage(3, locale);
+  products = data.languages.nodes.flatMap((l) =>
+    l.products.nodes.flatMap((p) => ({
+      id: p.id,
+      image: p.heroPhoto.node.srcSet,
+      title: p.heroHeader,
+    })),
+  );
+} else {
+  data = await getProductsByCategory(productCategory);
+  products = data.productcategories.nodes
+    .flatMap((pn) => pn.products.nodes)
+    .filter((p) => {
+      if (p.languages.nodes.some((l) => l.slug === locale)) return true;
+      return false;
+    })
+    .map((p) => ({
+      id: p.id,
+      image: p.heroPhoto.node.srcSet,
+      title: p.heroHeader,
+    }))
+    .slice(0, maxListLength);
+}
 ---
 
 <style>
@@ -35,31 +52,28 @@ const products = data.languages.nodes.flatMap((n) =>
 
   .productsWrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 2rem;
     flex-wrap: wrap;
   }
 
   .linkWrapper {
+    display: block;
     width: 100%;
     text-align: center;
   }
 </style>
 
-<div class:list={[classes, "productSection"]}>
+<div class:list={[classes, 'productSection']}>
   {sectionLabel && <h2 class="secondaryTitle">{sectionLabel}</h2>}
   <div class="productsWrapper">
-    {
-      products.map((p) => (
-        <Product productId={p.id} image={p.image} title={p.title} />
-      ))
-    }
+    {products.map((p) => <Product productId={p.id} image={p.image} title={p.title} />)}
   </div>
   {
     linkProducts && (
-      <div class="linkWrapper">
+      <a href={getRelativeLocaleUrl(locale ?? '', `/offer`)} class="linkWrapper">
         <Button label={t.button} type="outline" />
-      </div>
+      </a>
     )
   }
 </div>

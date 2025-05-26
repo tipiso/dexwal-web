@@ -46,7 +46,10 @@
   "offerPage": {
     "pageTitle": "Oferta Dexwal",
     "pageHeading": "Sprawdź naszą ofertę sprzętu",
-    "headerAltImgText": "Strażak w kombinezonie"
+    "headerAltImgText": "Strażak w kombinezonie",
+    "platforms": "Platformy",
+    "other": "Inne produkty",
+    "brackets": "Wsporniki"
   },
   "contactPage": {
     "pageTitle": "Kontakt Dexwal",

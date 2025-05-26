@@ -46,7 +46,10 @@
   "offerPage": {
     "pageTitle": "Dexwal Offer",
     "pageHeading": "Check out our equipment offer",
-    "headerAltImgText": "Firefighter in a suit"
+    "headerAltImgText": "Firefighter in a suit",
+    "platforms": "Platforms",
+    "other": "Other products",
+    "brackets": "Brackets"
   },
   "contactPage": {
     "pageTitle": "Dexwal Contact",

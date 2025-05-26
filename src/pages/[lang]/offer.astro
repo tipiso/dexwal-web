@@ -1,8 +1,8 @@
 ---
-import ContactUsSection from "@components/ContactUsSection.astro";
-import ProductSection from "@components/HomePage/ProductSection.astro";
-import Layout from "@layouts/Layout.astro";
-import { AppLangEnum } from "@src/lib/types";
+import ContactUsSection from '@components/ContactUsSection.astro';
+import ProductSection from '@components/HomePage/ProductSection.astro';
+import Layout from '@layouts/Layout.astro';
+import { AppLangEnum, ProductCategoriesEnum } from '@src/lib/types';
 
 export async function getStaticPaths() {
   const supportedLocales = Object.values(AppLangEnum).map((l) => l);
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
     params: { lang },
   }));
 }
-import { getTranslations } from "@src/locale/getTranslations";
+import { getTranslations } from '@src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 const pageTitle = t.offerPage.pageTitle;
@@ -44,17 +44,13 @@ const pageTitle = t.offerPage.pageTitle;
 <Layout pageTitle={pageTitle}>
   <header class="headerWrapper sectionBreak">
     <h1 class="mainTitle">{t.offerPage.pageHeading}</h1>
-    <img
-      src="/images/offers-hero.avif"
-      alt={t.offerPage.headerAltImgText}
-      class="heroImg"
-    />
+    <img src="/images/offers-hero.avif" alt={t.offerPage.headerAltImgText} class="heroImg" />
   </header>
 
   <section class="sectionBreak">
-    <ProductSection sectionLabel="Platformy" />
-    <ProductSection sectionLabel="Wsporniki" />
-    <ProductSection sectionLabel="Inne produkty" />
+    <ProductSection sectionLabel={t.offerPage.platforms} productCategory={ProductCategoriesEnum.Platform} />
+    <ProductSection sectionLabel={t.offerPage.brackets} productCategory={ProductCategoriesEnum.Brackets} />
+    <ProductSection sectionLabel={t.offerPage.other} productCategory={ProductCategoriesEnum.Other} />
   </section>
 
   <ContactUsSection classes="sectionBreak" />

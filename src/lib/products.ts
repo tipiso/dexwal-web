@@ -1,66 +1,6 @@
 import api from "./api";
-import { AppLangEnum } from "./types";
-
-/** Products List Response */
-type Photo = {
-  srcSet: string;
-};
-
-type ProductListItem = {
-  id: string;
-  heroPhoto: { node: Photo };
-  heroAltText: string;
-};
-
-type Language = { node: { slug: string } };
-
-type ProductsResponse = {
-  languages: {
-    nodes: {
-      products: {
-        nodes: ProductListItem[];
-      };
-    }[];
-  };
-};
-
-/** Single Product Response */
-export interface SingleProductType {
-  id: string;
-  heroHeader: string;
-  heroAltText: string;
-  heroText: string;
-  introductionAltText: string;
-  introductionHeader: string;
-  introductionText: string;
-  introductionPhoto: SingleProductPhoto;
-  moreDetailsAltText: string;
-  moreDetailsHeader: string;
-  moreDetailsText: string;
-  moreDetailsPhoto: SingleProductPhoto | null;
-  heroPhoto: SingleProductPhoto;
-  language: Language;
-}
-
-export interface SingleProductPhoto {
-  node: {
-    id: string;
-    altText: string;
-    srcSet: string;
-    title: string;
-  };
-}
-
-export type LanguageByProducts = {
-  slug: AppLangEnum;
-  products: { nodes: SingleProductType[] };
-};
-
-type ProductsPathsPrefetchResponse = {
-  languages: {
-    nodes: LanguageByProducts[];
-  };
-};
+import { AppLangEnum, ProductCategoriesEnum } from "./types";
+import type {ProductsByCategoryResponse, ProductsPathsPrefetchResponse, ProductsResponse} from "./dtos";
 
 export const getProductsByLanguage = async (
   limit: number = 3,
@@ -74,6 +14,7 @@ export const getProductsByLanguage = async (
       products (first: ${limit}) {
         nodes {
           heroAltText
+          heroHeader
           id
           heroPhoto {
             node {
@@ -132,3 +73,30 @@ export const getProductsForPaths = async () => {
 }
 }`);
 };
+
+export const getProductsByCategory = async (category:ProductCategoriesEnum) => api.post<ProductsByCategoryResponse>(`
+  query QueryProductsByCategory {
+  productcategories(where: {slug: "${category}"}, first: 80) {
+    nodes {
+      slug
+      products(first: 80) {
+        nodes {
+          languages {
+            nodes {
+              slug
+            }
+          }
+          heroPhoto {
+            node {
+              srcSet
+            }
+          }
+          heroHeader
+          heroAltText
+          id
+        }
+      }
+    }
+  }
+}
+  `)

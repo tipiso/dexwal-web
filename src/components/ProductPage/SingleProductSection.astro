@@ -35,7 +35,7 @@ const { idx, header, text, photoSrcSet, photoAlt } = Astro.props;
       }
 
       &::before {
-        content: "";
+        content: '';
         grid-column-start: 1;
         grid-column-end: -1;
         height: var(--blanks-section-height);
@@ -51,7 +51,7 @@ const { idx, header, text, photoSrcSet, photoAlt } = Astro.props;
       }
 
       &::before {
-        content: "";
+        content: '';
         grid-column-start: 1;
         grid-column-end: -1;
         height: var(--blanks-section-height);
@@ -69,6 +69,7 @@ const { idx, header, text, photoSrcSet, photoAlt } = Astro.props;
     position: relative;
     flex-direction: column;
     justify-content: center;
+    overflow: hidden;
     background-color: var(--white-color);
     bottom: 200px;
   }
@@ -78,7 +79,7 @@ const { idx, header, text, photoSrcSet, photoAlt } = Astro.props;
   }
 </style>
 
-<section class:list={["productSection"]}>
+<section class:list={['productSection']}>
   <div class="firstGridChild">
     <img srcset={photoSrcSet} alt={photoAlt} />
   </div>
