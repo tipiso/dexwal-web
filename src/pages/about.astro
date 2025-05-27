@@ -1,25 +1,25 @@
 ---
-import ContactUsSection from "@components/ContactUsSection.astro";
-import ProductSection from "@components/HomePage/ProductSection.astro";
-import Layout from "@layouts/Layout.astro";
-import { getTranslations } from "@src/locale/getTranslations";
+import ContactUsSection from '@components/ContactUsSection.astro';
+import ProductSection from '@components/HomePage/ProductSection.astro';
+import Layout from '@layouts/Layout.astro';
+import { getTranslations } from '@src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
 const pageTitle = t.pageTitle;
 
 const keyAspects = [
   {
-    number: "1.",
+    number: '1.',
     title: t.keyAspect1.title,
     description: t.keyAspect1.text,
   },
   {
-    number: "2.",
+    number: '2.',
     title: t.keyAspect2.title,
     description: t.keyAspect2.text,
   },
   {
-    number: "3.",
+    number: '3.',
     title: t.keyAspect3.title,
     description: t.keyAspect3.text,
   },
@@ -130,8 +130,15 @@ const keyAspects = [
     color: var(--white-color);
   }
 
+  .products {
+    padding: 0 80px;
+  }
+
   /* Responsive */
   @media (max-width: 992px) {
+    .products {
+      padding: 0 24px;
+    }
     .heroContent,
     .middle-content,
     .aspects-grid {
@@ -166,11 +173,7 @@ const keyAspects = [
             </p>
           </div>
           <div>
-            <img
-              src="/images/about-company.avif"
-              alt={t.firstSection.sectionPhotoAlt}
-              class="building-image"
-            />
+            <img src="/images/about-company.avif" alt={t.firstSection.sectionPhotoAlt} class="building-image" />
           </div>
         </div>
       </div>
@@ -213,10 +216,7 @@ const keyAspects = [
     <ContactUsSection />
 
     <section class="products sectionBreak">
-      <ProductSection
-        sectionLabel={t.productSectionHeading}
-        linkProducts={true}
-      />
+      <ProductSection sectionLabel={t.productSectionHeading} linkProducts={true} maxVisibleByScreen={true} />
     </section>
   </main>
 </Layout>

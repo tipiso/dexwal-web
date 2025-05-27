@@ -1,7 +1,7 @@
 ---
-import Button from "@components/Button.astro";
+import Button from '@components/Button.astro';
 const { classes } = Astro.props;
-import { getTranslations } from "src/locale/getTranslations";
+import { getTranslations } from 'src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.contactUsSection;
 ---
@@ -12,7 +12,7 @@ const t = getTranslations(locale).components.contactUsSection;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 80px 0;
+    padding: 80px 24px;
     background-color: var(--primary-color);
     margin-top: -1px;
   }
@@ -28,7 +28,7 @@ const t = getTranslations(locale).components.contactUsSection;
   }
 </style>
 
-<section class:list={["contactSection", classes]}>
+<section class:list={['contactSection', classes]}>
   <h2 class="heading mainTitle">{t.heading}</h2>
   <p class="content bigText">
     {t.text}

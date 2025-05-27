@@ -1,9 +1,321 @@
 ---
+import Logo from './Logo.astro';
 
+// mobile-menu.astro
 ---
 
-<div class="hamburger">
-  <span class="line"></span>
-  <span class="line"></span>
-  <span class="line"></span>
+<div class="mobile-menu-overlay" id="mobileMenuOverlay">
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <Logo />
+      <button class="close-btn" id="closeMenuBtn">
+        <span>&times;</span>
+      </button>
+    </div>
+
+    <nav class="mobileNav">
+      <slot />
+    </nav>
+  </div>
 </div>
+
+<!-- Mobile menu trigger button (hamburger) -->
+<button class="mobile-menu-trigger" id="mobileMenuTrigger">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<style>
+  /* Mobile Menu Overlay */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background-color: #ffffff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+  }
+
+  .mobile-menu-overlay.active .mobile-menu {
+    transform: translateX(0);
+  }
+
+  /* Mobile Menu Header */
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d32f2f;
+    letter-spacing: 1px;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+  }
+
+  .close-btn:hover {
+    color: #333;
+  }
+
+  /* Navigation */
+  .mobileNav {
+    padding: 26px;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+    li a,
+    li select {
+      width: 100%;
+      display: block;
+      padding-top: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--light-gray-color);
+    }
+
+    li:last-of-type {
+      a {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    border-bottom: 1px solid #f5f5f5;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 18px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+  }
+
+  .nav-link:hover {
+    background-color: #f8f8f8;
+  }
+
+  .nav-link.active {
+    color: #d32f2f;
+    font-weight: 500;
+  }
+
+  /* Language Selector */
+  .language-selector {
+    position: relative;
+  }
+
+  .language-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s ease;
+  }
+
+  .language-btn:hover {
+    background-color: #f8f8f8;
+  }
+
+  .dropdown-arrow {
+    font-size: 12px;
+    transition: transform 0.2s ease;
+  }
+
+  .language-selector.active .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  .language-dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .language-selector.active .language-dropdown {
+    max-height: 150px;
+  }
+
+  .language-dropdown li a {
+    display: block;
+    padding: 12px 40px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+  }
+
+  .language-dropdown li a:hover {
+    background-color: #e8e8e8;
+  }
+
+  /* Mobile Menu Trigger (Hamburger) */
+  .mobile-menu-trigger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10000;
+  }
+
+  .mobile-menu-trigger span {
+    width: 100%;
+    height: 3px;
+    background-color: #333;
+    transition: all 0.3s ease;
+  }
+
+  .mobile-menu-trigger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .mobile-menu-trigger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-trigger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+  }
+
+  /* Responsive */
+  @media (min-width: 800px) {
+    .mobile-menu-trigger {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Mobile Menu JavaScript
+  document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuTrigger = document.getElementById('mobileMenuTrigger');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const languageBtn = document.getElementById('languageBtn');
+    const languageSelector = languageBtn?.parentElement;
+
+    // Open mobile menu
+    mobileMenuTrigger?.addEventListener('click', function () {
+      mobileMenuOverlay?.classList.add('active');
+      mobileMenuTrigger?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    // Close mobile menu
+    function closeMobileMenu() {
+      mobileMenuOverlay?.classList.remove('active');
+      mobileMenuTrigger?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    closeMenuBtn?.addEventListener('click', closeMobileMenu);
+
+    // Close menu when clicking overlay
+    mobileMenuOverlay?.addEventListener('click', function (e) {
+      if (e.target === mobileMenuOverlay) {
+        closeMobileMenu();
+      }
+    });
+
+    // Language dropdown toggle
+    languageBtn?.addEventListener('click', function (e) {
+      e.preventDefault();
+      languageSelector?.classList.toggle('active');
+    });
+
+    // Language selection
+    const languageLinks = document.querySelectorAll('[data-lang]');
+    languageLinks.forEach((link) => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const selectedLang = this.getAttribute('data-lang');
+        languageBtn.textContent = selectedLang.toUpperCase();
+        languageBtn.appendChild(document.createElement('span')).textContent = '▼';
+        languageBtn.lastChild.className = 'dropdown-arrow';
+        languageSelector?.classList.remove('active');
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+      }
+    });
+
+    // Close language dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+      if (!languageSelector?.contains(e.target)) {
+        languageSelector?.classList.remove('active');
+      }
+    });
+  });
+</script>

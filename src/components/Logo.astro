@@ -1,0 +1,7 @@
+---
+import CompanyLogo from '@assets/dexwal-logo.svg';
+const locale = Astro.currentLocale;
+import { getRelativeLocaleUrl } from 'astro:i18n';
+---
+
+<a href={getRelativeLocaleUrl(locale ?? '', '/')}><img src={CompanyLogo.src} alt="Dexwal Logo" /></a>

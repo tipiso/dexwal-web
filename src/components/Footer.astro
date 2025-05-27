@@ -1,23 +1,23 @@
 ---
-import WhiteLogo from "@assets/white-logo.svg";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { getTranslations } from "../locale/getTranslations";
+import WhiteLogo from '@assets/white-logo.svg';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getTranslations } from '../locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.footer;
 
 const navLinks = [
-  { label: t.homepage, href: "/" },
-  { label: t.offer, href: "/offer" },
-  { label: t.aboutUs, href: "/about" },
-  { label: t.contact, href: "/contact" },
+  { label: t.homepage, href: '/' },
+  { label: t.offer, href: '/offer' },
+  { label: t.aboutUs, href: '/about' },
+  { label: t.contact, href: '/contact' },
 ];
 
 const contactInfo = {
-  companyName: "DEXWAL",
-  addressLine1: "ul. Dobrowoda 12",
-  addressLine2: "28-100 Busko-Zdrój",
-  email: "ppoz@dexwal.com",
-  phone: "+48 41 378 70 11",
+  companyName: 'DEXWAL',
+  addressLine1: 'ul. Dobrowoda 12',
+  addressLine2: '28-100 Busko-Zdrój',
+  email: 'ppoz@dexwal.com',
+  phone: '+48 41 378 70 11',
   hours: t.hoursAvailable,
   copyright: t.copyright,
 };
@@ -101,6 +101,17 @@ const contactInfo = {
       padding-bottom: 6px;
     }
   }
+
+  @media (max-width: 1025px) {
+    .footer {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .footerNav {
+      display: none;
+    }
+  }
 </style>
 
 <footer class="footer">
@@ -126,10 +137,7 @@ const contactInfo = {
     <nav class="footerNav">
       {
         navLinks.map((link) => (
-          <a
-            href={getRelativeLocaleUrl(locale ?? "", link.href)}
-            class="menuText"
-          >
+          <a href={getRelativeLocaleUrl(locale ?? '', link.href)} class="menuText">
             {link.label}
           </a>
         ))

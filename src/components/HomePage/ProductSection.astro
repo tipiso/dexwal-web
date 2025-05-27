@@ -7,7 +7,7 @@ import Product from '../Product.astro';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.productsSection;
 
-const { sectionLabel, linkProducts, classes, productCategory, maxListLength = undefined } = Astro.props;
+const { sectionLabel, linkProducts, classes, productCategory, maxListLength = undefined, maxVisibleByScreen = false } = Astro.props;
 
 let data, products;
 if (!productCategory) {
@@ -81,7 +81,7 @@ if (!productCategory) {
 
 <div class:list={[classes, 'productSection']}>
   {sectionLabel && <h2 class="secondaryTitle">{sectionLabel}</h2>}
-  <div class:list={['productsWrapper']}>
+  <div class:list={['productsWrapper']} data-limit={maxVisibleByScreen ? 'true' : 'false'}>
     {products.map((p) => <Product productId={p.id} image={p.image} title={p.title} />)}
   </div>
   {
@@ -92,3 +92,28 @@ if (!productCategory) {
     )
   }
 </div>
+
+
+{maxVisibleByScreen && (
+  <script type="module">
+    const breakpoints = [
+      { maxWidth: 600, count: 1 },
+      { maxWidth: 800, count: 2 },
+      { maxWidth: Infinity, count: 3 },
+    ];
+
+    function updateVisibleProducts() {
+      const width = window.innerWidth;
+      const limit = breakpoints.find(b => width <= b.maxWidth).count;
+      document.querySelectorAll('.productsWrapper[data-limit="true"]').forEach(grid => {
+        const cards = grid.querySelectorAll('.product');
+        cards.forEach((card, index) => {
+          card.style.display = index < limit ? 'flex' : 'none';
+        });
+      });
+    }
+
+    window.addEventListener('resize', updateVisibleProducts);
+    window.addEventListener('DOMContentLoaded', updateVisibleProducts);
+  </script>
+)}

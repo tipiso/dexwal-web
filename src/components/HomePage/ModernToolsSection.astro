@@ -1,5 +1,5 @@
 ---
-import { getTranslations } from "../../locale/getTranslations";
+import { getTranslations } from '../../locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).homepage.modernToolsSection;
 ---
@@ -36,6 +36,19 @@ const t = getTranslations(locale).homepage.modernToolsSection;
   .imgWrapper {
     position: relative;
     bottom: 60px;
+  }
+
+  @media (max-width: 1025px) {
+    .modernToolsSection {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .content {
+      padding-top: 0;
+      padding: 0 24px;
+    }
   }
 </style>
 

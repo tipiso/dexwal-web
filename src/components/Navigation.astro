@@ -1,16 +1,17 @@
 ---
-import Link from "./Link.astro";
-import LanguageSwitcher from "./LanguageSwitcher.astro";
-import { getRelativeLocaleUrl } from "astro:i18n";
+import Link from './Link.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
-import { getTranslations } from "../locale/getTranslations";
-const locale = Astro.currentLocale ?? "";
+import { getTranslations } from '../locale/getTranslations';
+import Hamburger from './Hamburger.astro';
+const locale = Astro.currentLocale ?? '';
 const t = getTranslations(locale).components.navigation;
 
 const navLinks = [
-  { label: t.homepage, href: getRelativeLocaleUrl(locale, "/") },
-  { label: t.offer, href: getRelativeLocaleUrl(locale, "/offer") },
-  { label: t.aboutUs, href: getRelativeLocaleUrl(locale, "/about") },
+  { label: t.homepage, href: getRelativeLocaleUrl(locale, '/') },
+  { label: t.offer, href: getRelativeLocaleUrl(locale, '/offer') },
+  { label: t.aboutUs, href: getRelativeLocaleUrl(locale, '/about') },
 ];
 ---
 
@@ -25,10 +26,28 @@ const navLinks = [
       font-weight: 700;
     }
   }
+
+  @media (max-width: 800px) {
+    .nav-links {
+      display: none;
+    }
+  }
 </style>
+
+<Hamburger>
+  {
+    navLinks.map((link) => (
+      <li>
+        <Link href={link.href} label={link.label} />
+      </li>
+    ))
+  }
+  <li><LanguageSwitcher /></li>
+  <li><Link href={getRelativeLocaleUrl(locale, '/contact')} label={t.contact} /></li>
+</Hamburger>
 
 <div class="nav-links">
   {navLinks.map((link) => <Link href={link.href} label={link.label} />)}
   <LanguageSwitcher />
-  <Link href={getRelativeLocaleUrl(locale, "/contact")} label={t.contact} />
+  <Link href={getRelativeLocaleUrl(locale, '/contact')} label={t.contact} />
 </div>
