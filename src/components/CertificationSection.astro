@@ -2,6 +2,9 @@
 import Button from "./Button.astro";
 
 const { certificateUrl } = Astro.props;
+import { getTranslations } from "@src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).components.certificateSection;
 ---
 
 <style>
@@ -44,19 +47,19 @@ const { certificateUrl } = Astro.props;
   <div class="imgWrapper">
     <img
       src="/images/bg-certificate-img.avif"
-      alt="Przykładowe zdjęcie certyfikatu"
+      alt={t.certificateImgAltText}
       class="bgPicture"
     />
     <img
       src="/images/front-certificate-img.avif"
-      alt="Przykładowe zdjęcie certyfikatu"
+      alt={t.certificateImgAltText}
       class="frontPicture"
     />
   </div>
   <div class="content">
-    <h2 class="titleSecondary">Posiadamy rekomendacje CNBOP</h2>
+    <h2 class="titleSecondary">{t.heading}</h2>
     <a href={certificateUrl} target="_blank"
-      ><Button type="primary" label="Zobacz pełną dokumentację" /></a
+      ><Button type="primary" label={t.heading} /></a
     >
   </div>
 </section>
