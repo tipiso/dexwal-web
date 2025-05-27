@@ -1,0 +1,103 @@
+---
+import { getTranslations } from "@src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).aboutUsPage;
+
+const keyAspects = [
+  {
+    number: "1.",
+    title: t.keyAspect1.title,
+    description: t.keyAspect1.text,
+  },
+  {
+    number: "2.",
+    title: t.keyAspect2.title,
+    description: t.keyAspect2.text,
+  },
+  {
+    number: "3.",
+    title: t.keyAspect3.title,
+    description: t.keyAspect3.text,
+  },
+];
+---
+
+<style>
+  .keyAspectsSection {
+    padding: 100px;
+    background-color: var(--text-color);
+  }
+
+  .keyAspectsSection h2 {
+    margin-bottom: 56px;
+    color: var(--white-color);
+    text-align: left;
+  }
+
+  .aspectsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+  }
+
+  .aspectItem {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+  }
+
+  .aspectItem.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .aspectNumber {
+    font-weight: bold;
+    font-size: 90px;
+    color: var(--primary-color);
+    margin-bottom: 24px;
+  }
+
+  .aspectItem h3 {
+    color: var(--white-color);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .aspectItem p {
+    line-height: 1.6;
+    text-align: center;
+    color: var(--white-color);
+  }
+
+  @media (max-width: 1025px) {
+    .aspectsGrid {
+      grid-template-columns: 1fr;
+    }
+
+    .aspectsGrid {
+      gap: 20px;
+    }
+  }
+</style>
+
+<section class="keyAspectsSection">
+  <div>
+    <h2 class="mainTitle">{t.thirdSection.heading}</h2>
+
+    <div class="aspectsGrid">
+      {
+        keyAspects.map((aspect) => (
+          <div class="aspectItem">
+            <div class="aspectNumber">{aspect.number}</div>
+            <h3 class="secondaryTitle">{aspect.title}</h3>
+            <p class="primaryText">{aspect.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

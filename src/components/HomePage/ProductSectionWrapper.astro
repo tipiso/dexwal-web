@@ -1,0 +1,37 @@
+---
+import { getTranslations } from "@src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale);
+import ProductSection from "@components/HomePage/ProductSection.astro";
+---
+
+<style>
+  .secondaryTitle {
+    padding-bottom: 16px;
+  }
+
+  .productsSectionWrapper {
+    padding: 0 80px;
+  }
+
+  @media (max-width: 1200px) {
+    .productsSectionWrapper {
+      padding: 0 24px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .productsSectionWrapper {
+      padding: 0 24px;
+    }
+  }
+</style>
+
+<section class="sectionBreak productsSectionWrapper">
+  <h2 class="secondaryTitle">{t.homepage.heroHeading}</h2>
+  <p class="primaryText">
+    {t.homepage.heroContent}
+  </p>
+
+  <ProductSection maxVisibleByScreen={true} />
+</section>

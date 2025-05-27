@@ -1,0 +1,14 @@
+---
+import { getTranslations } from "@src/locale/getTranslations";
+import ProductSection from "../HomePage/ProductSection.astro";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).aboutUsPage;
+---
+
+<section class="products sectionBreak">
+  <ProductSection
+    sectionLabel={t.productSectionHeading}
+    linkProducts={true}
+    maxVisibleByScreen={true}
+  />
+</section>

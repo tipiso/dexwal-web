@@ -1,0 +1,60 @@
+---
+import { getTranslations } from "@src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).aboutUsPage;
+---
+
+<style>
+  .heroContent {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .heroText {
+    padding-right: 68px;
+    padding-left: 68px;
+
+    .mainTitle {
+      padding-bottom: 32px;
+    }
+  }
+
+  .buildingImage {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 40px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 1025px) {
+    .heroContent {
+      grid-template-columns: 1fr;
+    }
+
+    .heroContent {
+      gap: 30px;
+    }
+  }
+</style>
+
+<section class="hero-section">
+  <div class="container">
+    <div class="heroContent">
+      <div class="heroText">
+        <h1 class="mainTitle">{t.firstSection.sectionHeading}</h1>
+        <p class="bigText">
+          <b> {t.firstSection.sectionTextHighlight}</b>
+          {t.firstSection.sectionText}
+        </p>
+      </div>
+      <div>
+        <img
+          src="/images/about-company.avif"
+          alt={t.firstSection.sectionPhotoAlt}
+          class="building-image"
+        />
+      </div>
+    </div>
+  </div>
+</section>

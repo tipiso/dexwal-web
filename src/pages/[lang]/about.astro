@@ -1,9 +1,12 @@
 ---
-import ContactUsSection from '@components/ContactUsSection.astro';
-import ProductSection from '@components/HomePage/ProductSection.astro';
-import { AppLangEnum } from '@src/lib/types';
-import Layout from '@layouts/Layout.astro';
-import { getTranslations } from '@src/locale/getTranslations';
+import ContactUsSection from "@components/ContactUsSection.astro";
+import ProductsWrapper from "@components/AboutPage/ProductsWrapper.astro";
+import { AppLangEnum } from "@src/lib/types";
+import Layout from "@layouts/Layout.astro";
+import { getTranslations } from "@src/locale/getTranslations";
+import MiddleSection from "@src/components/AboutPage/MiddleSection.astro";
+import HeroSection from "@src/components/AboutPage/HeroSection.astro";
+import KeyAspectsSection from "@src/components/AboutPage/KeyAspectsSection.astro";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
 const pageTitle = t.pageTitle;
@@ -14,218 +17,18 @@ export async function getStaticPaths() {
     params: { lang },
   }));
 }
-
-const keyAspects = [
-  {
-    number: '1.',
-    title: t.keyAspect1.title,
-    description: t.keyAspect1.text,
-  },
-  {
-    number: '2.',
-    title: t.keyAspect2.title,
-    description: t.keyAspect2.text,
-  },
-  {
-    number: '3.',
-    title: t.keyAspect3.title,
-    description: t.keyAspect3.text,
-  },
-];
 ---
-
-<style>
-  /* Hero Section */
-  .heroContent {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-  }
-
-  .heroText {
-    padding-right: 68px;
-    padding-left: 68px;
-
-    .mainTitle {
-      padding-bottom: 32px;
-    }
-  }
-
-  .building-image {
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 40px;
-    object-fit: cover;
-  }
-
-  /* Middle Section */
-  .middleSection {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .middle-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .middleImg {
-    background-color: var(--text-color);
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  .middleText {
-    margin-top: auto;
-    padding: 25px 50px 0;
-    background-color: var(--text-color);
-
-    p {
-      color: var(--white-color);
-      padding-bottom: 25px;
-    }
-  }
-  /* Key Aspects Section */
-  .keyAspectsSection {
-    padding: 100px;
-    background-color: var(--text-color);
-  }
-
-  .keyAspectsSection h2 {
-    margin-bottom: 56px;
-    color: var(--white-color);
-    text-align: left;
-  }
-
-  .aspects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 80px;
-  }
-
-  .aspectItem {
-    text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-      opacity 0.6s ease,
-      transform 0.6s ease;
-  }
-
-  .aspectItem.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .aspectNumber {
-    font-weight: bold;
-    font-size: 90px;
-    color: var(--primary-color);
-    margin-bottom: 24px;
-  }
-
-  .aspectItem h3 {
-    color: var(--white-color);
-    margin-bottom: 16px;
-    text-align: center;
-  }
-
-  .aspectItem p {
-    line-height: 1.6;
-    text-align: center;
-    color: var(--white-color);
-  }
-
-  .products {
-    padding: 0 80px;
-  }
-
-  /* Responsive */
-  @media (max-width: 1025px) {
-    .products {
-      padding: 0 24px;
-    }
-
-    .heroContent,
-    .middle-content,
-    .aspects-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .heroContent {
-      gap: 30px;
-    }
-
-    .middleText {
-      padding: 40px 20px;
-    }
-
-    .aspects-grid {
-      gap: 20px;
-    }
-  }
-</style>
 
 <Layout pageTitle={pageTitle}>
   <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container">
-        <div class="heroContent">
-          <div class="heroText">
-            <h1 class="mainTitle">{t.firstSection.sectionHeading}</h1>
-            <p class="bigText">
-              <b> {t.firstSection.sectionTextHighlight}</b>
-              {t.firstSection.sectionText}
-            </p>
-          </div>
-          <div>
-            <img src="/images/about-company.avif" alt={t.firstSection.sectionPhotoAlt} class="building-image" />
-          </div>
-        </div>
-      </div>
-    </section>
+    <HeroSection />
 
-    <!-- Middle Section -->
-    <section class="middleSection">
-      <div class="middleImg">
-        <img src="/images/about-hose.avif" alt="Pracownik z wyposażeniem" />
-      </div>
-      <div class="middleText">
-        <p class="primaryText">
-          {t.secondSection.sectionFirstText}
-        </p>
-        <p class="primaryText">
-          {t.secondSection.sectionSecondText}
-        </p>
-      </div>
-    </section>
+    <MiddleSection />
 
-    <!-- Key Aspects Section -->
-    <section class="keyAspectsSection">
-      <div class="container">
-        <h2 class="mainTitle">{t.thirdSection.heading}</h2>
-
-        <div class="aspects-grid">
-          {
-            keyAspects.map((aspect) => (
-              <div class="aspectItem">
-                <div class="aspectNumber">{aspect.number}</div>
-                <h3 class="secondaryTitle">{aspect.title}</h3>
-                <p class="primaryText">{aspect.description}</p>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <KeyAspectsSection />
 
     <ContactUsSection />
 
-    <section class="products sectionBreak">
-      <ProductSection sectionLabel={t.productSectionHeading} linkProducts={true} maxVisibleByScreen={true} />
-    </section>
+    <ProductsWrapper />
   </main>
 </Layout>

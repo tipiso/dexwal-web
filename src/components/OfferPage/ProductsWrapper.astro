@@ -1,0 +1,41 @@
+---
+import ProductSection from "@components/HomePage/ProductSection.astro";
+
+import { ProductCategoriesEnum } from "@src/lib/types";
+import { getTranslations } from "@src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale);
+---
+
+<style>
+  .productsWrapper {
+    padding: 0 110px;
+  }
+
+  @media (max-width: 1025px) {
+    .productsWrapper {
+      padding: 0 55px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .productsWrapper {
+      padding: 0 24px;
+    }
+  }
+</style>
+
+<section class="productsWrapper sectionBreak">
+  <ProductSection
+    sectionLabel={t.offerPage.platforms}
+    productCategory={ProductCategoriesEnum.Platform}
+  />
+  <ProductSection
+    sectionLabel={t.offerPage.brackets}
+    productCategory={ProductCategoriesEnum.Brackets}
+  />
+  <ProductSection
+    sectionLabel={t.offerPage.other}
+    productCategory={ProductCategoriesEnum.Other}
+  />
+</section>

@@ -2,96 +2,23 @@
 import Layout from "@layouts/Layout.astro";
 import ContactDetails from "@components/ContactPage/ContactDetails.astro";
 import ContactSection from "@components/ContactPage/ContactSection.astro";
-
+import HeaderSection from "@components/ContactPage/HeaderSection.astro";
+import ContentWrapper from "@components/ContactPage/ContentWrapper.astro";
+import MapSection from "@components/ContactPage/MapSection.astro";
 import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 const pageTitle = t.homepage.pageTitle;
 ---
 
-<style>
-  .contentWrapper {
-    position: relative;
-  }
-
-  .contactHeader {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 80px;
-    background-color: var(--text-color);
-  }
-
-  .contactHeader h1 {
-    color: var(--white-color);
-    padding-bottom: 8px;
-  }
-
-  .contactHeader p {
-    color: var(--white-color);
-  }
-
-  /* Map Section */
-  .mapSection {
-    width: 100%;
-    height: 450px;
-  }
-
-  .mapContainer {
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Responsive */
-  @media (max-width: 992px) {
-    .contactContent {
-      grid-template-columns: 1fr;
-    }
-
-    .contactImage {
-      display: none;
-    }
-
-    .detailsContainer {
-      flex-direction: column;
-    }
-
-    .contactPerson {
-      margin-top: 20px;
-    }
-  }
-</style>
-
 <Layout title={pageTitle}>
-  <main class="contentWrapper">
-    <header class="contactHeader">
-      <div>
-        <h1 class="mainTitle">{t.contactPage.headerHeading}</h1>
-        <p class="primaryText">
-          {t.contactPage.headerText}
-        </p>
-      </div>
-      <div></div>
-    </header>
+  <ContentWrapper>
+    <HeaderSection />
 
     <ContactSection />
 
     <ContactDetails />
 
-    <!-- Google Maps Section -->
-    <section class="mapSection">
-      <div class="mapContainer">
-        <iframe
-          width="100%"
-          height="450"
-          frameborder="0"
-          scrolling="no"
-          marginheight="0"
-          marginwidth="0"
-          src="https://maps.google.com/maps?width=100%25&height=600&hl=en&q=28-100,%20Dobrowoda%2012%20%20+(Dexwal)&t=&z=14&ie=UTF8&iwloc=B&output=embed"
-        >
-        </iframe>
-      </div>
-    </section>
-  </main>
+    <MapSection />
+  </ContentWrapper>
 </Layout>

@@ -6,6 +6,7 @@ import CertificationSection from "@components/CertificationSection.astro";
 import ContactUsSection from "@components/ContactUsSection.astro";
 import ProductSection from "@components/HomePage/ProductSection.astro";
 import { getTranslations } from "src/locale/getTranslations";
+import ProductWrapper from "@src/components/ProductPage/ProductWrapper.astro";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).singleProductPage;
 
@@ -26,13 +27,6 @@ const { product, productsList } = Astro.props;
 const pageTitle = product.heroHeader;
 ---
 
-<style>
-  .productSectionWrapper {
-    display: flex;
-    flex-direction: column;
-  }
-</style>
-
 <Layout pageTitle={pageTitle}>
   {
     productsList.languages.nodes.map((n) => (
@@ -43,7 +37,7 @@ const pageTitle = product.heroHeader;
       </div>
     ))
   }
-  <main class="productSectionWrapper">
+  <ProductWrapper>
     <SingleProductSection
       idx={1}
       header={product.heroHeader}
@@ -80,5 +74,5 @@ const pageTitle = product.heroHeader;
       linkProducts={true}
       sectionLabel={t.productsSubsectionHeader}
     />
-  </main>
+  </ProductWrapper>
 </Layout>
