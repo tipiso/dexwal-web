@@ -7,14 +7,7 @@ import Product from '../Product.astro';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.productsSection;
 
-const {
-  sectionLabel,
-  linkProducts,
-  classes,
-  productsWrapperClasses,
-  productCategory,
-  maxListLength = undefined,
-} = Astro.props;
+const { sectionLabel, linkProducts, classes, productCategory, maxListLength = undefined } = Astro.props;
 
 let data, products;
 if (!productCategory) {
@@ -55,12 +48,10 @@ if (!productCategory) {
       margin: 30px auto 0;
     }
   }
-
   .productsWrapper {
-    display: flex;
-    justify-content: flex-start;
-    gap: 2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
   .linkWrapper {
@@ -74,11 +65,23 @@ if (!productCategory) {
       padding: 32px 0;
     }
   }
+
+  @media (max-width: 800px) {
+    .productsWrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .productsWrapper {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
 
 <div class:list={[classes, 'productSection']}>
   {sectionLabel && <h2 class="secondaryTitle">{sectionLabel}</h2>}
-  <div class:list={[productsWrapperClasses, 'productsWrapper']}>
+  <div class:list={['productsWrapper']}>
     {products.map((p) => <Product productId={p.id} image={p.image} title={p.title} />)}
   </div>
   {
