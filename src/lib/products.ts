@@ -4,7 +4,9 @@ import type {
   ProductsByCategoryResponse,
   ProductsPathsPrefetchResponse,
   ProductsResponse,
+  ContactFormDTO,
 } from "./dtos";
+import restApi from "./restApi";
 
 export const getProductsByLanguage = async (
   limit: number = 3,
@@ -106,3 +108,17 @@ export const getProductsByCategory = async (category: ProductCategoriesEnum) =>
   }
 }
   `);
+
+export async function sendContact(
+  formData: ContactFormDTO
+): Promise<{ success: boolean; message: string }> {
+  const data = await restApi.post<{ message: string }>(
+    "custom/v1/send-email",
+    formData
+  );
+
+  return {
+    success: true,
+    message: data.message || "Message sent successfully",
+  };
+}

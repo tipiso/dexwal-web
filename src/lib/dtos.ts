@@ -86,3 +86,10 @@ export type ProductCategoryNode = {
     }[];
   };
 };
+
+export type ContactFormDTO = {
+  name?: string;
+  phone?: string;
+  email: string;
+  message: string;
+};

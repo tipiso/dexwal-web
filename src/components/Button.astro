@@ -1,5 +1,5 @@
 ---
-const { label, type } = Astro.props;
+const { label, type, id } = Astro.props;
 ---
 
 <style>
@@ -38,4 +38,6 @@ const { label, type } = Astro.props;
   }
 </style>
 
-<button class:list={[`button buttonText ${type}`]} type="submit">{label}</button>
+<button id={id} class:list={[`button buttonText ${type}`]} type="submit"
+  >{label}</button
+>

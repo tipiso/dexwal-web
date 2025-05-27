@@ -91,7 +91,7 @@ const formFields = [
   }
 </style>
 
-<form id="contactForm" class="contactForm">
+<form id="contactForm" class="contactForm" method="POST">
   {
     formFields.map((field) => (
       <div class="formGroup">
@@ -132,38 +132,59 @@ const formFields = [
     </label>
   </div>
 
-  <Button label="Wyślij wiadomość" type="primary" />
+  <Button id="submitBtn" label="Wyślij wiadomość" type="primary" />
 </form>
 
-<script>
-  // Initialize Lucide icons
+<script type="module">
+  import { sendContact } from "/src/lib/products";
+
   document.addEventListener("DOMContentLoaded", () => {
-    // Character counter for textarea
+    const contactForm = document.getElementById("contactForm");
     const messageTextarea = document.querySelector("textarea[data-max-length]");
     const charCountElement = document.getElementById("charCount");
+    const submitButton = document.getElementById("submitBtn");
 
+    // Character counter
     if (messageTextarea && charCountElement) {
-      messageTextarea.addEventListener("input", function (e) {
-        const currentLength = this.value.length;
-        charCountElement.textContent = currentLength;
+      messageTextarea.addEventListener("input", function () {
+        charCountElement.textContent = this.value.length;
       });
     }
 
     // Form submission
-    const contactForm = document.getElementById("contactForm");
     if (contactForm) {
-      contactForm.addEventListener("submit", function (e) {
+      contactForm.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        // Here you would normally send the form data to a server
-        // For demonstration, we'll just show an alert
-        alert(
-          "Formularz został wysłany! W normalnych warunkach, dane zostałyby przesłane do serwera."
-        );
+        if (!submitButton) return;
 
-        // Reset form
-        this.reset();
-        if (charCountElement) charCountElement.textContent = "0";
+        // Extract values from form fields
+        const formData = new FormData(contactForm);
+
+        const dto = {
+          name: formData.get("name")?.toString() || "",
+          phone: formData.get("phone")?.toString() || "",
+          email: formData.get("email")?.toString() || "",
+          message: formData.get("message")?.toString() || "",
+        };
+
+        // Set loading state
+        submitButton.disabled = true;
+        const originalText = submitButton.textContent;
+        submitButton.textContent = "Sending...";
+
+        try {
+          const result = await sendContact(dto);
+          alert(result.message);
+          contactForm.reset();
+          if (charCountElement) charCountElement.textContent = "0";
+        } catch (err) {
+          alert("Failed to send message: " + err.message);
+        } finally {
+          // Reset button state
+          submitButton.disabled = false;
+          submitButton.textContent = originalText;
+        }
       });
     }
   });
