@@ -1,8 +1,8 @@
 ---
-import HeroImg from "@assets/hero-img.avif";
-import ArrowIcon from "@assets/arrow-icon.svg";
-import Button from "@components/Button.astro";
-import { getTranslations } from "../../locale/getTranslations";
+import HeroImg from '@assets/hero-img.avif';
+import ArrowIcon from '@assets/arrow-icon.svg';
+import Button from '@components/Button.astro';
+import { getTranslations } from '../../locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).homepage.hero;
 ---
@@ -11,6 +11,7 @@ const t = getTranslations(locale).homepage.hero;
   .hero {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     justify-content: end;
   }
 
@@ -71,6 +72,38 @@ const t = getTranslations(locale).homepage.hero;
     --max-content-width: 570px;
     width: 100%;
     max-width: var(--max-content-width);
+  }
+
+  @media (max-width: 1200px) {
+    .heroContentWrapper {
+      bottom: -30px;
+      min-height: auto;
+      padding: 40px 24px;
+    }
+
+    .scrollIndicator {
+      display: none;
+    }
+
+    .heroImg {
+      height: auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .heroContentWrapper {
+      position: relative;
+      /* transform: translateY(-50%); */
+      bottom: 0;
+      order: 2;
+      min-height: auto;
+      padding: 40px 24px;
+    }
+
+    .bigText {
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
   }
 </style>
 

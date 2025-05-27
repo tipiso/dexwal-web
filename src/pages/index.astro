@@ -1,12 +1,12 @@
 ---
-import ContactUsSection from "@components/ContactUsSection.astro";
-import HeroSection from "@components/HomePage/HeroSection.astro";
-import ModernToolsSection from "@components/HomePage/ModernToolsSection.astro";
-import ProductSection from "@components/HomePage/ProductSection.astro";
-import WhyUsSection from "@components/HomePage/WhyUsSection.astro";
-import Layout from "@layouts/Layout.astro";
+import ContactUsSection from '@components/ContactUsSection.astro';
+import HeroSection from '@components/HomePage/HeroSection.astro';
+import ModernToolsSection from '@components/HomePage/ModernToolsSection.astro';
+import ProductSection from '@components/HomePage/ProductSection.astro';
+import WhyUsSection from '@components/HomePage/WhyUsSection.astro';
+import Layout from '@layouts/Layout.astro';
 
-import { getTranslations } from "@src/locale/getTranslations";
+import { getTranslations } from '@src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 const pageTitle = t.homepage.pageTitle;
@@ -16,12 +16,28 @@ const pageTitle = t.homepage.pageTitle;
   .secondaryTitle {
     padding-bottom: 16px;
   }
+
+  .productsSectionWrapper {
+    padding: 0 80px;
+  }
+
+  @media (max-width: 1200px) {
+    .productsSectionWrapper {
+      padding: 0 24px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .productsSectionWrapper {
+      padding: 0 24px;
+    }
+  }
 </style>
 
 <Layout pageTitle={pageTitle} language="pl">
   <HeroSection />
 
-  <section class="sectionBreak">
+  <section class="sectionBreak productsSectionWrapper">
     <h2 class="secondaryTitle">{t.homepage.heroHeading}</h2>
     <p class="primaryText">
       {t.homepage.heroContent}

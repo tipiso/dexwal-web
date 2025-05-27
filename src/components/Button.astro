@@ -30,6 +30,12 @@ const { label, type } = Astro.props;
     border: 1px solid var(--black-color);
     background-color: transparent;
   }
+
+  @media (max-width: 600px) {
+    .button {
+      padding: 16px 40px;
+    }
+  }
 </style>
 
 <button class:list={[`button buttonText ${type}`]} type="submit">{label}</button>

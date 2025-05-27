@@ -10,6 +10,17 @@
   --max-width: 1440px;
   --font-family: "Roboto", "Montserrat", sans-serif;
   --section-break: 100px;
+  /** Breakpoints */
+  --xl-breakpoint: 1200px;
+  --lg-breakpoints: 1025px;
+  --md-breakpoint: 801px;
+  --sm-breakpoint: 600px;
+  --xs-breakpoint: 480px;
+  --xxs-breakpoints: 320px;
+
+  @media (max-width: 600px) {
+    --section-break: 80px;
+   }
 }
 
 /** Reset - start */
@@ -155,6 +166,63 @@ body {
   font-size: 14px;
   line-height: 130%;
 }
+
+@media (max-width: 600px) {
+  .mainTitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    line-height: 120%;
+    font-size: 26px;
+  }
+  
+  .secondaryTitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    line-height: 120%;
+    font-size: 20px;
+  }
+  
+  .smallTitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    line-height: 120%;
+    font-size: 20px;
+  }
+  
+  /** Roboto */
+  .bigText {
+    font-family: "Roboto", sans-serif;
+    line-height: 140%;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  
+  .primaryText {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    line-height: 130%;
+  }
+  
+  .buttonText {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    line-height: 130%;
+  }
+  
+  .menuText {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    line-height: 130%;
+  }
+  
+  .smallerText {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    line-height: 130%;
+  }
+  
+}
+
 /** Typography End */
 .sectionBreak {
   margin-bottom: var(--section-break);
