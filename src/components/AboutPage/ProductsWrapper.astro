@@ -5,7 +5,14 @@ const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
 ---
 
-<section class="products sectionBreak">
+<style>
+  @media (max-width: 1025px) {
+    .ProductSection {
+      padding: 40px 32px;
+    }
+  }
+</style>
+<section class="products ProductSection sectionBreak">
   <ProductSection
     sectionLabel={t.productSectionHeading}
     linkProducts={true}
