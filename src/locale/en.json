@@ -105,6 +105,7 @@
   "singleProductPage": {
     "productsSubsectionHeader": "See what products we offer"
   },
+  "privacyPolicy": "Privacy Policy",
   "components": {
     "certificateSection": {
       "certificateImgAltText": "Sample certificate photo",

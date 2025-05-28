@@ -1,0 +1,16 @@
+---
+import { getPrivacyPolicies } from "@src/lib/privacyPolicies";
+import { AppLangEnum } from "@src/lib/types";
+import Layout from "@layouts/Layout.astro";
+const { privacyPolicies } = await getPrivacyPolicies();
+const polishPrivacyPolicy = privacyPolicies.nodes.find((n) =>
+  n.slug.includes(AppLangEnum.PL)
+);
+import { getTranslations } from "@src/locale/getTranslations";
+const locale = Astro.currentLocale;
+const privacyPolicyPageTitle = getTranslations(locale).privacyPolicy;
+---
+
+<Layout pageTitle={privacyPolicyPageTitle}>
+  <div set:html={polishPrivacyPolicy?.content} class="privacyPolicy" />
+</Layout>

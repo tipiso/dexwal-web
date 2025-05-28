@@ -82,12 +82,13 @@ const { header, text, photoSrcSet, photoAlt } = Astro.props;
   .secondGridChild {
     padding: 100px 80px;
   }
+
   @media (max-width: 1025px) {
     .productSection {
       grid-template-columns: 1fr;
       gap: 40px;
-      padding-bottom: 68px;
-      --blanks-section-height: 32px;
+      padding-bottom: 0;
+      --blanks-section-height: 0;
     }
 
     .secondGridChild {
@@ -100,7 +101,10 @@ const { header, text, photoSrcSet, photoAlt } = Astro.props;
     .firstGridChild {
       width: 100%;
       bottom: 0;
-      order: -1;
+      order: 1;
+      border-top-left-radius: 0 !important;
+      border-top-right-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
     }
   }
 </style>

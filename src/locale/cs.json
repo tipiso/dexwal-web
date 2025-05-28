@@ -105,6 +105,7 @@
   "singleProductPage": {
     "productsSubsectionHeader": "Podívejte se, jaké produkty máme v nabídce"
   },
+  "privacyPolicy": "Zásady ochrany osobních údajů",
   "components": {
     "certificateSection": {
       "certificateImgAltText": "Ukázková fotografie certifikátu",

@@ -95,7 +95,7 @@ export type ContactFormDTO = {
 };
 
 export type PrivacyPoliciesResponse = {
-  privacyPolicies: PrivacyPolicy[];
+  privacyPolicies: { nodes: PrivacyPolicy[] };
 };
 
 export type PrivacyPolicy = {
