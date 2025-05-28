@@ -30,15 +30,21 @@ const t = getTranslations(locale).aboutUsPage;
   @media (max-width: 1025px) {
     .heroContent {
       grid-template-columns: 1fr;
+      gap: 40px;
+      padding-bottom: 68px;
+    }
+    .heroText {
+      padding-right: 32px;
+      padding-left: 32px;
     }
 
-    .heroContent {
-      gap: 30px;
+    .buildingImageWrapper {
+      order: -1;
     }
   }
 </style>
 
-<section class="hero-section">
+<section class="heroSection">
   <div class="container">
     <div class="heroContent">
       <div class="heroText">
@@ -48,11 +54,11 @@ const t = getTranslations(locale).aboutUsPage;
           {t.firstSection.sectionText}
         </p>
       </div>
-      <div>
+      <div class="buildingImageWrapper">
         <img
           src="/images/about-company.avif"
           alt={t.firstSection.sectionPhotoAlt}
-          class="building-image"
+          class="buildingImage"
         />
       </div>
     </div>

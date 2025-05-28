@@ -32,8 +32,13 @@ const t = getTranslations(locale).aboutUsPage;
   }
 
   @media (max-width: 1025px) {
+    .middleSection {
+      grid-template-columns: 1fr;
+    }
+
     .middleText {
-      padding: 40px 20px;
+      order: -1;
+      padding: 40px 32px;
     }
   }
 </style>
