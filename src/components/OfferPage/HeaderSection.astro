@@ -1,5 +1,5 @@
 ---
-import { getTranslations } from "@src/locale/getTranslations";
+import { getTranslations } from '@src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 ---
@@ -28,14 +28,6 @@ const t = getTranslations(locale);
     object-position: top;
   }
 
-  @media (max-width: 1025px) {
-    .mainTitle {
-      position: relative;
-      width: 100%;
-      padding: 40px 0;
-    }
-  }
-
   @media (max-width: 600px) {
     .headerWrapper {
       flex-direction: column;
@@ -50,13 +42,16 @@ const t = getTranslations(locale);
       padding: 24px 32px;
     }
   }
+
+  @media (max-width: 1025px) {
+    .mainTitle {
+      width: 100%;
+      padding: 40px 0;
+    }
+  }
 </style>
 
 <header class="headerWrapper sectionBreak">
   <h1 class="mainTitle">{t.offerPage.pageHeading}</h1>
-  <img
-    src="/images/offers-hero.avif"
-    alt={t.offerPage.headerAltImgText}
-    class="heroImg"
-  />
+  <img src="/images/offers-hero.avif" alt={t.offerPage.headerAltImgText} class="heroImg" />
 </header>

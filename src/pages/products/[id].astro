@@ -27,13 +27,6 @@ const { product, productsList } = Astro.props;
 const pageTitle = product.heroHeader;
 ---
 
-<style>
-  .productSectionWrapper {
-    display: flex;
-    flex-direction: column;
-  }
-</style>
-
 <Layout pageTitle={pageTitle}>
   {
     productsList.languages.nodes.map((n) => (
