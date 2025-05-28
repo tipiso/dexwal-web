@@ -93,3 +93,13 @@ export type ContactFormDTO = {
   email: string;
   message: string;
 };
+
+export type PrivacyPoliciesResponse = {
+  privacyPolicies: PrivacyPolicy[];
+};
+
+export type PrivacyPolicy = {
+  content: string;
+  id: string;
+  slug: string;
+};
