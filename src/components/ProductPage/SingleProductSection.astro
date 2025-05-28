@@ -82,6 +82,27 @@ const { header, text, photoSrcSet, photoAlt } = Astro.props;
   .secondGridChild {
     padding: 100px 80px;
   }
+  @media (max-width: 1025px) {
+    .productSection {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding-bottom: 68px;
+      --blanks-section-height: 32px;
+    }
+
+    .secondGridChild {
+      padding-right: 32px;
+      padding-left: 32px;
+      padding-bottom: 32px;
+      padding-top: 32px;
+    }
+
+    .firstGridChild {
+      width: 100%;
+      bottom: 0;
+      order: -1;
+    }
+  }
 </style>
 
 <section class:list={["productSection"]}>
