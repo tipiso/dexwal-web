@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 const { pageTitle } = Astro.props;
 import '../styles/global.css';
+import Toast from '@src/components/Toast.astro';
 const locale = Astro.currentLocale;
 const currLang = locale ? locale : AppLangEnum.PL;
 ---
@@ -21,23 +22,13 @@ const currLang = locale ? locale : AppLangEnum.PL;
     <Header />
     <slot />
     <Footer />
+    <Toast />
   </body>
 </html>
 
 <script>
   // Vanilla JavaScript for animations
   document.addEventListener('DOMContentLoaded', () => {
-    const width = document.documentElement.getBoundingClientRect().width;
-
-    switch (true) {
-      case width <= 320:
-      case width <= 480:
-      case width <= 600:
-      case width <= 801:
-      case width <= 1025:
-      case width <= 1200:
-    }
-
     // Animate elements when they come into view
     const observer = new IntersectionObserver(
       (entries) => {

@@ -1,5 +1,5 @@
 ---
-import { getTranslations } from "@src/locale/getTranslations";
+import { getTranslations } from '@src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 ---
@@ -20,6 +20,19 @@ const t = getTranslations(locale);
 
   .contactHeader p {
     color: var(--white-color);
+  }
+
+  @media (max-width: 1200px) {
+    .contactHeader {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contactHeader {
+      padding: 32px;
+    }
   }
 </style>
 

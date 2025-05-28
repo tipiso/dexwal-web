@@ -38,7 +38,13 @@ const pageTitle = t.offerPage.pageTitle;
     padding: 0 110px;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 1025px) {
+    .mainTitle {
+      padding: 40px;
+    }
+  }
+
+  @media (max-width: 800px) {
     .headerWrapper {
       flex-direction: column;
     }
@@ -52,6 +58,7 @@ const pageTitle = t.offerPage.pageTitle;
       bottom: 0;
       position: relative;
       padding: 24px 32px;
+      width: auto;
     }
   }
 </style>

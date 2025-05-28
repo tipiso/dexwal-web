@@ -1,37 +1,37 @@
 ---
-import Button from "@components/Button.astro";
-import { getTranslations } from "src/locale/getTranslations";
+import Button from '@components/Button.astro';
+import { getTranslations } from 'src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).contactPage.contactForm;
 
 // Form fields array
 const formFields = [
   {
-    id: "name",
+    id: 'name',
     label: t.name,
-    type: "text",
-    placeholder: "",
+    type: 'text',
+    placeholder: '',
     required: false,
   },
   {
-    id: "phone",
+    id: 'phone',
     label: t.phone,
-    type: "tel",
-    placeholder: "",
+    type: 'tel',
+    placeholder: '',
     required: false,
   },
   {
-    id: "email",
+    id: 'email',
     label: t.email,
-    type: "email",
-    placeholder: "",
+    type: 'email',
+    placeholder: '',
     required: true,
   },
   {
-    id: "message",
+    id: 'message',
     label: t.message,
-    type: "textarea",
-    placeholder: "",
+    type: 'textarea',
+    placeholder: '',
     required: true,
     maxLength: 400,
   },
@@ -98,7 +98,7 @@ const formFields = [
         <label for={field.id} class="smallerText">
           {field.label} {field.required && <span class="required">*</span>}
         </label>
-        {field.type === "textarea" ? (
+        {field.type === 'textarea' ? (
           <textarea
             id={field.id}
             name={field.id}
@@ -116,7 +116,7 @@ const formFields = [
             required={field.required}
           />
         )}
-        {field.type === "textarea" && (
+        {field.type === 'textarea' && (
           <div class="charCounter smallerText">
             <span id="charCount">0</span>/{field.maxLength}
           </div>
@@ -136,24 +136,25 @@ const formFields = [
 </form>
 
 <script type="module">
-  import { sendContact } from "/src/lib/products";
+  import { sendContact } from '/src/lib/products';
+  import { showToast } from '/src/lib/toast';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const contactForm = document.getElementById("contactForm");
-    const messageTextarea = document.querySelector("textarea[data-max-length]");
-    const charCountElement = document.getElementById("charCount");
-    const submitButton = document.getElementById("submitBtn");
+  document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    const messageTextarea = document.querySelector('textarea[data-max-length]');
+    const charCountElement = document.getElementById('charCount');
+    const submitButton = document.getElementById('submitBtn');
 
     // Character counter
     if (messageTextarea && charCountElement) {
-      messageTextarea.addEventListener("input", function () {
+      messageTextarea.addEventListener('input', function () {
         charCountElement.textContent = this.value.length;
       });
     }
 
     // Form submission
     if (contactForm) {
-      contactForm.addEventListener("submit", async function (e) {
+      contactForm.addEventListener('submit', async function (e) {
         e.preventDefault();
 
         if (!submitButton) return;
@@ -162,24 +163,25 @@ const formFields = [
         const formData = new FormData(contactForm);
 
         const dto = {
-          name: formData.get("name")?.toString() || "",
-          phone: formData.get("phone")?.toString() || "",
-          email: formData.get("email")?.toString() || "",
-          message: formData.get("message")?.toString() || "",
+          name: formData.get('name')?.toString() || '',
+          phone: formData.get('phone')?.toString() || '',
+          email: formData.get('email')?.toString() || '',
+          message: formData.get('message')?.toString() || '',
         };
 
         // Set loading state
         submitButton.disabled = true;
         const originalText = submitButton.textContent;
-        submitButton.textContent = "Sending...";
+        submitButton.textContent = 'Sending...';
 
+        let result;
         try {
-          const result = await sendContact(dto);
-          alert(result.message);
+          result = await sendContact(dto);
+          showToast(result);
           contactForm.reset();
-          if (charCountElement) charCountElement.textContent = "0";
+          if (charCountElement) charCountElement.textContent = '0';
         } catch (err) {
-          alert("Failed to send message: " + err.message);
+          showToast(result, 'error');
         } finally {
           // Reset button state
           submitButton.disabled = false;

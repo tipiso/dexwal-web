@@ -1,20 +1,20 @@
 ---
-import { getTranslations } from "src/locale/getTranslations";
+import { getTranslations } from 'src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).contactPage.contactDetailsSection;
 
 const contactDetails = [
   {
     label: t.address,
-    lines: ["ul. Dąbrowska 12", "28-100 Busko-Zdrój"],
+    lines: ['ul. Dąbrowska 12', '28-100 Busko-Zdrój'],
   },
   {
     label: t.email,
-    lines: ["poczta@dexwal.com"],
+    lines: ['poczta@dexwal.com'],
   },
   {
     label: t.telephone,
-    lines: ["+48 41 378 70 11"],
+    lines: ['+48 41 378 70 11'],
   },
   {
     label: t.workHours,
@@ -41,6 +41,12 @@ const contactDetails = [
   .detailItem {
     display: flex;
     margin-bottom: 8px;
+  }
+
+  @media (max-width: 600px) {
+    .contactDataSection {
+      padding: 32px;
+    }
   }
 </style>
 

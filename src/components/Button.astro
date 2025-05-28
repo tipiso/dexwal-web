@@ -31,13 +31,19 @@ const { label, type, id } = Astro.props;
     background-color: transparent;
   }
 
+  .button:disabled,
+  .button[disabled] {
+    background-color: var(--light-gray-color);
+    color: var(--gray-color);
+    border-color: var(--gray-color);
+  }
+
   @media (max-width: 600px) {
     .button {
       padding: 16px 40px;
+      width: 100%;
     }
   }
 </style>
 
-<button id={id} class:list={[`button buttonText ${type}`]} type="submit"
-  >{label}</button
->
+<button id={id} class:list={[`button buttonText ${type}`]} type="submit">{label}</button>
