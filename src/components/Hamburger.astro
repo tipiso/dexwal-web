@@ -1,5 +1,5 @@
 ---
-import Logo from './Logo.astro';
+import Logo from "./Logo.astro";
 
 // mobile-menu.astro
 ---
@@ -89,7 +89,7 @@ import Logo from './Logo.astro';
   .close-btn {
     background: none;
     border: none;
-    font-size: 24px;
+    font-size: 64px;
     color: #666;
     cursor: pointer;
     padding: 5px;
@@ -261,66 +261,67 @@ import Logo from './Logo.astro';
 
 <script>
   // Mobile Menu JavaScript
-  document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenuTrigger = document.getElementById('mobileMenuTrigger');
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-    const languageBtn = document.getElementById('languageBtn');
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileMenuTrigger = document.getElementById("mobileMenuTrigger");
+    const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+    const closeMenuBtn = document.getElementById("closeMenuBtn");
+    const languageBtn = document.getElementById("languageBtn");
     const languageSelector = languageBtn?.parentElement;
 
     // Open mobile menu
-    mobileMenuTrigger?.addEventListener('click', function () {
-      mobileMenuOverlay?.classList.add('active');
-      mobileMenuTrigger?.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    mobileMenuTrigger?.addEventListener("click", function () {
+      mobileMenuOverlay?.classList.add("active");
+      mobileMenuTrigger?.classList.add("active");
+      document.body.style.overflow = "hidden";
     });
 
     // Close mobile menu
     function closeMobileMenu() {
-      mobileMenuOverlay?.classList.remove('active');
-      mobileMenuTrigger?.classList.remove('active');
-      document.body.style.overflow = '';
+      mobileMenuOverlay?.classList.remove("active");
+      mobileMenuTrigger?.classList.remove("active");
+      document.body.style.overflow = "";
     }
 
-    closeMenuBtn?.addEventListener('click', closeMobileMenu);
+    closeMenuBtn?.addEventListener("click", closeMobileMenu);
 
     // Close menu when clicking overlay
-    mobileMenuOverlay?.addEventListener('click', function (e) {
+    mobileMenuOverlay?.addEventListener("click", function (e) {
       if (e.target === mobileMenuOverlay) {
         closeMobileMenu();
       }
     });
 
     // Language dropdown toggle
-    languageBtn?.addEventListener('click', function (e) {
+    languageBtn?.addEventListener("click", function (e) {
       e.preventDefault();
-      languageSelector?.classList.toggle('active');
+      languageSelector?.classList.toggle("active");
     });
 
     // Language selection
-    const languageLinks = document.querySelectorAll('[data-lang]');
+    const languageLinks = document.querySelectorAll("[data-lang]");
     languageLinks.forEach((link) => {
-      link.addEventListener('click', function (e) {
+      link.addEventListener("click", function (e) {
         e.preventDefault();
-        const selectedLang = this.getAttribute('data-lang');
+        const selectedLang = this.getAttribute("data-lang");
         languageBtn.textContent = selectedLang.toUpperCase();
-        languageBtn.appendChild(document.createElement('span')).textContent = '▼';
-        languageBtn.lastChild.className = 'dropdown-arrow';
-        languageSelector?.classList.remove('active');
+        languageBtn.appendChild(document.createElement("span")).textContent =
+          "▼";
+        languageBtn.lastChild.className = "dropdown-arrow";
+        languageSelector?.classList.remove("active");
       });
     });
 
     // Close menu on escape key
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') {
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
         closeMobileMenu();
       }
     });
 
     // Close language dropdown when clicking outside
-    document.addEventListener('click', function (e) {
+    document.addEventListener("click", function (e) {
       if (!languageSelector?.contains(e.target)) {
-        languageSelector?.classList.remove('active');
+        languageSelector?.classList.remove("active");
       }
     });
   });

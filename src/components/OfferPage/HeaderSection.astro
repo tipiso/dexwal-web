@@ -1,5 +1,5 @@
 ---
-import { getTranslations } from '@src/locale/getTranslations';
+import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 ---
@@ -26,6 +26,7 @@ const t = getTranslations(locale);
   .heroImg {
     object-fit: cover;
     object-position: top;
+    border-top-left-radius: 40px;
   }
 
   @media (max-width: 600px) {
@@ -53,5 +54,9 @@ const t = getTranslations(locale);
 
 <header class="headerWrapper sectionBreak">
   <h1 class="mainTitle">{t.offerPage.pageHeading}</h1>
-  <img src="/images/offers-hero.avif" alt={t.offerPage.headerAltImgText} class="heroImg" />
+  <img
+    src="/images/offers-hero.avif"
+    alt={t.offerPage.headerAltImgText}
+    class="heroImg"
+  />
 </header>
