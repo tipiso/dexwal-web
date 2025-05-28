@@ -41,6 +41,33 @@ const t = getTranslations(locale).components.certificateSection;
       padding-bottom: 16px;
     }
   }
+
+  @media (max-width: 1025px) {
+    .certificationSection {
+      grid-template-columns: 1fr;
+    }
+
+    .content {
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 40px;
+      order: -1;
+    }
+
+    .imgWrapper {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .certificationSection {
+      padding-top: 32px;
+    }
+    .content {
+      padding-right: 32px;
+      padding-left: 32px;
+    }
+  }
 </style>
 
 <section class="certificationSection">

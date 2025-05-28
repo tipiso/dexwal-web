@@ -6,8 +6,11 @@ import ProductSection from "@components/HomePage/ProductSection.astro";
 ---
 
 <style>
-  .secondaryTitle {
+  .secondaryTitle,
+  .primaryText {
     padding-bottom: 16px;
+    padding-left: 80px;
+    padding-right: 80px;
   }
 
   .productsSectionWrapper {
@@ -16,13 +19,13 @@ import ProductSection from "@components/HomePage/ProductSection.astro";
 
   @media (max-width: 1200px) {
     .productsSectionWrapper {
-      padding: 0 24px;
+      padding: 0;
     }
-  }
 
-  @media (max-width: 600px) {
-    .productsSectionWrapper {
-      padding: 0 24px;
+    .secondaryTitle,
+    .primaryText {
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
 </style>
