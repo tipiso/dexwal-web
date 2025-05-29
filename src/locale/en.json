@@ -69,7 +69,9 @@
       "phone": "Phone",
       "email": "E-mail",
       "message": "Message",
-      "privacy": "I declare that I have read the information regarding the processing of my personal data and agree to the Privacy Policy."
+      "privacy": "I declare that I have read the information regarding the processing of my personal data and agree to the Privacy Policy.",
+      "sendButtonLabel": "Send Message"
+    
     }
   },
   "aboutUsPage": {

@@ -69,7 +69,8 @@
       "phone": "Telefon",
       "email": "E-mail",
       "message": "Zpráva",
-      "privacy": "Prohlašuji, že jsem se seznámil/a s informacemi o zpracování mých osobních údajů a souhlasím s Zásadami ochrany osobních údajů."
+      "privacy": "Prohlašuji, že jsem se seznámil/a s informacemi o zpracování mých osobních údajů a souhlasím s Zásadami ochrany osobních údajů.",
+      "sendButtonLabel": "Odeslat Zprávu"
     }
   },
   "aboutUsPage": {

@@ -1,37 +1,37 @@
 ---
-import Button from '@components/Button.astro';
-import { getTranslations } from 'src/locale/getTranslations';
+import Button from "@components/Button.astro";
+import { getTranslations } from "src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).contactPage.contactForm;
 
 // Form fields array
 const formFields = [
   {
-    id: 'name',
+    id: "name",
     label: t.name,
-    type: 'text',
-    placeholder: '',
+    type: "text",
+    placeholder: "",
     required: false,
   },
   {
-    id: 'phone',
+    id: "phone",
     label: t.phone,
-    type: 'tel',
-    placeholder: '',
+    type: "tel",
+    placeholder: "",
     required: false,
   },
   {
-    id: 'email',
+    id: "email",
     label: t.email,
-    type: 'email',
-    placeholder: '',
+    type: "email",
+    placeholder: "",
     required: true,
   },
   {
-    id: 'message',
+    id: "message",
     label: t.message,
-    type: 'textarea',
-    placeholder: '',
+    type: "textarea",
+    placeholder: "",
     required: true,
     maxLength: 400,
   },
@@ -98,7 +98,7 @@ const formFields = [
         <label for={field.id} class="smallerText">
           {field.label} {field.required && <span class="required">*</span>}
         </label>
-        {field.type === 'textarea' ? (
+        {field.type === "textarea" ? (
           <textarea
             id={field.id}
             name={field.id}
@@ -116,7 +116,7 @@ const formFields = [
             required={field.required}
           />
         )}
-        {field.type === 'textarea' && (
+        {field.type === "textarea" && (
           <div class="charCounter smallerText">
             <span id="charCount">0</span>/{field.maxLength}
           </div>
@@ -132,7 +132,7 @@ const formFields = [
     </label>
   </div>
 
-  <Button id="submitBtn" label="Wyślij wiadomość" type="primary" />
+  <Button id="submitBtn" label={t.sendButtonLabel} type="primary" />
 </form>
 
-<script type="module" src="/src/lib/contactForm.ts"></script>
+<script type="module" src="../../src/lib/contactForm.ts"></script>

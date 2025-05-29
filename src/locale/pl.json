@@ -69,7 +69,8 @@
       "phone": "Telefon",
       "email": "E-mail",
       "message": "Wiadomość",
-      "privacy": "Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania moich danych osobowych i zgadzam z Polityką prywatności."
+      "privacy": "Oświadczam, że zapoznałem/am się z informacją dotyczącą przetwarzania moich danych osobowych i zgadzam z Polityką prywatności.",
+      "sendButtonLabel": "Wyślij Wiadomość"
     }
   },
   "aboutUsPage": {
