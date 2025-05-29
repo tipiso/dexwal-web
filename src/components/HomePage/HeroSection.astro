@@ -1,8 +1,9 @@
 ---
-import HeroImg from "@assets/hero-img.avif";
-import ArrowIcon from "@assets/arrow-icon.svg";
-import Button from "@components/Button.astro";
-import { getTranslations } from "../../locale/getTranslations";
+import HeroImg from '@assets/hero-img.avif';
+import ArrowIcon from '@assets/arrow-icon.svg';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import Button from '@components/Button.astro';
+import { getTranslations } from '../../locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).homepage.hero;
 ---
@@ -114,7 +115,7 @@ const t = getTranslations(locale).homepage.hero;
       <p class="bigText">
         {t.text}
       </p>
-      <Button label={t.button} type="primary" />
+      <a href={getRelativeLocaleUrl(locale ?? '', '/offer')}><Button label={t.button} type="primary" /></a>
     </div>
   </div>
   <img src={HeroImg.src} alt={t.altPhoto} class="heroImg" />

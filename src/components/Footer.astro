@@ -112,6 +112,16 @@ const contactInfo = {
       display: none;
     }
   }
+
+  @media (max-width: 600px) {
+    .footer {
+      display: flex;
+      min-height: 272px;
+      background-color: var(--text-color);
+      color: var(--white-color);
+      padding: 56px 40px 32px;
+    }
+  }
 </style>
 
 <footer class="footer">
@@ -146,7 +156,7 @@ const contactInfo = {
 
     <div class="footerBottom">
       <p class="smallerText">{contactInfo.copyright}</p>
-      <a href="#" class="smallerText">{t.privacyPolicy}</a>
+      <a href={getRelativeLocaleUrl(locale ?? '', '/privacy-policy')} class="smallerText">{t.privacyPolicy}</a>
     </div>
   </div>
 </footer>

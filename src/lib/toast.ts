@@ -4,7 +4,7 @@ export function showToast(message:string | {success:boolean; message:string}, ty
 
     const toast = document.createElement("div");
     toast.className = "toast";
-    console.log(message)
+
     if (typeof message === "string") {
       toast.textContent = message;
     } else {

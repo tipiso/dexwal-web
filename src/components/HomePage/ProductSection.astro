@@ -7,11 +7,11 @@ import Product from '../Product.astro';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.productsSection;
 
-const { sectionLabel, linkProducts, classes, productCategory, maxListLength = undefined, maxVisibleByScreen = false } = Astro.props;
+const { sectionLabel, linkProducts, classes, productCategory, currentProductId = undefined, maxListLength = undefined, maxVisibleByScreen = false } = Astro.props;
 
 let data, products;
 if (!productCategory) {
-  data = await getProductsByLanguage(3, locale);
+  data = await getProductsByLanguage(3, locale, currentProductId);
   products = data.languages.nodes.flatMap((l) =>
     l.products.nodes.flatMap((p) => ({
       id: p.id,

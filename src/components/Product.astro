@@ -1,7 +1,7 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
+import { getRelativeLocaleUrl } from 'astro:i18n';
 const { productId, image, title } = Astro.props;
-const locale = Astro.currentLocale ?? "";
+const locale = Astro.currentLocale ?? '';
 ---
 
 <style>
@@ -13,10 +13,16 @@ const locale = Astro.currentLocale ?? "";
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     padding: 1rem;
     text-align: center;
+    transition: all ease-in 0.3s;
 
     text-decoration: none;
     color: var(--text-color);
     flex: 0 1 calc(30%); /* Adjust width as needed */
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+    }
 
     img {
       max-width: 100%;
@@ -32,10 +38,7 @@ const locale = Astro.currentLocale ?? "";
   }
 </style>
 
-<a
-  class="product"
-  href={getRelativeLocaleUrl(locale, `/products/${productId}`)}
->
+<a class="product" href={getRelativeLocaleUrl(locale, `/products/${productId}`)}>
   <img srcset={image} alt={title} />
   <p class="smallTitle">{title}</p>
 </a>

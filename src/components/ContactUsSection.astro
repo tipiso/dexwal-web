@@ -1,6 +1,7 @@
 ---
 import Button from '@components/Button.astro';
 const { classes } = Astro.props;
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getTranslations } from 'src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).components.contactUsSection;
@@ -33,5 +34,5 @@ const t = getTranslations(locale).components.contactUsSection;
   <p class="content bigText">
     {t.text}
   </p>
-  <Button type="secondary" label={t.button} />
+  <a href={getRelativeLocaleUrl(locale ?? '', '/contact')}><Button type="secondary" label={t.button} /></a>
 </section>

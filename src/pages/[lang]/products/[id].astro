@@ -1,25 +1,24 @@
 ---
-import { getProductsForPaths } from "src/lib/products";
-import SingleProductSection from "@components/ProductPage/SingleProductSection.astro";
-import Layout from "@layouts/Layout.astro";
-import CertificationSection from "@components/CertificationSection.astro";
-import ContactUsSection from "@components/ContactUsSection.astro";
-import ProductSection from "@components/HomePage/ProductSection.astro";
-import { getTranslations } from "src/locale/getTranslations";
-import ProductWrapper from "@src/components/ProductPage/ProductWrapper.astro";
+import { getProductsForPaths } from 'src/lib/products';
+import SingleProductSection from '@components/ProductPage/SingleProductSection.astro';
+import Layout from '@layouts/Layout.astro';
+import CertificationSection from '@components/CertificationSection.astro';
+import ContactUsSection from '@components/ContactUsSection.astro';
+import ProductSection from '@components/HomePage/ProductSection.astro';
+import { getTranslations } from 'src/locale/getTranslations';
+import ProductWrapper from '@src/components/ProductPage/ProductWrapper.astro';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).singleProductPage;
 
 export async function getStaticPaths() {
   const response = await getProductsForPaths();
-  const preparedResponse = response.languages.nodes.flatMap(
-    (languageProducts) =>
-      languageProducts.products.nodes.map((p) => {
-        return {
-          params: { lang: languageProducts.slug, id: p.id },
-          props: { product: p, productsList: response },
-        };
-      })
+  const preparedResponse = response.languages.nodes.flatMap((languageProducts) =>
+    languageProducts.products.nodes.map((p) => {
+      return {
+        params: { lang: languageProducts.slug, id: p.id },
+        props: { product: p, productsList: response },
+      };
+    }),
   );
   return preparedResponse;
 }
@@ -63,17 +62,14 @@ const pageTitle = product.heroHeader;
         />
       )
     }
-    {
-      product.cerification && (
-        <CertificationSection certificateUrl={product.cerification} />
-      )
-    }
+    {product.cerification && <CertificationSection certificateUrl={product.cerification} />}
     <ContactUsSection classes="sectionBreak" />
     <ProductSection
       classes="sectionBreak"
       linkProducts={true}
       maxVisibleByScreen={true}
       sectionLabel={t.productsSubsectionHeader}
+      currentProductId={product.id}
     />
   </ProductWrapper>
 </Layout>

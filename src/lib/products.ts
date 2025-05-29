@@ -14,10 +14,10 @@ export const getProductsByLanguage = async (
   excludeItemId?: string
 ) =>
   api.post<ProductsResponse>(`
-    query FetchProductsBtyLanguage {
+    query FetchProductsByLanguage {
   languages(where: {slug: "${language}"}) {
     nodes {
-      products (first: ${limit}) {
+      products (first: ${limit}, , where: {notIn: "${excludeItemId}"}) {
         nodes {
           heroAltText
           heroHeader
