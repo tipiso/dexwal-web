@@ -1,8 +1,10 @@
 ---
-import { AppLangEnum } from 'src/lib/types';
+import { AppLangEnum } from "src/lib/types";
 
 const supportedLocales = Object.values(AppLangEnum).map((l) => l);
-const locale = Astro.currentLocale;
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale ?? "";
+const t = getTranslations(locale).components.navigation;
 ---
 
 <style>
@@ -14,6 +16,7 @@ const locale = Astro.currentLocale;
   }
 </style>
 
+<label for="langSelect" class="sr-only">{t.languagePickerLabel}</label>
 <select id="langSelect" class="languageSwitcher otherText">
   {
     supportedLocales.map((l) => (
@@ -25,25 +28,27 @@ const locale = Astro.currentLocale;
 </select>
 
 <script>
-  import { AppLangEnum } from '@src/lib/types';
+  import { AppLangEnum } from "@src/lib/types";
 
-  window.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener("DOMContentLoaded", () => {
     const getCurrentLanguage = () => {
-      const pathParts = window.location.pathname.split('/');
-      const currLang = supportedLocales.includes(pathParts[1]) ? pathParts[1] : AppLangEnum.PL;
+      const pathParts = window.location.pathname.split("/");
+      const currLang = supportedLocales.includes(pathParts[1])
+        ? pathParts[1]
+        : AppLangEnum.PL;
       return currLang;
     };
 
     const getNewProductsPath = (newLang: string) => {
-      const pathParts = window.location.pathname.split('/');
-      const productsIdx = pathParts.indexOf('products');
+      const pathParts = window.location.pathname.split("/");
+      const productsIdx = pathParts.indexOf("products");
       const currLang = getCurrentLanguage();
 
       const currProductsList = document.getElementById(currLang);
       const newProductsList = document.getElementById(newLang);
       const currProductId = pathParts[productsIdx + 1];
 
-      let productImgToFind: string = '';
+      let productImgToFind: string = "";
       if (currProductsList) {
         Array.from(currProductsList.children).forEach((node) => {
           const { productid, heroid } = node.dataset;
@@ -51,7 +56,7 @@ const locale = Astro.currentLocale;
         });
       }
 
-      let nextProduct: string = '';
+      let nextProduct: string = "";
       if (newProductsList) {
         Array.from(newProductsList.children).forEach((node) => {
           const { productid, heroid } = node.dataset;
@@ -64,22 +69,26 @@ const locale = Astro.currentLocale;
 
     const supportedLocales: string[] = Object.values(AppLangEnum).map((l) => l);
     const currLang = getCurrentLanguage();
-    const selects = document.getElementsByClassName('languageSwitcher');
+    const selects = document.getElementsByClassName("languageSwitcher");
 
     Array.from(selects).forEach((select) => {
-      if (select && 'value' in select) {
+      if (select && "value" in select) {
         select.value = currLang;
 
-        select.addEventListener('change', function (e) {
+        select.addEventListener("change", function (e) {
           const newLang = e.target.value;
           // 1st is always a home slash
-          let pathParts = window.location.pathname.split('/');
+          let pathParts = window.location.pathname.split("/");
 
-          const hasProductsContext = window.location.pathname.includes('products');
+          const hasProductsContext =
+            window.location.pathname.includes("products");
           let newProductsPath;
           if (hasProductsContext) {
             newProductsPath = getNewProductsPath(newLang);
-            window.location.href = newLang === AppLangEnum.PL ? `${newProductsPath}` : `/${newLang}${newProductsPath}`;
+            window.location.href =
+              newLang === AppLangEnum.PL
+                ? `${newProductsPath}`
+                : `/${newLang}${newProductsPath}`;
             return;
           }
 
@@ -95,7 +104,7 @@ const locale = Astro.currentLocale;
             }
           }
 
-          const newPath = pathParts.join('/') || '/';
+          const newPath = pathParts.join("/") || "/";
 
           window.location.href = newPath;
         });

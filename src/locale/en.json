@@ -131,7 +131,8 @@
       "homepage": "Homepage",
       "offer": "Offer",
       "aboutUs": "About Us",
-      "contact": "Contact"
+      "contact": "Contact",
+      "languagePickerLabel": "Pick Language"
     },
     "footer": {
       "homepage": "Homepage",

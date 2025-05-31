@@ -131,7 +131,8 @@
       "homepage": "Strona Główna",
       "offer": "Oferta",
       "aboutUs": "O Firmie",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "languagePickerLabel": "Wybierz język"
     },
     "footer": {
       "homepage": "Strona Główna",
