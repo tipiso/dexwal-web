@@ -1,10 +1,23 @@
 import { defineConfig, envField } from "astro/config";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://dexwalppoz.com",
   base: "/",
-  integrations: [],
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: "pl",
+        locales: {
+          pl: "pl",
+          en: "en",
+          cs: "cs",
+        },
+      },
+    }),
+  ],
   i18n: {
     locales: ["en", "pl", "cs"],
     defaultLocale: "pl",

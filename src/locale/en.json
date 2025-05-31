@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "description": "Specialized firefighting equipment from Dexwalppoż: brackets, nozzles, fire platforms for electric vehicles, fire stations, extinguishers, hose reels. For State Fire Service (PSP), Volunteer Fire Brigades (OSP), and industry.",
+    "title": "Firefighting Equipment Manufacturer | Dexwal"
+  },
   "homepage": {
     "whyUs": {
       "experience": "Years on the market",
@@ -71,7 +75,6 @@
       "message": "Message",
       "privacy": "I declare that I have read the information regarding the processing of my personal data and agree to the Privacy Policy.",
       "sendButtonLabel": "Send Message"
-    
     }
   },
   "aboutUsPage": {
