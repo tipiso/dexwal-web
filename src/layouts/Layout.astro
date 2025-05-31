@@ -2,6 +2,7 @@
 import { AppLangEnum } from "src/lib/types";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Head from "../components/Head.astro";
 const { pageTitle } = Astro.props;
 import "../styles/global.css";
 import Toast from "@src/components/Toast.astro";
@@ -14,7 +15,7 @@ const currLang = locale ? locale : AppLangEnum.PL;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Head />
     <meta name="Dexwal" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
