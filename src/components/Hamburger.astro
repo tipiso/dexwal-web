@@ -1,14 +1,16 @@
 ---
 import Logo from "./Logo.astro";
 
-// mobile-menu.astro
+import { getTranslations } from "../locale/getTranslations";
+const locale = Astro.currentLocale;
+const t = getTranslations(locale).components.navigation;
 ---
 
 <div class="mobile-menu-overlay" id="mobileMenuOverlay">
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-header">
       <Logo />
-      <button class="close-btn" id="closeMenuBtn">
+      <button class="close-btn" id="closeMenuBtn" aria-label={t.closeMenuBtn}>
         <span>&times;</span>
       </button>
     </div>
@@ -20,7 +22,11 @@ import Logo from "./Logo.astro";
 </div>
 
 <!-- Mobile menu trigger button (hamburger) -->
-<button class="mobile-menu-trigger" id="mobileMenuTrigger">
+<button
+  class="mobile-menu-trigger"
+  id="mobileMenuTrigger"
+  aria-label={t.openMenuBtn}
+>
   <span></span>
   <span></span>
   <span></span>

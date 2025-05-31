@@ -132,7 +132,9 @@
       "homepage": "Hlavní stránka",
       "offer": "Nabídka",
       "aboutUs": "O firmě",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "closeMenuBtn": "Zavřít mobilní nabídku",
+      "openMenuBtn": "Otevře mobilní nabídku"
     },
     "footer": {
       "homepage": "Hlavní stránka",

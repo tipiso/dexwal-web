@@ -132,7 +132,9 @@
       "offer": "Oferta",
       "aboutUs": "O Firmie",
       "contact": "Kontakt",
-      "languagePickerLabel": "Wybierz język"
+      "languagePickerLabel": "Wybierz język",
+      "closeMenuBtn": "Zamknij mobilne menu",
+      "openMenuBtn": "Otwórz mobilne menu"
     },
     "footer": {
       "homepage": "Strona Główna",
