@@ -2,6 +2,7 @@
 import { getTranslations } from '../../locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).homepage.whyUs;
+import { Image } from "astro:assets";
 
 const reasons = [
   {
@@ -153,7 +154,7 @@ const reasons = [
 
 <section class="whyUsSection sectionBreak">
   <div class="imageContainer">
-    <img src="/images/hose.avif" alt={t.altImg} />
+    <Image src="/images/hose.avif" alt={t.altImg} width={600} height={840} />
     <div class="overlayBox">
       <span class="highlight">+30</span>
       <span class="experienceText secondaryTitle">{t.experience}</span>

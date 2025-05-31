@@ -2,6 +2,7 @@
 import { getTranslations } from "../../locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).homepage.modernToolsSection;
+import { Image } from "astro:assets";
 ---
 
 <style>
@@ -55,7 +56,12 @@ const t = getTranslations(locale).homepage.modernToolsSection;
 <div class="whiteSpace"></div>
 <section class="modernToolsSection sectionBreak">
   <div class="imgWrapper">
-    <img src="/images/modern-tools.avif" alt={t.altPhoto} />
+    <Image
+      src="/images/modern-tools.avif"
+      alt={t.altPhoto}
+      width={620}
+      height={480}
+    />
   </div>
   <article class="content">
     <h2 class="secondaryTitle">{t.heading}</h2>

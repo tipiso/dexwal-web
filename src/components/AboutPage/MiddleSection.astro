@@ -2,6 +2,7 @@
 import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
+import { Image } from "astro:assets";
 ---
 
 <style>
@@ -45,7 +46,12 @@ const t = getTranslations(locale).aboutUsPage;
 
 <section class="middleSection">
   <div class="middleImg">
-    <img src="/images/about-hose.avif" alt="Pracownik z wyposażeniem" />
+    <Image
+      src="/images/about-hose.avif"
+      alt={t.secondSection.altText}
+      width={720}
+      height={555}
+    />
   </div>
   <div class="middleText">
     <p class="primaryText">

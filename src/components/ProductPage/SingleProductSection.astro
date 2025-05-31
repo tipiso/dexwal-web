@@ -1,5 +1,6 @@
 ---
 const { header, text, photoSrcSet, photoAlt } = Astro.props;
+import { Image } from "astro:assets";
 ---
 
 <style>
@@ -111,7 +112,13 @@ const { header, text, photoSrcSet, photoAlt } = Astro.props;
 
 <section class:list={["productSection"]}>
   <div class="firstGridChild">
-    <img srcset={photoSrcSet} alt={photoAlt} />
+    <Image
+      src={photoSrcSet}
+      alt={photoAlt}
+      width={768}
+      height={746}
+      widths={[2048, 1536, 768, 1024, 300]}
+    />
   </div>
   <div class="secondGridChild">
     <h2 class="mainTitle">{header}</h2>

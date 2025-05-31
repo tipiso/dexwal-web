@@ -1,5 +1,6 @@
 ---
 import { getTranslations } from "@src/locale/getTranslations";
+import { Image } from "astro:assets";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
 ---
@@ -55,10 +56,12 @@ const t = getTranslations(locale).aboutUsPage;
         </p>
       </div>
       <div class="buildingImageWrapper">
-        <img
+        <Image
           src="/images/about-company.avif"
           alt={t.firstSection.sectionPhotoAlt}
           class="buildingImage"
+          width={720}
+          height={739}
         />
       </div>
     </div>
