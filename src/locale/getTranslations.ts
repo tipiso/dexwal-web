@@ -2,8 +2,10 @@ import { AppLangEnum } from "src/lib/types";
 import pl from "./pl.json";
 import cs from "./cs.json";
 import en from "./en.json";
+import es from "./es.json";
 
 export const getTranslations = (lang: AppLangEnum | string | undefined) => {
+  console.log(lang);
   switch (lang) {
     case AppLangEnum.PL:
       return pl;
@@ -11,6 +13,8 @@ export const getTranslations = (lang: AppLangEnum | string | undefined) => {
       return cs;
     case AppLangEnum.EN:
       return en;
+    case AppLangEnum.ES:
+      return es;
     default:
       return pl;
   }

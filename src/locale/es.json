@@ -1,0 +1,149 @@
+{
+  "meta": {
+    "description": "Equipos especializados de lucha contra incendios de Dexwalppoż: soportes, boquillas, plataformas contra incendios para vehículos eléctricos, estaciones de bomberos, extintores, carretes de manguera. Para el Servicio Estatal de Bomberos (PSP), Cuerpos de Bomberos Voluntarios (OSP) e industria.",
+    "title": "Fabricante de Equipos Contra Incendios | Dexwal"
+  },
+  "homepage": {
+    "whyUs": {
+      "altImg": "Manguera contra incendios",
+      "experience": "Años en el mercado",
+      "heading": "Por qué nos eligen",
+      "subheading": "¿Por instituciones y empresas líderes?",
+      "reasons": {
+        "reason1": {
+          "title": "Experiencia y Competencia",
+          "text": "Tenemos experiencia en la industria que nos permite comprender perfectamente las necesidades y requisitos de nuestros clientes. Nuestro equipo está compuesto por especialistas calificados que desarrollan continuamente sus habilidades para mantenerse al día con las últimas soluciones."
+        },
+        "reason2": {
+          "title": "Enfoque Individual",
+          "text": "Cada proyecto, pedido o colaboración es único para nosotros. Nuestra flexibilidad nos permite adaptar nuestros servicios a las expectativas y objetivos específicos de nuestros clientes."
+        },
+        "reason3": {
+          "title": "Calidad de los Servicios",
+          "text": "La calidad es nuestra prioridad. Nos esforzamos para que nuestros servicios sean de la más alta calidad, en línea con los estándares más recientes del sector."
+        },
+        "reason4": {
+          "title": "Profesionalismo",
+          "text": "Nuestro trabajo se basa en la ética, la confianza y la fiabilidad. Nos enfocamos en la transparencia de las acciones para que nuestros clientes tengan plena visión de los procesos y resultados de nuestro trabajo."
+        },
+        "reason5": {
+          "title": "Valores Atemporales",
+          "text": "Nuestra empresa se guía por valores importantes como la seguridad, el cuidado del medio ambiente, la responsabilidad social y la asociación con el cliente."
+        }
+      }
+    },
+    "hero": {
+      "heading": "Equipos profesionales contra incendios de Dexwal",
+      "text": "Soluciones innovadoras y seguras para los bomberos.",
+      "button": "Consulta toda la oferta de la empresa",
+      "altPhoto": "Bombero",
+      "altArrow": "Icono de flecha apuntando hacia abajo"
+    },
+    "modernToolsSection": {
+      "heading": "Equipos modernos de lucha contra incendios",
+      "altPhoto": "Equipamiento moderno de bomberos",
+      "text": "En Dexwal, nos especializamos en la producción de equipos especializados para los cuerpos de bomberos. Ofrecemos equipamiento innovador para camiones de bomberos que responde a los desafíos contemporáneos del rescate. Nuestros productos insignia incluyen un carrete de manguera con batería, que aumenta la efectividad de las operaciones de rescate. Las plataformas de extinción/enfriamiento especializadas son cruciales para incendios de vehículos eléctricos, permitiendo intervenciones rápidas y efectivas. Además, nuestros extintores son herramientas auxiliares confiables que detendrán rápidamente la propagación del fuego. Al elegir el equipamiento de Dexwal, aumentas la seguridad y eficiencia de tu unidad de bomberos."
+    },
+    "pageTitle": "Página de inicio",
+    "heroHeading": "Equipos contra incendios en nuestra oferta",
+    "heroContent": "En Dexwal, creamos no solo equipos, sino también soluciones seguras y eficaces que apoyan tanto a los cuerpos de bomberos voluntarios como estatales en sus operaciones diarias."
+  },
+  "offerPage": {
+    "pageTitle": "Oferta de Dexwal",
+    "pageHeading": "Consulta nuestra oferta de equipos",
+    "headerAltImgText": "Bombero con traje",
+    "platforms": "Plataformas",
+    "other": "Otros productos",
+    "brackets": "Soportes"
+  },
+  "contactPage": {
+    "pageTitle": "Contacto Dexwal",
+    "headerHeading": "Contáctanos",
+    "headerText": "Contáctanos, intentaremos responderte en las próximas 24 horas.",
+    "photoAltText": "Bombero con manguera contra incendios",
+    "contactDetailsSection": {
+      "contactData": "Datos de contacto",
+      "address": "Dirección",
+      "email": "Correo electrónico",
+      "telephone": "Teléfono",
+      "workHours": "Horario de atención",
+      "workHoursValue": "Lunes a viernes: 8:00 AM - 4:00 PM"
+    },
+    "contactForm": {
+      "name": "Nombre y Apellido",
+      "phone": "Teléfono",
+      "email": "Correo electrónico",
+      "message": "Mensaje",
+      "privacy": "Declaro que he leído la información sobre el tratamiento de mis datos personales y acepto la Política de Privacidad.",
+      "sendButtonLabel": "Enviar mensaje"
+    }
+  },
+  "aboutUsPage": {
+    "pageTitle": "Sobre nosotros",
+    "productSectionHeading": "Descubre los productos que ofrecemos",
+    "firstSection": {
+      "sectionHeading": "Dexwal - Nuestra historia",
+      "sectionTextHighlight": "Somos una empresa que opera en el mercado desde hace más de 30 años.",
+      "sectionText": "Existimos desde 1990. Nos desarrollamos intensamente, difundiendo nuestros productos a escala europea.",
+      "sectionPhotoAlt": "Sede de la empresa Dexwal"
+    },
+    "secondSection": {
+      "altText": "Trabajador con equipamiento",
+      "sectionFirstText": "Inicialmente enfocados en la producción de maquinaria agrícola y componentes de caucho y plástico, con el tiempo ampliamos nuestras operaciones al sector automotriz, introduciendo productos como maquinaria y herramientas agrícolas. En 2010, nos fusionamos con la empresa checa NL MOTO s. r. o. y comenzamos la cooperación con NSK Bearings.",
+      "sectionSecondText": "Otro paso importante en nuestro negocio fue el inicio de la producción de mangueras contra incendios. Esto incluye carretes de manguera innovadores, plataformas de extinción y enfriamiento para vehículos eléctricos y ventiladores de presión positiva, esenciales para operaciones de rescate y extinción eficaces. Nuestros productos se caracterizan por su innovación, así como por la más alta calidad de fabricación y fiabilidad. Gracias a esto, nuestros productos ganan la confianza de los bomberos y fabricantes de camiones de bomberos.",
+      "sectionPhotoAlt": "Empleado con equipamiento"
+    },
+    "thirdSection": {
+      "heading": "Aspectos clave de nuestro negocio"
+    },
+    "keyAspect1": {
+      "title": "Soluciones innovadoras",
+      "text": "Nos enfocamos en tecnologías contra incendios que aumentan la efectividad y seguridad de las operaciones de rescate y extinción."
+    },
+    "keyAspect2": {
+      "title": "Eficiencia y seguridad",
+      "text": "Nuestro equipo está diseñado para proporcionar soluciones eficaces y máxima seguridad para el usuario."
+    },
+    "keyAspect3": {
+      "title": "Productos certificados",
+      "text": "Todos los productos han sido enviados al Centro Científico y de Investigación para la Protección contra Incendios para obtener una opinión técnica y recomendaciones."
+    }
+  },
+  "singleProductPage": {
+    "productsSubsectionHeader": "Descubre los productos que ofrecemos"
+  },
+  "privacyPolicy": "Política de Privacidad",
+  "components": {
+    "certificateSection": {
+      "certificateImgAltText": "Foto de muestra de un certificado",
+      "heading": "Contamos con recomendaciones de CNBOP",
+      "button": "Ver documentación completa"
+    },
+    "productsSection": {
+      "button": "Ver otros productos de nuestra oferta"
+    },
+    "contactUsSection": {
+      "heading": "Contáctanos",
+      "text": "¡Descubre cómo el equipamiento contra incendios de Dexwal aumentará las capacidades de rescate!",
+      "button": "Contacto"
+    },
+    "navigation": {
+      "homepage": "Página de inicio",
+      "offer": "Oferta",
+      "aboutUs": "Sobre nosotros",
+      "contact": "Contacto",
+      "languagePickerLabel": "Seleccionar idioma",
+      "closeMenuBtn": "Cerrar menú móvil",
+      "openMenuBtn": "Abrir menú móvil"
+    },
+    "footer": {
+      "homepage": "Página de inicio",
+      "offer": "Oferta",
+      "aboutUs": "Sobre nosotros",
+      "contact": "Contacto",
+      "hoursAvailable": "Lunes–Viernes: 8:00 AM–4:00 PM",
+      "copyright": "© Dexwal Firefighting 2025 Todos los derechos reservados",
+      "privacyPolicy": "Política de Privacidad"
+    }
+  }
+}
