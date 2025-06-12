@@ -24,8 +24,8 @@ const contactInfo = {
 
 const distributorInfo = {
   title: 'EDUFIRE',
-  addressLine1: 'biuro@edufire.pl',
-  addressLine2: 'serwis@edufire.pl',
+  email1: 'biuro@edufire.pl',
+  email2: 'serwis@edufire.pl',
   subtitle: t.footer.distributorSubtitle,
   phone: '+48 511 36 24 28',
   hours: t.footer.distributorHoursAvailable,
@@ -43,11 +43,6 @@ const distributorInfo = {
 
   .footerLeft {
     justify-self: flex-start;
-
-    a {
-      color: var(--color-white);
-      text-decoration: none;
-    }
   }
 
   .address {
@@ -58,10 +53,21 @@ const distributorInfo = {
     display: flex;
   }
 
-  .footerNav a {
-    color: var(--color-white);
-    text-decoration: none;
+  .footerRight {
+    text-align: right;
+  }
 
+  .footerLeft,
+  .footerRight,
+  .footerNav,
+  .footerBottom {
+    a {
+      color: var(--color-white);
+      text-decoration: none;
+    }
+  }
+
+  .footerNav a {
     &:not(:last-of-type) {
       margin-right: 80px;
     }
@@ -76,11 +82,6 @@ const distributorInfo = {
 
     .smallerText {
       padding-bottom: 8px;
-    }
-
-    a {
-      text-decoration: underline;
-      color: var(--color-white);
     }
 
     a:hover {
@@ -111,10 +112,24 @@ const distributorInfo = {
     }
   }
 
+  @media (max-width: 1200px) {
+    .footer {
+      padding: 32px;
+    }
+  }
+
   @media (max-width: 1025px) {
     .footer {
       flex-direction: column;
       gap: 24px;
+    }
+
+    .footerRight {
+      text-align: left;
+    }
+
+    .footerMiddle {
+      order: 1;
     }
 
     .footerNav {
@@ -167,5 +182,22 @@ const distributorInfo = {
       <p class="smallerText">{contactInfo.copyright}</p>
       <a href={getRelativeLocaleUrl(locale ?? '', '/privacy-policy')} class="smallerText">{t.footer.privacyPolicy}</a>
     </div>
+  </div>
+
+  <div class="footerRight">
+    <ul class="footerList contact">
+      <h3>{distributorInfo.title}</h3>
+      <h4>{distributorInfo.subtitle}</h4>
+      <li class="smallerText">
+        <a href=`mailto:${distributorInfo.email1}`>{distributorInfo.email1}</a>
+      </li>
+      <li class="smallerText">
+        <a href=`mailto:${distributorInfo.email2}`>{distributorInfo.email2}</a>
+      </li>
+      <li class="smallerText">
+        <a href=`tel:${distributorInfo.phone}`>{distributorInfo.phone}</a>
+      </li>
+      <li class="smallerText">{contactInfo.hours}</li>
+    </ul>
   </div>
 </footer>
