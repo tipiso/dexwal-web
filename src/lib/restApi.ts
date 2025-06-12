@@ -44,7 +44,6 @@ export class WPRestClient {
   }
 
   post<T>(endpoint: string, body: any): Promise<T> {
-    console.log(endpoint, body);
     return this.request<T>("POST", endpoint, body);
   }
 

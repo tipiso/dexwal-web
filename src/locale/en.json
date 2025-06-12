@@ -142,8 +142,10 @@
       "aboutUs": "About Us",
       "contact": "Contact",
       "hoursAvailable": "Monday–Friday: 8:00 AM–4:00 PM",
-      "copyright": "© Dexwal Firefighting 2025 All rights reserved",
-      "privacyPolicy": "Privacy Policy"
+      "copyright": "© Dexwal PPOŻ 2025 All rights reserved",
+      "privacyPolicy": "Privacy Policy",
+      "distributorSubtitle": "Official Distributor",
+      "distributorHoursAvailable": "Monday–Friday: 8:00 AM–4:00 PM"
     }
   }
 }

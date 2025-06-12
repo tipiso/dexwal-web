@@ -142,8 +142,10 @@
       "aboutUs": "O firmě",
       "contact": "Kontakt",
       "hoursAvailable": "Pondělí–Pátek: 8:00–16:00",
-      "copyright": "© Dexwal PPOŽ 2025 Všechna práva vyhrazena",
-      "privacyPolicy": "Zásady ochrany osobních údajů"
+      "copyright": "© Dexwal PPOŻ 2025 Všechna práva vyhrazena",
+      "privacyPolicy": "Zásady ochrany osobních údajů",
+      "distributorSubtitle": "Oficiální distributor",
+      "distributorHoursAvailable": "Pondělí–Pátek: 8:00–16:00"
     }
   }
 }

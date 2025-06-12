@@ -1,25 +1,34 @@
 ---
-import WhiteLogo from "@assets/white-logo.svg";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { getTranslations } from "../locale/getTranslations";
+import WhiteLogo from '@assets/white-logo.svg';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getTranslations } from '../locale/getTranslations';
 const locale = Astro.currentLocale;
-const t = getTranslations(locale).components.navigation;
+const t = getTranslations(locale).components;
 
 const navLinks = [
-  { label: t.homepage, href: "/" },
-  { label: t.offer, href: "/offer" },
-  { label: t.aboutUs, href: "/about" },
-  { label: t.contact, href: "/contact" },
+  { label: t.navigation.homepage, href: '/' },
+  { label: t.navigation.offer, href: '/offer' },
+  { label: t.navigation.aboutUs, href: '/about' },
+  { label: t.navigation.contact, href: '/contact' },
 ];
 
 const contactInfo = {
-  companyName: "DEXWAL",
-  addressLine1: "ul. Dobrowoda 12",
-  addressLine2: "28-100 Busko-Zdrój",
-  email: "ppoz@dexwal.com",
-  phone: "+48 41 378 70 11",
-  hours: t.hoursAvailable,
-  copyright: t.copyright,
+  companyName: 'DEXWAL',
+  addressLine1: 'ul. Dobrowoda 12',
+  addressLine2: '28-100 Busko-Zdrój',
+  email: 'ppoz@dexwal.com',
+  phone: '+48 41 378 70 11',
+  hours: t.footer.hoursAvailable,
+  copyright: t.footer.copyright,
+};
+
+const distributorInfo = {
+  title: 'EDUFIRE',
+  addressLine1: 'biuro@edufire.pl',
+  addressLine2: 'serwis@edufire.pl',
+  subtitle: t.footer.distributorSubtitle,
+  phone: '+48 511 36 24 28',
+  hours: t.footer.distributorHoursAvailable,
 };
 ---
 
@@ -147,10 +156,7 @@ const contactInfo = {
     <nav class="footerNav">
       {
         navLinks.map((link) => (
-          <a
-            href={getRelativeLocaleUrl(locale ?? "", link.href)}
-            class="menuText"
-          >
+          <a href={getRelativeLocaleUrl(locale ?? '', link.href)} class="menuText">
             {link.label}
           </a>
         ))
@@ -159,10 +165,7 @@ const contactInfo = {
 
     <div class="footerBottom">
       <p class="smallerText">{contactInfo.copyright}</p>
-      <a
-        href={getRelativeLocaleUrl(locale ?? "", "/privacy-policy")}
-        class="smallerText">{t.privacyPolicy}</a
-      >
+      <a href={getRelativeLocaleUrl(locale ?? '', '/privacy-policy')} class="smallerText">{t.footer.privacyPolicy}</a>
     </div>
   </div>
 </footer>

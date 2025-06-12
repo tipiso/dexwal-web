@@ -5,7 +5,6 @@ import en from "./en.json";
 import es from "./es.json";
 
 export const getTranslations = (lang: AppLangEnum | string | undefined) => {
-  console.log(lang);
   switch (lang) {
     case AppLangEnum.PL:
       return pl;
