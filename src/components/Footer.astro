@@ -57,6 +57,10 @@ const distributorInfo = {
     text-align: right;
   }
 
+  .footerRight header {
+    padding-bottom: 16px;
+  }
+
   .footerLeft,
   .footerRight,
   .footerNav,
@@ -185,9 +189,11 @@ const distributorInfo = {
   </div>
 
   <div class="footerRight">
+    <header>
+      <h3 class="title otherText">{distributorInfo.title}</h3>
+      <h4 class="subtitle otherText"></h4>{distributorInfo.subtitle}
+    </header>
     <ul class="footerList contact">
-      <h3>{distributorInfo.title}</h3>
-      <h4>{distributorInfo.subtitle}</h4>
       <li class="smallerText">
         <a href=`mailto:${distributorInfo.email1}`>{distributorInfo.email1}</a>
       </li>
