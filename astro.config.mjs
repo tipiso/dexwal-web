@@ -8,6 +8,7 @@ export default defineConfig({
   base: "/",
   integrations: [
     sitemap({
+      filter: (page) => !page.includes('/pl'),
       i18n: {
         defaultLocale: "pl",
         locales: {

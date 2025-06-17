@@ -1,14 +1,14 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import ContactDetails from "@components/ContactPage/ContactDetails.astro";
-import ContactSection from "@components/ContactPage/ContactSection.astro";
-import HeaderSection from "@components/ContactPage/HeaderSection.astro";
-import ContentWrapper from "@components/ContactPage/ContentWrapper.astro";
-import MapSection from "@components/ContactPage/MapSection.astro";
-import { getTranslations } from "@src/locale/getTranslations";
+import Layout from '@layouts/Layout.astro';
+import ContactDetails from '@components/ContactPage/ContactDetails.astro';
+import ContactSection from '@components/ContactPage/ContactSection.astro';
+import HeaderSection from '@components/ContactPage/HeaderSection.astro';
+import ContentWrapper from '@components/ContactPage/ContentWrapper.astro';
+import MapSection from '@components/ContactPage/MapSection.astro';
+import { getTranslations } from '@src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
-const pageTitle = t.homepage.pageTitle;
+const pageTitle = t.contactPage.pageTitle;
 ---
 
 <Layout title={pageTitle}>
