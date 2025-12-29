@@ -17,6 +17,7 @@ if (!productCategory) {
       id: p.id,
       image: p.heroPhoto.node.srcSet,
       title: p.heroHeader,
+      certification: p.cerification
     })),
   );
 } else {
@@ -31,6 +32,7 @@ if (!productCategory) {
       id: p.id,
       image: p.heroPhoto.node.srcSet,
       title: p.heroHeader,
+      certification: p.cerification
     }))
     .slice(0, maxListLength);
 }
@@ -82,7 +84,7 @@ if (!productCategory) {
 <div class:list={[classes, 'productSection']}>
   {sectionLabel && <h2 class="secondaryTitle">{sectionLabel}</h2>}
   <div class:list={['productsWrapper']} data-limit={maxVisibleByScreen ? 'true' : 'false'}>
-    {products.map((p) => <Product productId={p.id} image={p.image} title={p.title} />)}
+    {products.map((p) => <Product productId={p.id} image={p.image} title={p.title} hasCertificate={!!p.certification} />)}
   </div>
   {
     linkProducts && (

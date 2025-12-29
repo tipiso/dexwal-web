@@ -1,12 +1,14 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
-const { productId, image, title } = Astro.props;
+import CertificateIcon from "@assets/certificate-icon.svg";
+const { productId, image, title, hasCertificate } = Astro.props;
 const locale = Astro.currentLocale ?? "";
 ---
 
 <style>
   .product {
+    position: relative;
     display: flex;
     flex-direction: column;
     background: white;
@@ -37,6 +39,14 @@ const locale = Astro.currentLocale ?? "";
     justify-self: flex-end;
     padding-top: 16px;
   }
+
+  .certificateImg {
+    position: absolute;
+    padding: 24px;
+    background-color: var(--white-color);
+    top: 0;
+    right: 0;
+  }
 </style>
 
 <a
@@ -51,4 +61,13 @@ const locale = Astro.currentLocale ?? "";
     widths={[2048, 1536, 768, 1024, 300]}
   />
   <p class="smallTitle">{title}</p>
+  {
+    hasCertificate && (
+      <img
+        class="certificateImg"
+        src={CertificateIcon.src}
+        alt="certificate cnbop"
+      />
+    )
+  }
 </a>

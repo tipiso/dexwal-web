@@ -22,6 +22,7 @@ export const getProductsByLanguage = async (
           heroAltText
           heroHeader
           id
+          cerification
           heroPhoto {
             node {
               srcSet
@@ -102,6 +103,7 @@ export const getProductsByCategory = async (category: ProductCategoriesEnum) =>
           heroHeader
           heroAltText
           id
+          cerification
         }
       }
     }

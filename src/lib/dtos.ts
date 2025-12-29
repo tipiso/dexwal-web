@@ -10,6 +10,7 @@ export type ProductListItem = {
   heroPhoto: { node: Photo };
   heroHeader: string;
   heroAltText: string;
+  cerification?: string;
 };
 
 export type Language = { node: { slug: string } };
@@ -83,6 +84,7 @@ export type ProductCategoryNode = {
       id: string;
       heroHeader: string;
       heroAltText: string;
+      cerification?: string;
     }[];
   };
 };
