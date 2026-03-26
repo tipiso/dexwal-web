@@ -8,9 +8,10 @@ import { getTranslations } from '@src/locale/getTranslations';
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 const pageTitle = t.offerPage.pageTitle;
+const metaDescription = `${t.offerPage.pageHeading}. ${[t.offerPage.brackets, t.offerPage.platforms, t.offerPage.other].filter(Boolean).join(", ")}.`;
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} metaDescription={metaDescription}>
   <HeaderSection />
 
   <ProductsWrapper />

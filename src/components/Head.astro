@@ -6,7 +6,14 @@ import { supportedLocales } from "src/lib/constants";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 
-const site = Astro.site ?? "https://dexwalppoz.com";
+const pageTitle = Astro.props.pageTitle as string | undefined;
+const metaDescription = Astro.props.metaDescription as string | undefined;
+const ogTitle = Astro.props.ogTitle as string | undefined;
+const ogDescription = Astro.props.ogDescription as string | undefined;
+const ogUrlProp = Astro.props.ogUrl as string | undefined;
+
+const site = `${Astro.site ?? "https://dexwalppoz.com"}`;
+const siteBase = site.replace(/\/$/, "");
 const defaultLocale = AppLangEnum.PL;
 
 // Astro i18n routes:
@@ -28,17 +35,34 @@ const productHreflangByLocale = Astro.props.productHreflangByLocale;
 const buildUrlForLocale = (targetLocale: AppLangEnum) => {
   // `pathWithoutLocale` already starts with `/`.
   if (targetLocale === defaultLocale)
-    return new URL(pathWithoutLocale, site).toString();
+    return new URL(pathWithoutLocale, siteBase).toString();
   // Ensure homepage stays `/en/` (not `/en//`).
   if (pathWithoutLocale === "/")
-    return new URL(`/${targetLocale}/`, site).toString();
-  return new URL(`/${targetLocale}${pathWithoutLocale}`, site).toString();
+    return new URL(`/${targetLocale}/`, siteBase).toString();
+  return new URL(`/${targetLocale}${pathWithoutLocale}`, siteBase).toString();
 };
+
+const sanitizeTextForMeta = (value: string) =>
+  value
+    // Remove any HTML tags that may come from CMS-rich text.
+    .replace(/<[^>]*>/g, " ")
+    // Collapse whitespace.
+    .replace(/\s+/g, " ")
+    .trim();
+
+const resolvedMetaDescription = sanitizeTextForMeta(
+  metaDescription ?? t.meta.description,
+);
+const resolvedOgTitle = ogTitle ?? pageTitle ?? t.meta.title;
+const resolvedOgDescription = ogDescription ?? resolvedMetaDescription;
+const resolvedOgUrl =
+  ogUrlProp ?? new URL(Astro.url.pathname, siteBase).toString();
+const resolvedOgImage = new URL("/og-image.png", siteBase).toString();
 ---
 
 <head>
   <link rel="sitemap" href="/sitemap-index.xml" />
-  <meta name="description" content={t.meta.description} />
+  <meta name="description" content={resolvedMetaDescription} />
   <!-- Multilingual SEO -->
   <!-- Static pages: page-specific hreflang from current path. -->
   <!-- Product pages: hreflang uses per-page product ID mapping passed via Layout. -->
@@ -90,15 +114,15 @@ const buildUrlForLocale = (targetLocale: AppLangEnum) => {
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <!-- Open Graph -->
-  <meta property="og:title" content={t.meta.title} />
-  <meta property="og:description" content={t.meta.description} />
-  <meta property="og:url" content="https://dexwalppoz.com/" />
+  <meta property="og:title" content={resolvedOgTitle} />
+  <meta property="og:description" content={resolvedOgDescription} />
+  <meta property="og:url" content={resolvedOgUrl} />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://dexwalppoz.com/og-image.png" />
+  <meta property="og:image" content={resolvedOgImage} />
   <meta property="og:locale" content={locale} />
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={t.meta.title} />
-  <meta name="twitter:description" content={t.meta.description} />
-  <meta name="twitter:image" content="https://dexwalppoz.com/og-image.png" />
+  <meta name="twitter:title" content={resolvedOgTitle} />
+  <meta name="twitter:description" content={resolvedOgDescription} />
+  <meta name="twitter:image" content={resolvedOgImage} />
 </head>

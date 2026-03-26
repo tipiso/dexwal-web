@@ -9,9 +9,10 @@ import KeyAspectsSection from "@src/components/AboutPage/KeyAspectsSection.astro
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
 const pageTitle = t.pageTitle;
+const metaDescription = `${t.firstSection?.sectionTextHighlight ?? ""} ${t.firstSection?.sectionText ?? ""}`.trim() || pageTitle;
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} metaDescription={metaDescription}>
   <main>
     <HeroSection />
 

@@ -9,8 +9,9 @@ const polishPrivacyPolicy = privacyPolicies.nodes.find((n) =>
 import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const privacyPolicyPageTitle = getTranslations(locale).privacyPolicy;
+const metaDescription = privacyPolicyPageTitle;
 ---
 
-<Layout pageTitle={privacyPolicyPageTitle}>
+<Layout pageTitle={privacyPolicyPageTitle} metaDescription={metaDescription}>
   <div set:html={polishPrivacyPolicy?.content} class="privacyPolicy" />
 </Layout>

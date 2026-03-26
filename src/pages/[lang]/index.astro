@@ -18,9 +18,10 @@ import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 const pageTitle = t.homepage.pageTitle;
+const metaDescription = t.homepage.heroContent ?? t.homepage.hero?.text ?? t.meta.description;
 ---
 
-<Layout pageTitle={pageTitle} language="pl">
+<Layout pageTitle={pageTitle} metaDescription={metaDescription} language="pl">
   <HeroSection />
 
   <ProductSectionWrapper />

@@ -10,6 +10,7 @@ import KeyAspectsSection from "@src/components/AboutPage/KeyAspectsSection.astro
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).aboutUsPage;
 const pageTitle = t.pageTitle;
+const metaDescription = `${t.firstSection?.sectionTextHighlight ?? ""} ${t.firstSection?.sectionText ?? ""}`.trim() || pageTitle;
 
 export async function getStaticPaths() {
   const supportedLocales = Object.values(AppLangEnum).map((l) => l);
@@ -19,7 +20,7 @@ export async function getStaticPaths() {
 }
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} metaDescription={metaDescription}>
   <main>
     <HeroSection />
 

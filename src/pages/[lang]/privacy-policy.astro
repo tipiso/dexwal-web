@@ -17,8 +17,9 @@ const privacyPolicy = privacyPolicies.nodes.find((n) => n.slug.includes(lang));
 
 const locale = Astro.currentLocale;
 const privacyPolicyPageTitle = getTranslations(locale).privacyPolicy;
+const metaDescription = privacyPolicyPageTitle;
 ---
 
-<Layout pageTitle={privacyPolicyPageTitle}>
+<Layout pageTitle={privacyPolicyPageTitle} metaDescription={metaDescription}>
   <div set:html={privacyPolicy?.content} class="privacyPolicy" />
 </Layout>

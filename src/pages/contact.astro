@@ -9,9 +9,10 @@ import { getTranslations } from "@src/locale/getTranslations";
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
 const pageTitle = t.contactPage.pageTitle;
+const metaDescription = t.contactPage.headerText ?? pageTitle;
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} metaDescription={metaDescription}>
   <ContentWrapper>
     <HeaderSection />
 

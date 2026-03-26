@@ -28,6 +28,7 @@ export async function getStaticPaths() {
 }
 const { product, productsList } = Astro.props;
 const pageTitle = product.heroHeader;
+const metaDescription = product.heroText ?? product.introductionText ?? pageTitle;
 
 const site = Astro.site;
 const currentHeroPhotoId = product.heroPhoto.node.id;
@@ -59,7 +60,11 @@ for (const targetLocale of supportedLocales) {
 }
 ---
 
-<Layout pageTitle={pageTitle} productHreflangByLocale={productHreflangByLocale}>
+<Layout
+  pageTitle={pageTitle}
+  metaDescription={metaDescription}
+  productHreflangByLocale={productHreflangByLocale}
+>
   {
     productsList.languages.nodes.map((n) => (
       <div id={n.slug} class="invisible">

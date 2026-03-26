@@ -3,7 +3,14 @@ import { AppLangEnum } from "src/lib/types";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Head from "../components/Head.astro";
-const { pageTitle, productHreflangByLocale } = Astro.props;
+const {
+  pageTitle,
+  productHreflangByLocale,
+  metaDescription,
+  ogTitle,
+  ogDescription,
+  ogUrl,
+} = Astro.props;
 import "../styles/global.css";
 import Toast from "@src/components/Toast.astro";
 const locale = Astro.currentLocale;
@@ -15,7 +22,14 @@ const currLang = locale ? locale : AppLangEnum.PL;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <Head productHreflangByLocale={productHreflangByLocale} />
+    <Head
+      pageTitle={pageTitle}
+      productHreflangByLocale={productHreflangByLocale}
+      metaDescription={metaDescription}
+      ogTitle={ogTitle}
+      ogDescription={ogDescription}
+      ogUrl={ogUrl}
+    />
     <meta name="Dexwal" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
