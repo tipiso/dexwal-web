@@ -1,18 +1,67 @@
 ---
-import { getTranslations } from '@src/locale/getTranslations';
+import { getTranslations } from "@src/locale/getTranslations";
+import { AppLangEnum } from "@src/lib/types";
+
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
+
+const site = Astro.site ?? "https://dexwalppoz.com";
+const supportedLocales: AppLangEnum[] = [
+  AppLangEnum.PL,
+  AppLangEnum.EN,
+  AppLangEnum.CS,
+  AppLangEnum.ES,
+];
+const defaultLocale = AppLangEnum.PL;
+
+// Astro i18n routes:
+// - default locale is *not* prefixed (`prefixDefaultLocale: false`)
+// - other locales are prefixed (`/en/...`, `/cs/...`, ...)
+const getPathWithoutLocalePrefix = (pathname: string) => {
+  const parts = pathname.split("/");
+  const maybeLocale = parts[1];
+  const hasLocalePrefix = supportedLocales.includes(maybeLocale as AppLangEnum);
+  const strippedParts = hasLocalePrefix ? parts.slice(2) : parts.slice(1);
+  const strippedPath = `/${strippedParts.join("/")}`;
+  return strippedPath === "" ? "/" : strippedPath;
+};
+
+const pathWithoutLocale = getPathWithoutLocalePrefix(Astro.url.pathname);
+const isProductPage = pathWithoutLocale.startsWith("/products/");
+
+const buildUrlForLocale = (targetLocale: AppLangEnum) => {
+  // `pathWithoutLocale` already starts with `/`.
+  if (targetLocale === defaultLocale)
+    return new URL(pathWithoutLocale, site).toString();
+  // Ensure homepage stays `/en/` (not `/en//`).
+  if (pathWithoutLocale === "/")
+    return new URL(`/${targetLocale}/`, site).toString();
+  return new URL(`/${targetLocale}${pathWithoutLocale}`, site).toString();
+};
 ---
 
 <head>
   <link rel="sitemap" href="/sitemap-index.xml" />
   <meta name="description" content={t.meta.description} />
   <!-- Multilingual SEO -->
-  <link rel="alternate" hreflang="pl" href="https://dexwalppoz.com/" />
-  <link rel="alternate" hreflang="en" href="https://dexwalppoz.com/en/" />
-  <link rel="alternate" hreflang="cs" href="https://dexwalppoz.com/cs/" />
-  <link rel="alternate" hreflang="es" href="https://dexwalppoz.com/es/" />
-  <link rel="alternate" hreflang="x-default" href="https://dexwalppoz.com/" />
+  {
+    /*
+    Page-specific hreflang for static pages.
+    Product pages require mapping product IDs across languages (done in step 2),
+    so we omit hreflang there for now to avoid incorrect duplicates.
+  */
+  }
+  {
+    !isProductPage &&
+      supportedLocales.map((locale) => (
+        <link
+          rel="alternate"
+          hreflang={locale}
+          href={buildUrlForLocale(locale)}
+        />
+      ))
+  }
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

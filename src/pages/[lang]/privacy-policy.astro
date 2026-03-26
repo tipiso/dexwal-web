@@ -19,6 +19,6 @@ const locale = Astro.currentLocale;
 const privacyPolicyPageTitle = getTranslations(locale).privacyPolicy;
 ---
 
-<Layout titlePage={privacyPolicyPageTitle}>
+<Layout pageTitle={privacyPolicyPageTitle}>
   <div set:html={privacyPolicy?.content} class="privacyPolicy" />
 </Layout>
