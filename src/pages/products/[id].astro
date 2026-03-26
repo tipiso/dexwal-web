@@ -4,6 +4,7 @@ import SingleProductSection from "@components/ProductPage/SingleProductSection.a
 import Layout from "@layouts/Layout.astro";
 import ContactUsSection from "@components/ContactUsSection.astro";
 import ProductSection from "@components/HomePage/ProductSection.astro";
+import { AppLangEnum } from "src/lib/types";
 import { getTranslations } from "src/locale/getTranslations";
 import ProductWrapper from "@src/components/ProductPage/ProductWrapper.astro";
 import CertificationSection from "@src/components/CertificationSection.astro";
@@ -25,9 +26,37 @@ export async function getStaticPaths() {
 }
 const { product, productsList } = Astro.props;
 const pageTitle = product.heroHeader;
+
+const site = `${Astro.site ?? "https://dexwalppoz.com"}`.replace(/\/$/, "");
+const supportedLocales = [
+  AppLangEnum.PL,
+  AppLangEnum.EN,
+  AppLangEnum.CS,
+  AppLangEnum.ES,
+];
+const currentHeroPhotoId = product.heroPhoto.node.id;
+
+const getProductIdForLocale = (targetLocale: string) => {
+  const langNode = productsList.languages.nodes.find((n) => n.slug === targetLocale);
+  const targetProduct = langNode?.products.nodes.find(
+    (p) => p.heroPhoto.node.id === currentHeroPhotoId,
+  );
+  return targetProduct?.id;
+};
+
+const buildProductUrl = (targetLocale: string, targetProductId: string) => {
+  if (targetLocale === AppLangEnum.PL) return `${site}/products/${targetProductId}`;
+  return `${site}/${targetLocale}/products/${targetProductId}`;
+};
+
+const productHreflangByLocale: Record<string, string> = {};
+for (const targetLocale of supportedLocales) {
+  const targetProductId = getProductIdForLocale(targetLocale);
+  if (targetProductId) productHreflangByLocale[targetLocale] = buildProductUrl(targetLocale, targetProductId);
+}
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} productHreflangByLocale={productHreflangByLocale}>
   {
     productsList.languages.nodes.map((n) => (
       <div id={n.slug} class="invisible">

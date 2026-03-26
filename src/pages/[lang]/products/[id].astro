@@ -1,32 +1,65 @@
 ---
-import { getProductsForPaths } from 'src/lib/products';
-import SingleProductSection from '@components/ProductPage/SingleProductSection.astro';
-import Layout from '@layouts/Layout.astro';
-import CertificationSection from '@components/CertificationSection.astro';
-import ContactUsSection from '@components/ContactUsSection.astro';
-import ProductSection from '@components/HomePage/ProductSection.astro';
-import { getTranslations } from 'src/locale/getTranslations';
-import ProductWrapper from '@src/components/ProductPage/ProductWrapper.astro';
+import { getProductsForPaths } from "src/lib/products";
+import SingleProductSection from "@components/ProductPage/SingleProductSection.astro";
+import Layout from "@layouts/Layout.astro";
+import CertificationSection from "@components/CertificationSection.astro";
+import ContactUsSection from "@components/ContactUsSection.astro";
+import ProductSection from "@components/HomePage/ProductSection.astro";
+import { AppLangEnum } from "src/lib/types";
+import { getTranslations } from "src/locale/getTranslations";
+import ProductWrapper from "@src/components/ProductPage/ProductWrapper.astro";
+import { supportedLocales } from "src/lib/constants";
+
 const locale = Astro.currentLocale;
 const t = getTranslations(locale).singleProductPage;
 
 export async function getStaticPaths() {
   const response = await getProductsForPaths();
-  const preparedResponse = response.languages.nodes.flatMap((languageProducts) =>
-    languageProducts.products.nodes.map((p) => {
-      return {
-        params: { lang: languageProducts.slug, id: p.id },
-        props: { product: p, productsList: response },
-      };
-    }),
+  const preparedResponse = response.languages.nodes.flatMap(
+    (languageProducts) =>
+      languageProducts.products.nodes.map((p) => {
+        return {
+          params: { lang: languageProducts.slug, id: p.id },
+          props: { product: p, productsList: response },
+        };
+      }),
   );
   return preparedResponse;
 }
 const { product, productsList } = Astro.props;
 const pageTitle = product.heroHeader;
+
+const site = Astro.site;
+const currentHeroPhotoId = product.heroPhoto.node.id;
+
+const getProductIdForLocale = (targetLocale: string) => {
+  const langNode = productsList.languages.nodes.find(
+    (n) => n.slug === targetLocale,
+  );
+  const targetProduct = langNode?.products.nodes.find(
+    (p) => p.heroPhoto.node.id === currentHeroPhotoId,
+  );
+  return targetProduct?.id;
+};
+
+const buildProductUrl = (targetLocale: string, targetProductId: string) => {
+  if (targetLocale === AppLangEnum.PL)
+    return `${site}/products/${targetProductId}`;
+  return `${site}/${targetLocale}/products/${targetProductId}`;
+};
+
+const productHreflangByLocale: Record<string, string> = {};
+for (const targetLocale of supportedLocales) {
+  const targetProductId = getProductIdForLocale(targetLocale);
+  if (targetProductId)
+    productHreflangByLocale[targetLocale] = buildProductUrl(
+      targetLocale,
+      targetProductId,
+    );
+}
 ---
 
-<Layout pageTitle={pageTitle}>
+<Layout pageTitle={pageTitle} productHreflangByLocale={productHreflangByLocale}>
   {
     productsList.languages.nodes.map((n) => (
       <div id={n.slug} class="invisible">
@@ -62,7 +95,11 @@ const pageTitle = product.heroHeader;
         />
       )
     }
-    {product.cerification && <CertificationSection certificateUrl={product.cerification} />}
+    {
+      product.cerification && (
+        <CertificationSection certificateUrl={product.cerification} />
+      )
+    }
     <ContactUsSection classes="sectionBreak" />
     <ProductSection
       classes="sectionBreak"
