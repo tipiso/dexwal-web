@@ -1,0 +1,9 @@
+# Apex + HTTPS is canonical per astro.config `site`.
+# Remove `www` → apex
+https://www.dexwalppoz.com/* https://dexwalppoz.com/:splat 301
+http://www.dexwalppoz.com/* https://dexwalppoz.com/:splat 301
+http://dexwalppoz.com/* https://dexwalppoz.com/:splat 301
+# Redundant default-locale prefix (matches sitemap filter + canonical strategy)
+/pl / 301
+/pl/ / 301
+/pl/* /:splat 301

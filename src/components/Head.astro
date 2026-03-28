@@ -42,6 +42,12 @@ const preferredPathForCanonicalAndOg = usesRedundantDefaultLocalePrefix
 const isProductPage = pathWithoutLocale.startsWith("/products/");
 const productHreflangByLocale = Astro.props.productHreflangByLocale;
 
+/** Resolves default-locale pages where `Astro.currentLocale` may be unset. */
+const currentLocaleResolved = (Astro.currentLocale ??
+  defaultLocale) as AppLangEnum;
+/** Exact URL of this document (path only); required so one `hreflang` matches the crawled URL. */
+const documentAlternateSelfUrl = new URL(pathname, siteBase).toString();
+
 const buildUrlForLocale = (targetLocale: AppLangEnum) => {
   // `pathWithoutLocale` already starts with `/`.
   if (targetLocale === defaultLocale)
@@ -83,11 +89,15 @@ const organizationWebsiteJsonLd = getOrganizationAndWebsiteJsonLd(siteBase);
 {
   !isProductPage && (
     <>
-      {supportedLocales.map((locale) => (
+      {supportedLocales.map((loc) => (
         <link
           rel="alternate"
-          hreflang={locale}
-          href={buildUrlForLocale(locale)}
+          hreflang={loc}
+          href={
+            loc === currentLocaleResolved
+              ? documentAlternateSelfUrl
+              : buildUrlForLocale(loc)
+          }
         />
       ))}
       <link
@@ -101,10 +111,19 @@ const organizationWebsiteJsonLd = getOrganizationAndWebsiteJsonLd(siteBase);
 {
   isProductPage && productHreflangByLocale && (
     <>
-      {supportedLocales.map((locale) => {
-        const href = productHreflangByLocale?.[locale];
+      {supportedLocales.map((loc) => {
+        if (loc === currentLocaleResolved) {
+          return (
+            <link
+              rel="alternate"
+              hreflang={loc}
+              href={documentAlternateSelfUrl}
+            />
+          );
+        }
+        const href = productHreflangByLocale?.[loc];
         if (!href) return null;
-        return <link rel="alternate" hreflang={locale} href={href} />;
+        return <link rel="alternate" hreflang={loc} href={href} />;
       })}
       {productHreflangByLocale?.[defaultLocale] && (
         <link
