@@ -2,6 +2,7 @@
 import { getTranslations } from "@src/locale/getTranslations";
 import { AppLangEnum } from "@src/lib/types";
 import { supportedLocales } from "src/lib/constants";
+import { getOrganizationAndWebsiteJsonLd } from "src/lib/structuredData";
 
 const locale = Astro.currentLocale;
 const t = getTranslations(locale);
@@ -29,7 +30,15 @@ const getPathWithoutLocalePrefix = (pathname: string) => {
   return strippedPath === "" ? "/" : strippedPath;
 };
 
-const pathWithoutLocale = getPathWithoutLocalePrefix(Astro.url.pathname);
+const pathname = Astro.url.pathname;
+const pathWithoutLocale = getPathWithoutLocalePrefix(pathname);
+/** `/pl/...` mirrors default locale but real URLs are unprefixed (`/`). Aligns with sitemap excluding `/pl`. */
+const pathSegments = pathname.split("/").filter(Boolean);
+const usesRedundantDefaultLocalePrefix = pathSegments[0] === defaultLocale;
+const preferredPathForCanonicalAndOg = usesRedundantDefaultLocalePrefix
+  ? pathWithoutLocale
+  : pathname;
+
 const isProductPage = pathWithoutLocale.startsWith("/products/");
 const productHreflangByLocale = Astro.props.productHreflangByLocale;
 
@@ -57,76 +66,80 @@ const resolvedMetaDescription = sanitizeTextForMeta(
 const resolvedOgTitle = ogTitle ?? pageTitle ?? t.meta.title;
 const resolvedOgDescription = ogDescription ?? resolvedMetaDescription;
 const resolvedOgUrl =
-  ogUrlProp ?? new URL(Astro.url.pathname, siteBase).toString();
-/** Self-referencing canonical; optional override via Layout `canonicalUrl`. */
+  ogUrlProp ?? new URL(preferredPathForCanonicalAndOg, siteBase).toString();
+/** Canonical matches preferred URL; `/pl/...` → unprefixed default locale. Optional `canonicalUrl` override via Layout. */
 const resolvedCanonical = canonicalUrlProp ?? resolvedOgUrl;
 const resolvedOgImage = new URL("/og-image.png", siteBase).toString();
+
+const organizationWebsiteJsonLd = getOrganizationAndWebsiteJsonLd(siteBase);
 ---
 
-<head>
-  <link rel="sitemap" href="/sitemap-index.xml" />
-  <meta name="description" content={resolvedMetaDescription} />
-  <link rel="canonical" href={resolvedCanonical} />
-  <!-- Multilingual SEO -->
-  <!-- Static pages: page-specific hreflang from current path. -->
-  <!-- Product pages: hreflang uses per-page product ID mapping passed via Layout. -->
-  {
-    !isProductPage && (
-      <>
-        {supportedLocales.map((locale) => (
-          <link
-            rel="alternate"
-            hreflang={locale}
-            href={buildUrlForLocale(locale)}
-          />
-        ))}
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="description" content={resolvedMetaDescription} />
+<link rel="canonical" href={resolvedCanonical} />
+<!-- Multilingual SEO -->
+<!-- Static pages: page-specific hreflang from current path. -->
+<!-- Product pages: hreflang uses per-page product ID mapping passed via Layout. -->
+{
+  !isProductPage && (
+    <>
+      {supportedLocales.map((locale) => (
+        <link
+          rel="alternate"
+          hreflang={locale}
+          href={buildUrlForLocale(locale)}
+        />
+      ))}
+      <link
+        rel="alternate"
+        hreflang="x-default"
+        href={buildUrlForLocale(defaultLocale)}
+      />
+    </>
+  )
+}
+{
+  isProductPage && productHreflangByLocale && (
+    <>
+      {supportedLocales.map((locale) => {
+        const href = productHreflangByLocale?.[locale];
+        if (!href) return null;
+        return <link rel="alternate" hreflang={locale} href={href} />;
+      })}
+      {productHreflangByLocale?.[defaultLocale] && (
         <link
           rel="alternate"
           hreflang="x-default"
-          href={buildUrlForLocale(defaultLocale)}
+          href={productHreflangByLocale[defaultLocale]}
         />
-      </>
-    )
-  }
-  {
-    isProductPage && productHreflangByLocale && (
-      <>
-        {supportedLocales.map((locale) => {
-          const href = productHreflangByLocale?.[locale];
-          if (!href) return null;
-          return <link rel="alternate" hreflang={locale} href={href} />;
-        })}
-        {productHreflangByLocale?.[defaultLocale] && (
-          <link
-            rel="alternate"
-            hreflang="x-default"
-            href={productHreflangByLocale[defaultLocale]}
-          />
-        )}
-      </>
-    )
-  }
+      )}
+    </>
+  )
+}
 
-  <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <!-- PWA / Apple -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#c92200" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <!-- Open Graph -->
-  <meta property="og:title" content={resolvedOgTitle} />
-  <meta property="og:description" content={resolvedOgDescription} />
-  <meta property="og:url" content={resolvedOgUrl} />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content={resolvedOgImage} />
-  <meta property="og:locale" content={locale} />
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={resolvedOgTitle} />
-  <meta name="twitter:description" content={resolvedOgDescription} />
-  <meta name="twitter:image" content={resolvedOgImage} />
-</head>
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<!-- PWA / Apple -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<meta name="theme-color" content="#c92200" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<!-- Open Graph -->
+<meta property="og:title" content={resolvedOgTitle} />
+<meta property="og:description" content={resolvedOgDescription} />
+<meta property="og:url" content={resolvedOgUrl} />
+<meta property="og:type" content="website" />
+<meta property="og:image" content={resolvedOgImage} />
+<meta property="og:locale" content={locale} />
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={resolvedOgTitle} />
+<meta name="twitter:description" content={resolvedOgDescription} />
+<meta name="twitter:image" content={resolvedOgImage} />
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(organizationWebsiteJsonLd)}
+/>
