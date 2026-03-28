@@ -6,3 +6,5 @@ export const supportedLocales = [
   AppLangEnum.CS,
   AppLangEnum.ES,
 ];
+
+export const PAGE_URL = "https://dexwalppoz.com";

@@ -1,28 +1,29 @@
 import { defineConfig, envField } from "astro/config";
-
+import { PAGE_URL } from "src/lib/constants";
 import sitemap from "@astrojs/sitemap";
+import { AppLangEnum } from "src/lib/types";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://dexwalppoz.com",
+  site: PAGE_URL,
   base: "/",
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/pl'),
+      filter: (page) => !page.includes(`/${AppLangEnum.PL}`),
       i18n: {
-        defaultLocale: "pl",
+        defaultLocale: AppLangEnum.PL,
         locales: {
-          pl: "pl",
-          en: "en",
-          cs: "cs",
-          es: "es",
+          pl: AppLangEnum.PL,
+          en: AppLangEnum.EN,
+          cs: AppLangEnum.CS,
+          es: AppLangEnum.ES,
         },
       },
     }),
   ],
   i18n: {
-    locales: ["en", "pl", "cs", "es"],
-    defaultLocale: "pl",
+    locales: Object.values(AppLangEnum).map((l) => l),
+    defaultLocale: AppLangEnum.PL,
   },
   routing: {
     prefixDefaultLocale: false,
