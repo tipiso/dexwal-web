@@ -11,6 +11,7 @@ const metaDescription = Astro.props.metaDescription as string | undefined;
 const ogTitle = Astro.props.ogTitle as string | undefined;
 const ogDescription = Astro.props.ogDescription as string | undefined;
 const ogUrlProp = Astro.props.ogUrl as string | undefined;
+const canonicalUrlProp = Astro.props.canonicalUrl as string | undefined;
 
 const site = `${Astro.site ?? "https://dexwalppoz.com"}`;
 const siteBase = site.replace(/\/$/, "");
@@ -57,12 +58,15 @@ const resolvedOgTitle = ogTitle ?? pageTitle ?? t.meta.title;
 const resolvedOgDescription = ogDescription ?? resolvedMetaDescription;
 const resolvedOgUrl =
   ogUrlProp ?? new URL(Astro.url.pathname, siteBase).toString();
+/** Self-referencing canonical; optional override via Layout `canonicalUrl`. */
+const resolvedCanonical = canonicalUrlProp ?? resolvedOgUrl;
 const resolvedOgImage = new URL("/og-image.png", siteBase).toString();
 ---
 
 <head>
   <link rel="sitemap" href="/sitemap-index.xml" />
   <meta name="description" content={resolvedMetaDescription} />
+  <link rel="canonical" href={resolvedCanonical} />
   <!-- Multilingual SEO -->
   <!-- Static pages: page-specific hreflang from current path. -->
   <!-- Product pages: hreflang uses per-page product ID mapping passed via Layout. -->

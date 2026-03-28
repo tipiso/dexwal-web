@@ -10,6 +10,7 @@ const {
   ogTitle,
   ogDescription,
   ogUrl,
+  canonicalUrl,
 } = Astro.props;
 import "../styles/global.css";
 import Toast from "@src/components/Toast.astro";
@@ -29,6 +30,7 @@ const currLang = locale ? locale : AppLangEnum.PL;
       ogTitle={ogTitle}
       ogDescription={ogDescription}
       ogUrl={ogUrl}
+      canonicalUrl={canonicalUrl}
     />
     <meta name="Dexwal" content={Astro.generator} />
     <title>{pageTitle}</title>
